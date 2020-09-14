@@ -1,2 +1,2 @@
 # Rave.net
-Flutterwave API (version) for .Net Developers! https://developer.flutterwave.com/docs/getting-started
+Flutterwave API (version 3) for .Net Developers!
