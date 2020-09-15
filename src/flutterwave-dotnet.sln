@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flutterwave-dotnet", "flutterwave-dotnet\flutterwave-dotnet.csproj", "{043FDF3C-3985-4772-B96E-55D4BE26E262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flutterwave-dotnet-test", "flutterwave-dotnet-test\flutterwave-dotnet-test.csproj", "{19233EC4-A1D5-41FB-904D-71484B7C6B99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flutterwave-dotnet-tests", "flutterwave-dotnet-test\flutterwave-dotnet-tests.csproj", "{19233EC4-A1D5-41FB-904D-71484B7C6B99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
