@@ -20,6 +20,8 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build src/flutterwave-dotnet.sln --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore
+      working-directory: src
     - name: Test
-      run: dotnet test src/flutterwave-dotnet.sln --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal
+      working-directory: src
