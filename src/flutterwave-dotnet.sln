@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flutterwave-dotnet", "flutterwave-dotnet\flutterwave-dotnet.csproj", "{043FDF3C-3985-4772-B96E-55D4BE26E262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "flutterwave-dotnet", "flutterwave-dotnet\flutterwave-dotnet.csproj", "{043FDF3C-3985-4772-B96E-55D4BE26E262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flutterwave-dotnet-test", "flutterwave-dotnet-test\flutterwave-dotnet-test.csproj", "{19233EC4-A1D5-41FB-904D-71484B7C6B99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{043FDF3C-3985-4772-B96E-55D4BE26E262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{043FDF3C-3985-4772-B96E-55D4BE26E262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{043FDF3C-3985-4772-B96E-55D4BE26E262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19233EC4-A1D5-41FB-904D-71484B7C6B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19233EC4-A1D5-41FB-904D-71484B7C6B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19233EC4-A1D5-41FB-904D-71484B7C6B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19233EC4-A1D5-41FB-904D-71484B7C6B99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
