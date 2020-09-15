@@ -2,6 +2,6 @@
 {
     public interface IFlutterwaveApi
     {
-        ITransactions Transactions { get; }
+        public ITransactions Transactions { get; }
     }
 }
