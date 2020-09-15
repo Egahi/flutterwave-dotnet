@@ -10,7 +10,9 @@ namespace flutterwave_dotnet_test.Apis
         public TransactionsTests()
         {
             // Get your rave secret key from your system's environmental variables
-            var raveSecretKey = System.Environment.GetEnvironmentVariable("RaveSecretKey", System.EnvironmentVariableTarget.Machine);
+            var raveSecretKey = System.Environment.GetEnvironmentVariable("RaveSecretKey", 
+                System.EnvironmentVariableTarget.Machine);
+
             transactions = new Transactions(new FlutterwaveApi(raveSecretKey));
         }
 
@@ -23,7 +25,7 @@ namespace flutterwave_dotnet_test.Apis
             // Assert
             Assert.NotNull(result); 
             Assert.IsType<RaveGetTransactionsResponse>(result);
-            Assert.Equal(expected: "error", actual: result.Status);
+            Assert.Equal(expected: "success", actual: result.Status);
             Assert.Equal(expected: "Transactions fetched", actual: result.Message);
         }
     }
