@@ -25,4 +25,4 @@ jobs:
       working-directory: "src/flutterwave-dotnet/"
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-      working-directory: "src/flutterwave-dotnet-tests/"
+      working-directory: "src/flutterwave-dotnet-test/"
