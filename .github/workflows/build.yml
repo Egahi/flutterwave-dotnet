@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
-      working-directory: "/src/flutterwave-dotnet"
+      working-directory: "/src"
     - name: Build
       run: dotnet build "flutterwave-dotnet.csproj" --configuration Release --no-restore
       working-directory: "/src/flutterwave-dotnet"
