@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore "flutterwave-dotnet.csproj"
+      working-directory: "src/flutterwave-dotnet/"
+    - name: Build
+      run: dotnet build "flutterwave-dotnet.csproj" --configuration Release --no-restore
+      working-directory: "src/flutterwave-dotnet/"
+    - name: Test
+      run: dotnet test "flutterwave-dotnet-tests.csproj" --no-restore --verbosity normal
+      working-directory: "src/flutterwave-dotnet-test/"
