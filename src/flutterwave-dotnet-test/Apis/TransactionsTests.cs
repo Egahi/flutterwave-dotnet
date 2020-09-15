@@ -1,5 +1,4 @@
 ﻿using Flutterwave.Net;
-using System.Configuration;
 using Xunit;
 
 namespace flutterwave_dotnet_test.Apis
@@ -10,8 +9,8 @@ namespace flutterwave_dotnet_test.Apis
 
         public TransactionsTests()
         {
-            // Get your rave secret key from your config file
-            var raveSecretKey = ConfigurationManager.AppSettings.Get("RaveSecretKey");
+            // Get your rave secret key from your system's environmental variables
+            var raveSecretKey = System.Environment.GetEnvironmentVariable("RaveSecretKey", System.EnvironmentVariableTarget.Machine);
             transactions = new Transactions(new FlutterwaveApi(raveSecretKey));
         }
 
