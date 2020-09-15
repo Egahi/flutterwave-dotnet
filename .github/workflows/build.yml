@@ -22,7 +22,7 @@ jobs:
       working-directory: "src/flutterwave-dotnet/"
     - name: Build
       run: dotnet build "flutterwave-dotnet.csproj" --configuration Release --no-restore
-      working-directory: "/src/flutterwave-dotnet"
+      working-directory: "/src/flutterwave-dotnet/"
     - name: Test
       run: dotnet test "flutterwave-dotnet-tests.csproj" --no-restore --verbosity normal
-      working-directory: "/src/flutterwave-dotnet-test"
+      working-directory: "/src/flutterwave-dotnet-test/"
