@@ -360,3 +360,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/src/flutterwave-dotnet-test/App.config
