@@ -21,7 +21,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-      working-directory: flutterwave-dotnet/src
+      working-directory: flutterwave-dotnet/src/
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-      working-directory: flutterwave-dotnet/src
+      working-directory: flutterwave-dotnet/src/
