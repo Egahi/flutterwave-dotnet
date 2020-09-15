@@ -40,3 +40,5 @@ jobs:
     - name: Test
       run: dotnet test --configuration Release --no-restore
       working-directory: "src/flutterwave-dotnet-test/"
+      env:
+        RAVESECRETKEY:  $RAVESECRETKEY
