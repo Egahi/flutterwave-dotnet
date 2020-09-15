@@ -1,0 +1,44 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+      working-directory: "src/flutterwave-dotnet/"
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      working-directory: "src/flutterwave-dotnet/"
+      
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+      working-directory: "src/flutterwave-dotnet-test/"
+    - name: Test
+      run: dotnet test --configuration Release --no-restore
+      working-directory: "src/flutterwave-dotnet-test/"
+      env:
+        RaveSecretKey:  ${{ secrets.RAVESECRETKEY }}
