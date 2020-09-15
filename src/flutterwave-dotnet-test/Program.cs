@@ -10,6 +10,7 @@ namespace flutterwave_dotnet_test
 
         public Program()
         {
+            // Get your rave secret key from your config file
             var raveSecretKey = ConfigurationManager.AppSettings.Get("RaveSecretKey");
             flutterwaveApi = new FlutterwaveApi(raveSecretKey);
         }
