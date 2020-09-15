@@ -22,7 +22,6 @@ jobs:
       working-directory: "src/flutterwave-dotnet/"
     - name: Build
       run: dotnet build --configuration Release --no-restore
-      working-directory: "src/flutterwave-dotnet/"
       
   test:
     needs: build
@@ -39,4 +38,3 @@ jobs:
       working-directory: "src/flutterwave-dotnet-test/"
     - name: Test
       run: dotnet test --configuration Release --no-restore
-      working-directory: "src/flutterwave-dotnet-test/"
