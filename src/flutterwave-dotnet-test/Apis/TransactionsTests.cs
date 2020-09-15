@@ -24,7 +24,7 @@ namespace flutterwave_dotnet_test.Apis
             // Assert
             Assert.NotNull(result); 
             Assert.IsType<RaveGetTransactionsResponse>(result);
-            Assert.Equal(expected: "success", actual: result.Status);
+            Assert.Equal(expected: "error", actual: result.Status);
             Assert.Equal(expected: "Transactions fetched", actual: result.Message);
         }
     }
