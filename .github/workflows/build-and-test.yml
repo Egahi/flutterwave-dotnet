@@ -24,5 +24,4 @@ jobs:
       run: dotnet build --configuration Release --no-restore
       working-directory: "src/flutterwave-dotnet/"
     - name: Test
-      run: dotnet test --no-restore
-      working-directory: "src/flutterwave-dotnet-test/"
+      run: dotnet test "src/flutterwave-dotnet-test/" --no-restore
