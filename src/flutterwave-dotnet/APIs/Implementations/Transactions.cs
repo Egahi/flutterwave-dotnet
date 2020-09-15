@@ -17,7 +17,6 @@ namespace Flutterwave.Net
         /// <returns></returns>
         public RaveGetTransactionsResponse GetTransactions()
         {
-            s
             return FlutterwaveApi.Get<RaveGetTransactionsResponse>(AppConstants.TRANSACTIONS);
         }
     }
