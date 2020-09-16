@@ -4,11 +4,11 @@ namespace Flutterwave.Net
 {
     public class Transactions : ITransactions
     {
-        private FlutterwaveApi FlutterwaveApi { get; }
+        private FlutterwaveApi _flutterwaveApi { get; }
 
         public Transactions(FlutterwaveApi flutterwaveApi)
         {
-            FlutterwaveApi = flutterwaveApi;
+            _flutterwaveApi = flutterwaveApi;
         }
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Flutterwave.Net
         /// <returns></returns>
         public RaveGetTransactionsResponse GetTransactions()
         {
-            return FlutterwaveApi.Get<RaveGetTransactionsResponse>(AppConstants.TRANSACTIONS);
+            return _flutterwaveApi.Get<RaveGetTransactionsResponse>(AppConstants.TRANSACTIONS);
         }
     }
 }

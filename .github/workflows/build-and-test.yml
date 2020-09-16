@@ -39,4 +39,4 @@ jobs:
       run: dotnet test --configuration Release --no-restore
       working-directory: "src/flutterwave-dotnet-test/"
       env:
-        RaveSecretKey:  ${{ secrets.RAVESECRETKEY }}
+        FlutterwaveSecretKey:  ${{ secrets.FLUTTERWAVESECRETKEY }}

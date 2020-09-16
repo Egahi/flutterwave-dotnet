@@ -9,14 +9,14 @@ namespace Flutterwave.Net
 {
     public class FlutterwaveApi : IFlutterwaveApi
     {
-        private HttpClient HttpClient { get; }
+        private HttpClient _httpClient { get; }
         public ITransactions Transactions { get; }
 
         public FlutterwaveApi(string secretKey)
         {
-            HttpClient = new HttpClient { BaseAddress = new Uri(AppConstants.FLUTTERWAVE_API_BASE_URL) };
-            HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", secretKey);
-            HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient = new HttpClient { BaseAddress = new Uri(AppConstants.FLUTTERWAVE_API_BASE_URL) };
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", secretKey);
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             Transactions = new Transactions(this);
         }
@@ -29,7 +29,7 @@ namespace Flutterwave.Net
         /// <returns></returns>
         internal TR Get<TR>(string relativeUrl)
         {
-            var responseStr = HttpClient.GetAsync(relativeUrl)
+            var responseStr = _httpClient.GetAsync(relativeUrl)
                                         .Result
                                         .Content
                                         .ReadAsStringAsync()
@@ -53,7 +53,7 @@ namespace Flutterwave.Net
                                              Encoding.UTF8,
                                              "application/json");
 
-            var responseStr = HttpClient.PostAsync(relativeUrl, jsonData)
+            var responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
                                         .Result
                                         .Content
                                         .ReadAsStringAsync()
