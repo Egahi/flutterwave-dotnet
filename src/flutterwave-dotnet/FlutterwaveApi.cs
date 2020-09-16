@@ -24,10 +24,10 @@ namespace Flutterwave.Net
         /// <summary>
         /// Make Get requests to Flutterwave API
         /// </summary>
-        /// <typeparam name="TR">Response Data Type</typeparam>
+        /// <typeparam name="T">Response Data Type</typeparam>
         /// <param name="relativeUrl">endpoint</param>
         /// <returns></returns>
-        internal TR Get<TR>(string relativeUrl)
+        internal T Get<T>(string relativeUrl)
         {
             var responseStr = _httpClient.GetAsync(relativeUrl)
                                         .Result
@@ -35,7 +35,7 @@ namespace Flutterwave.Net
                                         .ReadAsStringAsync()
                                         .Result;
 
-            var responseData = JsonConvert.DeserializeObject<TR>(responseStr);
+            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
 
             return responseData;
         }
@@ -43,11 +43,11 @@ namespace Flutterwave.Net
         /// <summary>
         /// Make Post requests to Flutterwave to API
         /// </summary>
-        /// <typeparam name="TR">Response Data Type</typeparam>
+        /// <typeparam name="T">Response Data Type</typeparam>
         /// <param name="relativeUrl">endpoint</param>
         /// <param name="data"></param>
         /// <returns></returns>
-        internal TR Post<TR>(string relativeUrl, object data)
+        internal T Post<T>(string relativeUrl, object data)
         {
             var jsonData = new StringContent(JsonConvert.SerializeObject(data),
                                              Encoding.UTF8,
@@ -59,7 +59,7 @@ namespace Flutterwave.Net
                                         .ReadAsStringAsync()
                                         .Result;
 
-            var responseData = JsonConvert.DeserializeObject<TR>(responseStr);
+            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
 
             return responseData;
         }
