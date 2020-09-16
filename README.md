@@ -1,1 +1,1 @@
-# Flutterwave API (version 3) for .Net Developers!
+# .NET Library for Flutterwave (version 3) APIs
