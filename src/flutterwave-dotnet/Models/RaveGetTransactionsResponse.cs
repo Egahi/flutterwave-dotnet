@@ -1,5 +1,4 @@
-﻿using Flutterwave.Net.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -12,10 +11,7 @@ namespace Flutterwave.Net
         public Meta Meta { get; set; }
         public List<DataItem> Data { get; set; }
     }
-}
 
-namespace Flutterwave.Net.Models
-{
     public class Meta
     {
         [JsonProperty("page_info")]
