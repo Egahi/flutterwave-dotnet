@@ -1,32 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 
 namespace Flutterwave.Net
 {
-    public class RaveGetTransactionsResponse
-    {
-        public string Status { get; set; }
-        public string Message { get; set; }
-        public Meta Meta { get; set; }
-        public List<DataItem> Data { get; set; }
-    }
-
-    public class Meta
-    {
-        [JsonProperty("page_info")]
-        public PageInfo PageInfo { get; set; }
-    }
-
-    public class PageInfo
-    {
-        public int Total { get; set; }
-        [JsonProperty("current_page")]
-        public int CurrentPage { get; set; }
-        [JsonProperty("total_pages")]
-        public int TotalPages { get; set; }
-    }
-
     public class DataItem
     {
         public int Id { get; set; }
@@ -62,23 +38,5 @@ namespace Flutterwave.Net
         [JsonProperty("account_id")]
         public int AccountId { get; set; }
         public DataMeta Meta { get; set; }
-    }
-
-    public class Customer
-    {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        [JsonProperty("phone_number")]
-        public string PhoneNumber { get; set; }
-        public string Name { get; set; }
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
-    }
-
-    public class DataMeta
-    {
-        public string OriginatorAccountNumber { get; set; }
-        public string OriginatorName { get; set; }
-        public string BankName { get; set; }
     }
 }
