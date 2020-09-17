@@ -14,7 +14,7 @@ namespace Flutterwave.Net
 
         public FlutterwaveApi(string secretKey)
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri(AppConstants.FLUTTERWAVE_API_BASE_URL) };
+            _httpClient = new HttpClient { BaseAddress = new Uri(Endpoints.FLUTTERWAVE_API_BASE_URL) };
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", secretKey);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
