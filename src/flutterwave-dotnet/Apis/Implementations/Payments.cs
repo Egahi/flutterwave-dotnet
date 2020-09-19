@@ -34,7 +34,7 @@ namespace Flutterwave.Net
                                                        string paymentTitle,
                                                        string paymentDescription,
                                                        string brandLogoUrl,
-                                                       Currency currency = Currency.Naira)
+                                                       Currency currency = Currency.NigerianNaira)
         {
             var request = new InitiatePaymentRequest(referenceNumber,
                                                      amount,

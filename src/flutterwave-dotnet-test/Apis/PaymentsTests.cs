@@ -77,7 +77,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        paymentTitle,
                                                        paymentDescription,
                                                        brandLogoUrl,
-                                                       Currency.Dollar);
+                                                       Currency.UnitedStatesDollar);
 
             // Assert
             Assert.NotNull(result);
