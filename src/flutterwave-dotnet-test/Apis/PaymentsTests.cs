@@ -84,7 +84,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<InitiatePaymentResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INITIATE_PAYMENT_RESPONSE_MESSAGE, actual: result.Message);
-            Assert.IsType<DataObject>(result.Data);
+            Assert.IsType<HostedLink>(result.Data);
             Assert.True(Uri.IsWellFormedUriString(result.Data.Link, UriKind.Absolute));
         }
 
@@ -118,7 +118,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<InitiatePaymentResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INITIATE_PAYMENT_RESPONSE_MESSAGE, actual: result.Message);
-            Assert.IsType<DataObject>(result.Data);
+            Assert.IsType<HostedLink>(result.Data);
             Assert.True(Uri.IsWellFormedUriString(result.Data.Link, UriKind.Absolute));
         }
     }
