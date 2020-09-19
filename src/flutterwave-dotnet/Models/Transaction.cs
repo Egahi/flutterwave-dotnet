@@ -3,7 +3,7 @@ using System;
 
 namespace Flutterwave.Net
 {
-    public class DataItem
+    public class Transaction
     {
         public int Id { get; set; }
         [JsonProperty("tx_ref")]
@@ -37,6 +37,6 @@ namespace Flutterwave.Net
 
         [JsonProperty("account_id")]
         public int AccountId { get; set; }
-        public DataMeta Meta { get; set; }
+        public TransactionMeta Meta { get; set; }
     }
 }

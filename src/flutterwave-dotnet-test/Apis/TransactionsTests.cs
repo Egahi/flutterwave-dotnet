@@ -24,7 +24,7 @@ namespace flutterwave_dotnet_test.Apis
             // Arrange
             var flutterwaveSecretKey = "";
             _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
-
+            
             // Act
             var result = _transactions.GetTransactions();
 
@@ -47,7 +47,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<GetTransactionsResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_RESPONSE_MESSAGE, actual: result.Message);
-            Assert.IsType<List<DataItem>>(result.Data);
+            Assert.IsType<List<Transaction>>(result.Data);
         }
 
         [Fact]
@@ -105,8 +105,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        amount,
                                                        redirectUrl,
                                                        customerName,
-                                                       //customerEmail,
-                                                       "okworisamuel6@gmail.com",
+                                                       customerEmail,
                                                        customerPhonenumber,
                                                        paymentTitle,
                                                        paymentDescription,
