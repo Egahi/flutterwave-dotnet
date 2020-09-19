@@ -3,12 +3,19 @@
     public class AppConstants
     {
         // Currency Codes
-        public const string CEDI_CODE = "GHS";
-        public const string DOLLAR_CODE = "USD";
         public const string EURO_CODE = "EUR";
+        public const string GHANAIAN_CEDI_CODE = "GHS";
         public const string KENYAN_SHILLING_CODE = "KES";
-        public const string NAIRA_CODE = "NGN";
-        public const string POUNDS_CODE = "GBP";
+        public const string NIGERIAN_NAIRA_CODE = "NGN";
+        public const string POUND_STERLING_CODE = "GBP";
+        public const string RWANDAN_FRANC_CODE = "RWF";
+        public const string SIERRA_LEONEAN_LEONE_CODE = "SLL";
+        public const string SOUTH_AFRICAN_RAND_CODE = "ZAR";
+        public const string TANZANIAN_SHILLING_CODE = "TZS";
+        public const string UGANDAN_SHILLING_CODE = "UGX";
+        public const string UNITED_STATES_DOLLAR_CODE = "USD";
+        public const string WEST_AFRICAN_CFA_FRANC_CODE = "XOF";
+        public const string ZAMBIAN_KWACHA_CODE = "ZMW";
 
         // Others
         public static string ERROR = "error";
