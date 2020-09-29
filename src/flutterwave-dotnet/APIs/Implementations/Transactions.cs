@@ -14,10 +14,23 @@ namespace Flutterwave.Net
         /// <summary>
         /// Get all transactions
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A list of Transactions</returns>
         public GetTransactionsResponse GetTransactions()
         {
             return _flutterwaveApi.Get<GetTransactionsResponse>(Endpoints.TRANSACTIONS);
+        }
+
+        /// <summary>
+        /// Verify a transaction
+        /// </summary>
+        /// <param name="id">
+        /// This is the transaction unique identifier. It is returned in the Get transactions 
+        /// call as data.id
+        /// </param>
+        /// <returns>The transaction with the specified id</returns>
+        public VerifyTransactionResponse VerifyTransaction(string id)
+        {
+            return _flutterwaveApi.Get<VerifyTransactionResponse>(Endpoints.TRANSACTIONS + $"/{id}/verify");
         }
     }
 }
