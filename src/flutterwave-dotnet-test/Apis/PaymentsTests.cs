@@ -21,7 +21,7 @@ namespace flutterwave_dotnet_test.Apis
         public void InitiatePayment_InValidSecretKey_ReturnsError()
         {
             // Arrange
-            string txRef = AppConstants.TX_REF;
+            string txRef = AppConstants.SAMPLE_TX_REF;
             decimal amount = 100;
             string redirectUrl = AppConstants.SAMPLE_REDIRECT_URL;
             string customerEmail = AppConstants.SAMPLE_EMAIL;
@@ -48,8 +48,8 @@ namespace flutterwave_dotnet_test.Apis
             // Assert
             Assert.NotNull(result);
             Assert.IsType<InitiatePaymentResponse>(result);
-            Assert.Equal(expected: AppConstants.ERROR, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY, actual: result.Message);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_UNAUTHORIZED_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -57,7 +57,7 @@ namespace flutterwave_dotnet_test.Apis
         public void InitiatePayment_ValidSecretKey_CurrencySpecified_ReturnsSuccess()
         {
             // Arrange
-            string txRef = AppConstants.TX_REF;
+            string txRef = AppConstants.SAMPLE_TX_REF;
             decimal amount = 100;
             string redirectUrl = AppConstants.SAMPLE_REDIRECT_URL;
             string customerName = AppConstants.SAMPLE_CUSTOMER_NAME;
@@ -82,7 +82,7 @@ namespace flutterwave_dotnet_test.Apis
             // Assert
             Assert.NotNull(result);
             Assert.IsType<InitiatePaymentResponse>(result);
-            Assert.Equal(expected: AppConstants.SUCCESS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INITIATE_PAYMENT_RESPONSE_MESSAGE, actual: result.Message);
             Assert.IsType<HostedLink>(result.Data);
             Assert.True(Uri.IsWellFormedUriString(result.Data.Link, UriKind.Absolute));
@@ -92,7 +92,7 @@ namespace flutterwave_dotnet_test.Apis
         public void InitiatePayment_ValidSecretKey_NoCurrencySpecified_ReturnsSuccess()
         {
             // Arrange
-            string txRef = AppConstants.TX_REF;
+            string txRef = AppConstants.SAMPLE_TX_REF;
             decimal amount = 100;
             string redirectUrl = AppConstants.SAMPLE_REDIRECT_URL;
             string customerEmail = AppConstants.SAMPLE_EMAIL;
@@ -116,7 +116,7 @@ namespace flutterwave_dotnet_test.Apis
             // Assert
             Assert.NotNull(result);
             Assert.IsType<InitiatePaymentResponse>(result);
-            Assert.Equal(expected: AppConstants.SUCCESS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INITIATE_PAYMENT_RESPONSE_MESSAGE, actual: result.Message);
             Assert.IsType<HostedLink>(result.Data);
             Assert.True(Uri.IsWellFormedUriString(result.Data.Link, UriKind.Absolute));
