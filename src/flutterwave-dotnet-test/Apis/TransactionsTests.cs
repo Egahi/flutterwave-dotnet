@@ -101,6 +101,9 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_SUCCESS_MESSAGE, actual: result.Message);
             Assert.IsType<Transaction>(result.Data);
+            Assert.Equal(expected: AppConstants.SAMPLE_TX_REF, actual: result.Data.TxRef);
+            Assert.Equal(expected: AppConstants.SUCCESSFUL_STATUS, actual: result.Data.Status);
+            Assert.Equal(expected: AppConstants.NIGERIAN_NAIRA_CODE, actual: result.Data.Currency);
         }
     }
 }

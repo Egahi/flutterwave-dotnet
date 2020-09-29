@@ -30,6 +30,7 @@
         public static string SAMPLE_PHONE_NUMBER = "08012345678";
         public static string SAMPLE_TX_REF = "hooli-tx-1920bbtytty";
         public static string SUCCESS_STATUS = "success";
+        public static string SUCCESSFUL_STATUS = "successful";
         public static string VALID_TRANSACTION_ID = "1541948";
         public static string VERIFY_TRANSACTION_ERROR_MESSAGE = "No transaction was found for this id";
         public static string VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE = "Invalid secret key passed";
