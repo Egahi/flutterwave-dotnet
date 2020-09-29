@@ -18,17 +18,22 @@
         public const string ZAMBIAN_KWACHA_CODE = "ZMW";
 
         // Others
-        public static string ERROR = "error";
-        public static string GET_TRANSACTIONS_RESPONSE_MESSAGE = "Transactions fetched";
+        public static string ERROR_STATUS = "error";
+        public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
+        public static string GET_TRANSACTIONS_UNAUTHORIZED_MESSAGE = "Invalid authorization key";
         public static string INITIATE_PAYMENT_RESPONSE_MESSAGE = "Hosted Link";
-        public static string INVALID_AUTHORIZATION_KEY = "Invalid authorization key";
+        public static string INVALID_TRANSACTION_ID = "123";
         public static string SAMPLE_CUSTOMER_NAME = "Yemi Desola";
         public static string SAMPLE_EMAIL = "user@gmail.com";
         public static string SAMPLE_PAYMENT_DESCRIPTION = "Middleout isn't free. Pay the price";
         public static string SAMPLE_PAYMENT_TITLE = "Pied Piper Payments";
         public static string SAMPLE_PHONE_NUMBER = "08012345678";
-        public static string SUCCESS = "success";
-        public static string TX_REF = "hooli-tx-1920bbtytty";
+        public static string SAMPLE_TX_REF = "hooli-tx-1920bbtytty";
+        public static string SUCCESS_STATUS = "success";
+        public static string VALID_TRANSACTION_ID = "1541948";
+        public static string VERIFY_TRANSACTION_ERROR_MESSAGE = "No transaction was found for this id";
+        public static string VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE = "Invalid secret key passed";
+        public static string VERIFY_TRANSACTION_SUCCESS_MESSAGE = "Transaction fetched successfully";
 
         // Urls
         public static string SAMPLE_BRAND_LOGO_URL = "https://assets.piedpiper.com/logo.png";
