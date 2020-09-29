@@ -11,6 +11,7 @@ This library implements the following payment services:
     * Initiate Payment
 1. Transactions
     * Get all Transactions
+    * Verify a Transaction
     
 ## Configuration
 1. Include the Flutterwave.Net namespace to expose all types
@@ -59,8 +60,8 @@ This library implements the following payment services:
     // error
     else
     {
-        // Get message
-        string message = response.Message;
+        // Get error message
+        string errorMessage = response.Message;
     }
     ```
 
@@ -78,8 +79,34 @@ This library implements the following payment services:
     // error
     else
     {
-        // Get message
-        string message = response.Message;
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+2. Verify a Transaction
+    ```c#
+    string id = "1234567";
+    VerifyTransactionResponse response = api.Transactions.VerifyTransaction(id);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get the transaction
+        Transaction transaction = response.Data;
+        
+        // Verify transaction status
+        bool isSuccess = transaction.Status == "successful";
+        
+        // Verify that the transaction reference, currency and charged amount i.e
+        // transaction.TxRef, transaction.Currency and transaction.ChargedAmount
+        // are what you expect them to be
+        
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
     }
     ```
 

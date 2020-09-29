@@ -19,7 +19,7 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
-        public void GetTransactions_InValidSecretKey_ReturnsError()
+        public void GetTransactions_InvalidSecretKey_ReturnsError()
         {
             // Arrange
             var flutterwaveSecretKey = "";
@@ -31,8 +31,8 @@ namespace flutterwave_dotnet_test.Apis
             // Assert
             Assert.NotNull(result);
             Assert.IsType<GetTransactionsResponse>(result);
-            Assert.Equal(expected: AppConstants.ERROR, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY, actual: result.Message);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_UNAUTHORIZED_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -45,9 +45,65 @@ namespace flutterwave_dotnet_test.Apis
             // Assert
             Assert.NotNull(result); 
             Assert.IsType<GetTransactionsResponse>(result);
-            Assert.Equal(expected: AppConstants.SUCCESS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_RESPONSE_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_SUCCESS_MESSAGE, actual: result.Message);
             Assert.IsType<List<Transaction>>(result.Data);
+        }
+
+        [Fact]
+        public void VerifyTransaction_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            var flutterwaveSecretKey = "";
+            string id = AppConstants.VALID_TRANSACTION_ID;
+            _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _transactions.VerifyTransaction(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<VerifyTransactionResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void VerifyTransaction_ValidSecretKey_InvalidTransactionId_ReturnsError()
+        {
+            // Arrange
+            string id = AppConstants.INVALID_TRANSACTION_ID;
+
+            // Act
+            var result = _transactions.VerifyTransaction(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<VerifyTransactionResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void VerifyTransaction_ValidSecretKey_ValidTransactionId_ReturnsATransaction()
+        {
+            // Arrange
+            string id = AppConstants.VALID_TRANSACTION_ID;
+
+            // Act
+            var result = _transactions.VerifyTransaction(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<VerifyTransactionResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<Transaction>(result.Data);
+            Assert.Equal(expected: AppConstants.SAMPLE_TX_REF, actual: result.Data.TxRef);
+            Assert.Equal(expected: AppConstants.SUCCESSFUL_STATUS, actual: result.Data.Status);
+            Assert.Equal(expected: AppConstants.NIGERIAN_NAIRA_CODE, actual: result.Data.Currency);
         }
     }
 }
