@@ -24,7 +24,7 @@ namespace Flutterwave.Net
         /// <param name="paymentDescription">A description for this payment</param>
         /// <param name="brandLogoUrl">A link to your brand's logo</param>
         /// <param name="currency">Currency of payment, default value is Naira - "NGN"</param>
-        /// <returns></returns>
+        /// <returns>A hosted link with the payment details</returns>
         public InitiatePaymentResponse InitiatePayment(string referenceNumber,
                                                        decimal amount,
                                                        string redirectUrl,
