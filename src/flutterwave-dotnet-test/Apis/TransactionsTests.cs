@@ -32,7 +32,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetTransactionsResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -87,7 +87,7 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
-        public void VerifyTransaction_ValidSecretKey_ValidTransactionId_ReturnsATransaction()
+        public void VerifyTransaction_ValidSecretKey_ValidTransactionId_ReturnsTransactionDetails()
         {
             // Arrange
             string id = AppConstants.VALID_TRANSACTION_ID;
