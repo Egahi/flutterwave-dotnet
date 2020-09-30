@@ -6,7 +6,7 @@
 This library makes it easy to consume [Flutterwave API (v3)](https://developer.flutterwave.com/reference#introduction-1) in .Net projects.
 
 ## Introduction
-This library implements the following payment services:
+This library implements the following services:
 1. Payments
     * Initiate Payment
 2. Transactions
