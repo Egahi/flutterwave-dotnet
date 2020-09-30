@@ -36,18 +36,18 @@ namespace Flutterwave.Net
                                                        string brandLogoUrl,
                                                        Currency currency = Currency.NigerianNaira)
         {
-            var request = new InitiatePaymentRequest(referenceNumber,
-                                                     amount,
-                                                     currency.GetCurrencyCode(),
-                                                     redirectUrl,
-                                                     customerName,
-                                                     customerEmail,
-                                                     customerPhoneNumber,
-                                                     paymentTitle,
-                                                     paymentDescription,
-                                                     brandLogoUrl);
+            var data = new InitiatePaymentRequest(referenceNumber,
+                                                  amount,
+                                                  currency.GetCurrencyCode(),
+                                                  redirectUrl,
+                                                  customerName,
+                                                  customerEmail,
+                                                  customerPhoneNumber,
+                                                  paymentTitle,
+                                                  paymentDescription,
+                                                  brandLogoUrl);
 
-            return _flutterwaveApi.Post<InitiatePaymentResponse>(Endpoints.PAYMENTS, request);
+            return _flutterwaveApi.Post<InitiatePaymentResponse>(Endpoints.PAYMENTS, data);
         }
     }
 }
