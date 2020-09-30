@@ -1,7 +1,6 @@
 ﻿namespace Flutterwave.Net
 {
-    public class InitiatePaymentResponse : TransactionResponse<HostedLink>
+    public class InitiatePaymentResponse : Response<HostedLink>
     {
-        public override HostedLink Data { get; set; }
     }
 }

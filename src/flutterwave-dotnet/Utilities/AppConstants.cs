@@ -2,6 +2,16 @@
 {
     public class AppConstants
     {
+        // Banks
+        public static string ACCESS_BANK_CODE = "044";
+        public static string FIRST_BANK_CODE = "011";
+        public static string INVALID_ACCOUNT_NUMBER = "1234567890";
+        public static string INVALID_BANK_CODE = "000";
+        public static string VALID_ACCESSBANK_ACCOUNT_NUMBER = "0690000032";
+        public static string VALID_ACCESSBANK_ACCOUNT_NAME = "Pastor Bright";
+        public static string VERIFY_BANK_ACCOUNT_ERROR_MESSAGE = "Sorry, recipient account could not be validated. Please try again";
+        public static string VERIFY_BANK_ACCOUNT_SUCCESS_MESSAGE = "Account details fetched";
+
         // Currency Codes
         public const string EURO_CODE = "EUR";
         public const string GHANAIAN_CEDI_CODE = "GHS";
@@ -19,18 +29,22 @@
 
         // Others
         public static string ERROR_STATUS = "error";
-        public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
-        public static string GET_TRANSACTIONS_UNAUTHORIZED_MESSAGE = "Invalid authorization key";
-        public static string INITIATE_PAYMENT_RESPONSE_MESSAGE = "Hosted Link";
-        public static string INVALID_TRANSACTION_ID = "123";
+        public static string UNAUTHORIZED_MESSAGE = "Invalid authorization key";
         public static string SAMPLE_CUSTOMER_NAME = "Yemi Desola";
         public static string SAMPLE_EMAIL = "user@gmail.com";
-        public static string SAMPLE_PAYMENT_DESCRIPTION = "Middleout isn't free. Pay the price";
-        public static string SAMPLE_PAYMENT_TITLE = "Pied Piper Payments";
         public static string SAMPLE_PHONE_NUMBER = "08012345678";
         public static string SAMPLE_TX_REF = "hooli-tx-1920bbtytty";
         public static string SUCCESS_STATUS = "success";
         public static string SUCCESSFUL_STATUS = "successful";
+
+        // Payments
+        public static string INITIATE_PAYMENT_RESPONSE_MESSAGE = "Hosted Link";
+        public static string SAMPLE_PAYMENT_DESCRIPTION = "Middleout isn't free. Pay the price";
+        public static string SAMPLE_PAYMENT_TITLE = "Pied Piper Payments";
+
+        // Transactions
+        public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
+        public static string INVALID_TRANSACTION_ID = "123";
         public static string VALID_TRANSACTION_ID = "1541948";
         public static string VERIFY_TRANSACTION_ERROR_MESSAGE = "No transaction was found for this id";
         public static string VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE = "Invalid secret key passed";

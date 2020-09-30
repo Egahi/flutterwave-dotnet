@@ -1,7 +1,6 @@
 ﻿namespace Flutterwave.Net
 {
-    public class VerifyTransactionResponse : TransactionResponse<Transaction>
+    public class VerifyTransactionResponse : Response<Transaction>
     {
-        public override Transaction Data { get; set; }
     }
 }

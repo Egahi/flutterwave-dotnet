@@ -49,7 +49,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<InitiatePaymentResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
