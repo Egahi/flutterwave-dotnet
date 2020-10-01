@@ -29,11 +29,11 @@ namespace Flutterwave.Net
         /// <returns></returns>
         internal T Get<T>(string relativeUrl)
         {
-            var responseStr = _httpClient.GetAsync(relativeUrl)
-                                        .Result
-                                        .Content
-                                        .ReadAsStringAsync()
-                                        .Result;
+            string responseStr = _httpClient.GetAsync(relativeUrl)
+                                            .Result
+                                            .Content
+                                            .ReadAsStringAsync()
+                                            .Result;
 
             var responseData = JsonConvert.DeserializeObject<T>(responseStr);
 
@@ -53,11 +53,11 @@ namespace Flutterwave.Net
                                              Encoding.UTF8,
                                              "application/json");
 
-            var responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
-                                        .Result
-                                        .Content
-                                        .ReadAsStringAsync()
-                                        .Result;
+            string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
+                                            .Result
+                                            .Content
+                                            .ReadAsStringAsync()
+                                            .Result;
 
             var responseData = JsonConvert.DeserializeObject<T>(responseStr);
 

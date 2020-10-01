@@ -21,9 +21,10 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyBankAccount_InvalidSecretKey_ReturnsError()
         {
             // Arrange
-            var flutterwaveSecretKey = "";
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string bankCode = AppConstants.ACCESS_BANK_CODE;
+
+            var flutterwaveSecretKey = "";
             _miscellaneous = new Miscellaneous(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
@@ -33,7 +34,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<VerifyBankAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -74,24 +75,6 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
-        public void VerifyBankAccount_ValidSecretKey_ValidAccountNumber_WrongBankCode_ReturnsError()
-        {
-            // Arrange
-            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
-            string bankCode = AppConstants.FIRST_BANK_CODE;
-
-            // Act
-            var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<VerifyBankAccountResponse>(result);
-            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.VERIFY_BANK_ACCOUNT_ERROR_MESSAGE, actual: result.Message);
-            Assert.Null(result.Data);
-        }
-
-        [Fact]
         public void VerifyBankAccount_ValidSecretKey_ValidAccountNumber_ValidBankCode_ReturnsBankAccountDetails()
         {
             // Arrange
@@ -110,5 +93,24 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER, actual: result.Data.AccountNumber);
             Assert.Equal(expected: AppConstants.VALID_ACCESSBANK_ACCOUNT_NAME, actual: result.Data.AccountName);
         }
+
+        [Fact]
+        public void VerifyBankAccount_ValidSecretKey_ValidAccountNumber_WrongBankCode_ReturnsError()
+        {
+            // Arrange
+            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            string bankCode = AppConstants.FIRST_BANK_CODE;
+
+            // Act
+            var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<VerifyBankAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.VERIFY_BANK_ACCOUNT_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
     }
 }
