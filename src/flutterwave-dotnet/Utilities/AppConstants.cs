@@ -54,5 +54,18 @@
         public static string SAMPLE_BRAND_LOGO_URL = "https://assets.piedpiper.com/logo.png";
         public static string SAMPLE_REDIRECT_URL = "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc";
 
+        // Banks
+        public static string GET_BANKS_SUCCESS_MESSAGE = "Banks fetched successfully";
+        public static string GET_BANKS_ERROR_MESSAGE = "No banks found for country code";
+
+
+        // Countries
+        public static string NIGERIA_COUNTRY_CODE = "NG";
+        public static string GHANA_COUNTRY_CODE = "GH";
+        public static string KENYA_COUNTRY_CODE = "KE";
+        public static string UGANDA_COUNTRY_CODE = "UG";
+        public static string SOUTH_AFRICA_COUNTRY_CODE = "ZA";
+        public static string TANZANIA_COUNTRY_CODE = "TZ";
+        public static string INVALID_COUNTRY_CODE = "ZZ";
     }
 }
