@@ -7,13 +7,15 @@ This library makes it easy to consume [Flutterwave API (v3)](https://developer.f
 
 ## Introduction
 This library implements the following services:
-1. Payments
+1. Banks
+    * Get all Banks
+2. Miscellaneous
+    * Verify a Bank Account Number
+3. Payments
     * Initiate Payment
-2. Transactions
+4. Transactions
     * Get all Transactions
     * Verify a Transaction
-3. Miscellaneous
-    * Verify a Bank Account Number
     
 ## Configuration
 1. Include the Flutterwave.Net namespace to expose all types
@@ -29,6 +31,46 @@ This library implements the following services:
     ```
 
 ## Usage
+
+### - Banks
+1. Get all Banks
+    ```c#
+    GetBanksResponse response = api.GetBanks(Country.Nigeria)
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get all banks
+        List<Bank> banks = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+
+### - Miscellaneous
+1. Verify a Bank Account Number
+    ```c#
+    string accountNumber = "0690000032";
+    string bankCode = "044";
+    VerifyBankAccountResponse response = api.Miscellaneous.VerifyBankAccount(accountNumber, bankCode);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get the bank account
+        BankAccount bankAccount = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
 
 ### - Payments
 1. Initiate Payment
@@ -103,26 +145,6 @@ This library implements the following services:
         // transaction.TxRef, transaction.Currency and transaction.ChargedAmount
         // are what you expect them to be
         
-    }
-    // error
-    else
-    {
-        // Get error message
-        string errorMessage = response.Message;
-    }
-    ```
-### - Miscellaneous
-1. Verify a Bank Account Number
-    ```c#
-    string accountNumber = "0690000032";
-    string bankCode = "044";
-    VerifyBankAccountResponse response = api.Miscellaneous.VerifyBankAccount(accountNumber, bankCode);
-
-    // success
-    if (response.Status == "success")
-    {
-        // Get the bank account
-        BankAccount bankAccount = response.Data;
     }
     // error
     else
