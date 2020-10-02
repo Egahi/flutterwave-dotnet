@@ -7,7 +7,7 @@ namespace Flutterwave.Net.Utilities
 {
     public static class Extensions
     {
-        public static string GetCurrencyCode(this Enum e)
+        public static string GetValue(this Enum e)
         {
             var attribute = e.GetType()
                              .GetTypeInfo()
