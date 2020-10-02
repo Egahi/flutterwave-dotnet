@@ -36,14 +36,14 @@ namespace flutterwave_dotnet_test.Apis
 
             // Act
             var result = _payments.InitiatePayment(txRef,
-                                                       amount,
-                                                       redirectUrl,
-                                                       customerName,
-                                                       customerEmail,
-                                                       customerPhonenumber,
-                                                       paymentTitle,
-                                                       paymentDescription,
-                                                       brandLogoUrl);
+                                                   amount,
+                                                   redirectUrl,
+                                                   customerName,
+                                                   customerEmail,
+                                                   customerPhonenumber,
+                                                   paymentTitle,
+                                                   paymentDescription,
+                                                   brandLogoUrl);
 
             // Assert
             Assert.NotNull(result);
@@ -69,15 +69,15 @@ namespace flutterwave_dotnet_test.Apis
 
             // Act
             var result = _payments.InitiatePayment(txRef,
-                                                       amount,
-                                                       redirectUrl,
-                                                       customerName,
-                                                       customerEmail,
-                                                       customerPhonenumber,
-                                                       paymentTitle,
-                                                       paymentDescription,
-                                                       brandLogoUrl,
-                                                       Currency.UnitedStatesDollar);
+                                                   amount,
+                                                   redirectUrl,
+                                                   customerName,
+                                                   customerEmail,
+                                                   customerPhonenumber,
+                                                   paymentTitle,
+                                                   paymentDescription,
+                                                   brandLogoUrl,
+                                                   Currency.UnitedStatesDollar);
 
             // Assert
             Assert.NotNull(result);
@@ -104,14 +104,14 @@ namespace flutterwave_dotnet_test.Apis
 
             // Act
             var result = _payments.InitiatePayment(txRef,
-                                                       amount,
-                                                       redirectUrl,
-                                                       customerName,
-                                                       customerEmail,
-                                                       customerPhonenumber,
-                                                       paymentTitle,
-                                                       paymentDescription,
-                                                       brandLogoUrl);
+                                                   amount,
+                                                   redirectUrl,
+                                                   customerName,
+                                                   customerEmail,
+                                                   customerPhonenumber,
+                                                   paymentTitle,
+                                                   paymentDescription,
+                                                   brandLogoUrl);
 
             // Assert
             Assert.NotNull(result);

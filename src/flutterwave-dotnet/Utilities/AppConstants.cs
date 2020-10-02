@@ -14,14 +14,13 @@
         public static string VERIFY_BANK_ACCOUNT_ERROR_MESSAGE = "Sorry, recipient account could not be validated. Please try again";
         public static string VERIFY_BANK_ACCOUNT_SUCCESS_MESSAGE = "Account details fetched";
 
-        // Countries
-        public static string GHANA_COUNTRY_CODE = "GH";
-        public static string INVALID_COUNTRY_CODE = "ZZ";
-        public static string KENYA_COUNTRY_CODE = "KE";
-        public static string NIGERIA_COUNTRY_CODE = "NG";
-        public static string SOUTH_AFRICA_COUNTRY_CODE = "ZA";
-        public static string TANZANIA_COUNTRY_CODE = "TZ";
-        public static string UGANDA_COUNTRY_CODE = "UG";
+        // Country Codes
+        public const string GHANA_COUNTRY_CODE = "GH";
+        public const string KENYA_COUNTRY_CODE = "KE";
+        public const string NIGERIA_COUNTRY_CODE = "NG";
+        public const string SOUTH_AFRICA_COUNTRY_CODE = "ZA";
+        public const string TANZANIA_COUNTRY_CODE = "TZ";
+        public const string UGANDA_COUNTRY_CODE = "UG";
 
         // Currency Codes
         public const string EURO_CODE = "EUR";
