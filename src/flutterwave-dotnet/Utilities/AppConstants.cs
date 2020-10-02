@@ -13,6 +13,10 @@
         public static string VALID_ACCESSBANK_ACCOUNT_NAME = "Pastor Bright";
         public static string VERIFY_BANK_ACCOUNT_ERROR_MESSAGE = "Sorry, recipient account could not be validated. Please try again";
         public static string VERIFY_BANK_ACCOUNT_SUCCESS_MESSAGE = "Account details fetched";
+        public static string GET_BANK_BRANCHES_SUCCESS_MESSAGE = "Bank branches fetched successfully";
+        public static string GET_BANK_BRANCHES_ERROR_MESSAGE = "No branches found for specified bank id";
+        public static string INVALID_BANK_ID = "123";
+        public static string VALID_BANK_ID = "280";
 
         // Country Codes
         public const string GHANA_COUNTRY_CODE = "GH";
