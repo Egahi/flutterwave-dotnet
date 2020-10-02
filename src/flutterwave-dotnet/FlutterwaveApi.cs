@@ -10,6 +10,9 @@ namespace Flutterwave.Net
     public class FlutterwaveApi : IFlutterwaveApi
     {
         private HttpClient _httpClient { get; }
+        public IBanks Banks { get; }
+        public IMiscellaneous Miscellaneous { get; }
+        public IPayments Payments { get; }
         public ITransactions Transactions { get; }
 
         public FlutterwaveApi(string secretKey)

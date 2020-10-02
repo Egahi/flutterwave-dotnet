@@ -5,12 +5,22 @@
         // Banks
         public static string ACCESS_BANK_CODE = "044";
         public static string FIRST_BANK_CODE = "011";
+        public static string GET_BANKS_SUCCESS_MESSAGE = "Banks fetched successfully";
+        public static string GET_BANKS_ERROR_MESSAGE = "No banks found for country code";
         public static string INVALID_ACCOUNT_NUMBER = "1234567890";
         public static string INVALID_BANK_CODE = "000";
         public static string VALID_ACCESSBANK_ACCOUNT_NUMBER = "0690000032";
         public static string VALID_ACCESSBANK_ACCOUNT_NAME = "Pastor Bright";
         public static string VERIFY_BANK_ACCOUNT_ERROR_MESSAGE = "Sorry, recipient account could not be validated. Please try again";
         public static string VERIFY_BANK_ACCOUNT_SUCCESS_MESSAGE = "Account details fetched";
+
+        // Country Codes
+        public const string GHANA_COUNTRY_CODE = "GH";
+        public const string KENYA_COUNTRY_CODE = "KE";
+        public const string NIGERIA_COUNTRY_CODE = "NG";
+        public const string SOUTH_AFRICA_COUNTRY_CODE = "ZA";
+        public const string TANZANIA_COUNTRY_CODE = "TZ";
+        public const string UGANDA_COUNTRY_CODE = "UG";
 
         // Currency Codes
         public const string EURO_CODE = "EUR";
@@ -53,6 +63,5 @@
         // Urls
         public static string SAMPLE_BRAND_LOGO_URL = "https://assets.piedpiper.com/logo.png";
         public static string SAMPLE_REDIRECT_URL = "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc";
-
     }
 }

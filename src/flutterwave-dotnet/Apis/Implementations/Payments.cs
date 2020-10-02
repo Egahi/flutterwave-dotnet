@@ -38,7 +38,7 @@ namespace Flutterwave.Net
         {
             var data = new InitiatePaymentRequest(referenceNumber,
                                                   amount,
-                                                  currency.GetCurrencyCode(),
+                                                  currency.GetValue(),
                                                   redirectUrl,
                                                   customerName,
                                                   customerEmail,
