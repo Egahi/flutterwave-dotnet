@@ -15,13 +15,12 @@ namespace Flutterwave.Net
         /// Get all Banks
         /// </summary>
         /// <param name="country">
-        /// Pass either NG, GH, KE, UG, ZA or TZ to get list of banks in Nigeria, Ghana, 
-        /// Kenya, Uganda, South Africa or Tanzania respectively
+        /// Get list of banks in this country
         /// </param>
         /// <returns>A list of Banks</returns>
-        public GetBanksResponse GetBanks(string country)
+        public GetBanksResponse GetBanks(Country country)
         {
-            return _flutterwaveApi.Get<GetBanksResponse>($"{Endpoints.BANKS}/{country}");
+            return _flutterwaveApi.Get<GetBanksResponse>($"{Endpoints.BANKS}/{country.GetValue()}");
         }
     }
 }

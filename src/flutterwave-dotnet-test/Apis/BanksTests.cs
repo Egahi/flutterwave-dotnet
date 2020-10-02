@@ -22,12 +22,11 @@ namespace flutterwave_dotnet_test.Apis
         public void GetBanks_InvalidSecretKey_ReturnsError()
         {
             // Arrange
-            var country = AppConstants.NIGERIA_COUNTRY_CODE;
             var flutterwaveSecretKey = "";
             _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
             
             // Act
-            var result = _banks.GetBanks(country);
+            var result = _banks.GetBanks(Country.Nigeria);
 
             // Assert
             Assert.NotNull(result);
@@ -38,30 +37,10 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
-        public void GetBanks_ValidSecretKey_InvalidCountry_ReturnsError()
-        {
-            // Arrange
-            string country = AppConstants.INVALID_COUNTRY_CODE;
-
-            // Act
-            var result = _banks.GetBanks(country);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<GetBanksResponse>(result);
-            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_BANKS_ERROR_MESSAGE, actual: result.Message);
-            Assert.Null(result.Data);
-        }
-
-        [Fact]
         public void GetBanks_ValidSecretKey_ReturnsBanks()
         {
-            // Arrange
-            var country = AppConstants.NIGERIA_COUNTRY_CODE;
-            
             // Act
-            var result = _banks.GetBanks(country);
+            var result = _banks.GetBanks(Country.Nigeria);
 
             // Assert
             Assert.NotNull(result); 
