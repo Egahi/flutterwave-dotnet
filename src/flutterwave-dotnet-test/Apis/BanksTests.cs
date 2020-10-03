@@ -12,10 +12,81 @@ namespace flutterwave_dotnet_test.Apis
 
         public BanksTests()
         {
-            // Get wave secret key from environmental variables
+            // Get flutterwave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
 
             _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+        }
+
+        [Fact]
+        public void GetBankBranches_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            string bankId = AppConstants.VALID_BANK_ID;
+
+            var flutterwaveSecretKey = "";
+            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _banks.GetBankBranches(bankId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetBankBranches_ValidSecretKey_InvalidBankId_ReturnsError()
+        {
+            // Arrange
+            string bankId = AppConstants.INVALID_BANK_ID;
+
+            // Act
+            var result = _banks.GetBankBranches(bankId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_BANK_BRANCHES_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetBankBranches_ValidSecretKey_ReturnsBankBranches()
+        {
+            // Arrange
+            string bankId = AppConstants.VALID_BANK_ID;
+
+            // Act
+            var result = _banks.GetBankBranches(bankId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_BANK_BRANCHES_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<List<BankBranch>>(result.Data);
+        }
+
+        [Fact]
+        public void GetBankBranches__ValidSecretKey_ValidBankId_BankWithoutDocumentedBranches_ReturnsError()
+        {
+            // Arrange
+            string bankId = AppConstants.FIRST_BANK_ID;
+
+            // Act
+            var result = _banks.GetBankBranches(bankId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_BANK_BRANCHES_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
         }
 
         [Fact]
