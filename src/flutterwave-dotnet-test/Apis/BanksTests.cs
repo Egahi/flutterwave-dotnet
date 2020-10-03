@@ -13,7 +13,7 @@ namespace flutterwave_dotnet_test.Apis
         public BanksTests()
         {
             // Get flutterwave secret key from environmental variables
-            var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
+            var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
             _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
         }

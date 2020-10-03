@@ -12,7 +12,7 @@ namespace flutterwave_dotnet_test.Apis
         public MiscellaneousTests()
         {
             // Get rave secret key from environmental variables
-            var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
+            var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
             _miscellaneous = new Miscellaneous(new FlutterwaveApi(flutterwaveSecretKey));
         }
