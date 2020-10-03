@@ -28,7 +28,7 @@ namespace flutterwave_dotnet_test.Apis
             _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
-            var result = _banks.GetBankBrances(bankId);
+            var result = _banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -45,7 +45,7 @@ namespace flutterwave_dotnet_test.Apis
             string bankId = AppConstants.INVALID_BANK_ID;
 
             // Act
-            var result = _banks.GetBankBrances(bankId);
+            var result = _banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -62,7 +62,7 @@ namespace flutterwave_dotnet_test.Apis
             string bankId = AppConstants.VALID_BANK_ID;
 
             // Act
-            var result = _banks.GetBankBrances(bankId);
+            var result = _banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -79,7 +79,7 @@ namespace flutterwave_dotnet_test.Apis
             string bankId = AppConstants.FIRST_BANK_ID;
 
             // Act
-            var result = _banks.GetBankBrances(bankId);
+            var result = _banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
