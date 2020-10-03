@@ -42,7 +42,7 @@ namespace flutterwave_dotnet_test.Apis
         public void GetBankBranches_ValidSecretKey_InvalidBankId_ReturnsError()
         {
             // Arrange
-            string bankId = AppConstants.VALID_BANK_ID;
+            string bankId = AppConstants.INVALID_BANK_ID;
 
             // Act
             var result = _banks.GetBankBrances(bankId);
@@ -76,7 +76,7 @@ namespace flutterwave_dotnet_test.Apis
         public void GetBankBranches__ValidSecretKey_ValidBankId_BankWithoutDocumentedBranches_ReturnsError()
         {
             // Arrange
-            string bankId = AppConstants.VALID_BANK_ID;
+            string bankId = AppConstants.FIRST_BANK_ID;
 
             // Act
             var result = _banks.GetBankBrances(bankId);
