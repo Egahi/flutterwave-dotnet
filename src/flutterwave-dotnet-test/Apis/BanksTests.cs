@@ -22,11 +22,13 @@ namespace flutterwave_dotnet_test.Apis
         public void GetBankBranches_InvalidSecretKey_ReturnsError()
         {
             // Arrange
+            string bankId = AppConstants.VALID_BANK_ID;
+
             var flutterwaveSecretKey = "";
             _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
-            var result = _banks.GetBankBrances(AppConstants.VALID_BANK_ID);
+            var result = _banks.GetBankBrances(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -39,8 +41,11 @@ namespace flutterwave_dotnet_test.Apis
         [Fact]
         public void GetBankBranches_ValidSecretKey_InvalidBankId_ReturnsError()
         {
+            // Arrange
+            string bankId = AppConstants.VALID_BANK_ID;
+
             // Act
-            var result = _banks.GetBankBrances(AppConstants.INVALID_BANK_ID);
+            var result = _banks.GetBankBrances(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -53,8 +58,11 @@ namespace flutterwave_dotnet_test.Apis
         [Fact]
         public void GetBankBranches_ValidSecretKey_ReturnsBankBranches()
         {
+            // Arrange
+            string bankId = AppConstants.VALID_BANK_ID;
+
             // Act
-            var result = _banks.GetBankBrances(AppConstants.VALID_BANK_ID);
+            var result = _banks.GetBankBrances(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -67,8 +75,11 @@ namespace flutterwave_dotnet_test.Apis
         [Fact]
         public void GetBankBranches__ValidSecretKey_ValidBankId_BankWithoutDocumentedBranches_ReturnsError()
         {
+            // Arrange
+            string bankId = AppConstants.VALID_BANK_ID;
+
             // Act
-            var result = _banks.GetBankBrances(AppConstants.FIRST_BANK_ID);
+            var result = _banks.GetBankBrances(bankId);
 
             // Assert
             Assert.NotNull(result);
