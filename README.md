@@ -8,14 +8,15 @@ This library makes it easy to consume [Flutterwave API (v3)](https://developer.f
 ## Introduction
 This library implements the following services:
 1. Banks
-    * Get all Banks
+    * Get bank branches
+    * Get all banks
 2. Miscellaneous
-    * Verify a Bank Account Number
+    * Verify a bank account number
 3. Payments
-    * Initiate Payment
+    * Initiate payment
 4. Transactions
-    * Get all Transactions
-    * Verify a Transaction
+    * Get all transactions
+    * Verify a transaction
     
 ## Configuration
 1. Include the Flutterwave.Net namespace to expose all types
@@ -33,7 +34,27 @@ This library implements the following services:
 ## Usage
 
 ### - Banks
-1. Get all Banks
+1. Get bank branches
+    ```c#
+    string bankId = "280";
+
+    GetBanksResponse response = api.GetBankBrances(bankId)
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get bank branches
+        List<BankBranch> bankBranches = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+    
+2. Get all banks
     ```c#
     GetBanksResponse response = api.GetBanks(Country.Nigeria)
 
@@ -52,7 +73,7 @@ This library implements the following services:
     ```
 
 ### - Miscellaneous
-1. Verify a Bank Account Number
+1. Verify a bank account number
     ```c#
     string accountNumber = "0690000032";
     string bankCode = "044";
@@ -73,7 +94,7 @@ This library implements the following services:
     ```
 
 ### - Payments
-1. Initiate Payment
+1. Initiate payment
     ```c#
     string txRef = "hooli-tx-1920bbtytty";
     decimal amount = 100;
@@ -110,7 +131,7 @@ This library implements the following services:
     ```
 
 ### - Transactions
-1. Get all Transactions
+1. Get all transactions
     ```c#
     GetTransactionsResponse response = api.Transactions.GetTransactions();
 
@@ -127,7 +148,7 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
-2. Verify a Transaction
+2. Verify a transaction
     ```c#
     string id = "1234567";
     VerifyTransactionResponse response = api.Transactions.VerifyTransaction(id);
