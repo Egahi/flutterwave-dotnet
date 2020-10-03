@@ -18,7 +18,7 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
-        public void InitiatePayment_InValidSecretKey_ReturnsError()
+        public void InitiatePayment_InvalidSecretKey_ReturnsError()
         {
             // Arrange
             string txRef = AppConstants.SAMPLE_TX_REF;

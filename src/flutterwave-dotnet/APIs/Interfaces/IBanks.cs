@@ -3,6 +3,15 @@
     public interface IBanks
     {
         /// <summary>
+        /// Get bank branches
+        /// </summary>
+        /// <param name="bankId">
+        /// Unique bank ID, it is returned in the Get banks call as data.id
+        /// </param>
+        /// <returns>A list of bank branches</returns>
+        public GetBankBranchesResponse GetBankBrances(string bankId);
+
+        /// <summary>
         /// Get all Banks
         /// </summary>
         /// <param name="country">
@@ -10,15 +19,5 @@
         /// </param>
         /// <returns>A list of Banks</returns>
         public GetBanksResponse GetBanks(Country country);
-
-        /// <summary>
-        /// Verify bank branches
-        /// </summary>
-        /// <param name="id">
-        /// Unique bank ID, it is returned in the call to fetch banks here -
-        /// https://developer.flutterwave.com/v3.0/reference#get-all-banks
-        /// </param>
-        /// <returns>A list of bank branches</returns>
-        public GetBankBranchesResponse GetBankBrances(string id);
     }
 }

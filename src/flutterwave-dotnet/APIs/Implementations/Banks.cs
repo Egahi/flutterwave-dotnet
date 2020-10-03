@@ -12,28 +12,25 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
+        /// Get bank branches
+        /// </summary>
+        /// <param name="bankId">
+        /// Unique bank ID, it is returned in the Get banks call as data.id
+        /// </param>
+        /// <returns>A list of bank branches</returns>
+        public GetBankBranchesResponse GetBankBrances(string bankId)
+        {
+            return _flutterwaveApi.Get<GetBankBranchesResponse>($"{Endpoints.BANKS}/{bankId}/branches");
+        }
+
+        /// <summary>
         /// Get all Banks
         /// </summary>
-        /// <param name="country">
-        /// Get list of banks in this country
-        /// </param>
+        /// <param name="country">Get list of banks in this country</param>
         /// <returns>A list of Banks</returns>
         public GetBanksResponse GetBanks(Country country)
         {
             return _flutterwaveApi.Get<GetBanksResponse>($"{Endpoints.BANKS}/{country.GetValue()}");
-        }
-
-        /// <summary>
-        /// Verify bank branches
-        /// </summary>
-        /// <param name="id">
-        /// Unique bank ID, it is returned in the call to fetch banks here -
-        /// https://developer.flutterwave.com/v3.0/reference#get-all-banks
-        /// </param>
-        /// <returns>A list of bank branches</returns>
-        public GetBankBranchesResponse GetBankBrances(string id)
-        {
-            return _flutterwaveApi.Get<GetBankBranchesResponse>($"{Endpoints.BANKS}/{id}/branches");
         }
     }
 }

@@ -12,10 +12,70 @@ namespace flutterwave_dotnet_test.Apis
 
         public BanksTests()
         {
-            // Get wave secret key from environmental variables
+            // Get flutterwave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
 
             _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+        }
+
+        [Fact]
+        public void GetBankBranches_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            var flutterwaveSecretKey = "";
+            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _banks.GetBankBrances(AppConstants.VALID_BANK_ID);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetBankBranches_ValidSecretKey_InvalidBankId_ReturnsError()
+        {
+            // Act
+            var result = _banks.GetBankBrances(AppConstants.INVALID_BANK_ID);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_BANK_BRANCHES_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetBankBranches_ValidSecretKey_ReturnsBankBranches()
+        {
+            // Act
+            var result = _banks.GetBankBrances(AppConstants.VALID_BANK_ID);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_BANK_BRANCHES_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<List<BankBranch>>(result.Data);
+        }
+
+        [Fact]
+        public void GetBankBranches__ValidSecretKey_ValidBankId_BankWithoutDocumentedBranches_ReturnsError()
+        {
+            // Act
+            var result = _banks.GetBankBrances(AppConstants.FIRST_BANK_ID);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetBankBranchesResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_BANK_BRANCHES_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
         }
 
         [Fact]
@@ -48,39 +108,6 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_BANKS_SUCCESS_MESSAGE, actual: result.Message);
             Assert.IsType<List<Bank>>(result.Data);
-        }
-
-        [Fact]
-        public void GetBankBranches_InvalidSecretKey_ReturnsError()
-        {
-            // Arrange
-            var flutterwaveSecretKey = "";
-            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
-            
-            // Act
-            var result = _banks.GetBankBrances(AppConstants.VALID_BANK_ID);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<GetBankBranchesResponse>(result);
-            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
-            Assert.Null(result.Data);
-        }
-
-        [Fact]
-        public void GetBankBranches_ValidSecretKey_ReturnsBankBranches()
-        {
-            // Act
-            _banks = new Banks(new FlutterwaveApi("FLWSECK_TEST-SANDBOXDEMOKEY-X"));
-            var result = _banks.GetBankBrances(AppConstants.VALID_BANK_ID);
-
-            // Assert
-            Assert.NotNull(result); 
-            Assert.IsType<GetBankBranchesResponse>(result);
-            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_BANK_BRANCHES_SUCCESS_MESSAGE, actual: result.Message);
-            Assert.IsType<List<BankBranch>>(result.Data);
         }
     }
 }

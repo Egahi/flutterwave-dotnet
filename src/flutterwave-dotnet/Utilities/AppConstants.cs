@@ -5,18 +5,19 @@
         // Banks
         public static string ACCESS_BANK_CODE = "044";
         public static string FIRST_BANK_CODE = "011";
-        public static string GET_BANKS_SUCCESS_MESSAGE = "Banks fetched successfully";
+        public static string FIRST_BANK_ID = "137";
+        public static string GET_BANK_BRANCHES_ERROR_MESSAGE = "No branches found for specified bank id";
+        public static string GET_BANK_BRANCHES_SUCCESS_MESSAGE = "Bank branches fetched successfully";
         public static string GET_BANKS_ERROR_MESSAGE = "No banks found for country code";
+        public static string GET_BANKS_SUCCESS_MESSAGE = "Banks fetched successfully";
         public static string INVALID_ACCOUNT_NUMBER = "1234567890";
         public static string INVALID_BANK_CODE = "000";
+        public static string INVALID_BANK_ID = "123";
         public static string VALID_ACCESSBANK_ACCOUNT_NUMBER = "0690000032";
         public static string VALID_ACCESSBANK_ACCOUNT_NAME = "Pastor Bright";
+        public static string VALID_BANK_ID = "280";
         public static string VERIFY_BANK_ACCOUNT_ERROR_MESSAGE = "Sorry, recipient account could not be validated. Please try again";
         public static string VERIFY_BANK_ACCOUNT_SUCCESS_MESSAGE = "Account details fetched";
-        public static string GET_BANK_BRANCHES_SUCCESS_MESSAGE = "Bank branches fetched successfully";
-        public static string GET_BANK_BRANCHES_ERROR_MESSAGE = "No branches found for specified bank id";
-        public static string INVALID_BANK_ID = "123";
-        public static string VALID_BANK_ID = "280";
 
         // Country Codes
         public const string GHANA_COUNTRY_CODE = "GH";
