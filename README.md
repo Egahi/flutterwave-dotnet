@@ -38,7 +38,7 @@ This library implements the following services:
     ```c#
     string bankId = "280";
 
-    GetBanksResponse response = api.GetBankBrances(bankId)
+    GetBankBranchesResponse response = api.GetBankBranches(bankId)
 
     // success
     if (response.Status == "success")
