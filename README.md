@@ -14,7 +14,9 @@ This library implements the following services:
     * Verify a bank account number
 3. Payments
     * Initiate payment
-4. Transactions
+4. Sub accounts
+    * Create a sub account
+5. Transactions
     * Get all transactions
     * Verify a transaction
     
@@ -130,6 +132,44 @@ This library implements the following services:
     }
     ```
 
+### - Sub accounts
+1. Create a sub account
+    ```c#
+    string bankCode = "044";
+    string accountNumber = "0690000032";
+    string businessName = "Eternal Blue";
+    string businessEmail = "user@gmail.com";
+    string country = "NG";
+    double splitValue = 0.5;
+    string businessContact = "Yemi Desola";
+    string businessContactMobile = "08012345678";
+    string businessMobile = "08012345678";
+
+    CreateSubAccountResponse response = api.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           country,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get sub account
+        SubAccount subAccount = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+    
 ### - Transactions
 1. Get all transactions
     ```c#
