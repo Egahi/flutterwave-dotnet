@@ -139,22 +139,21 @@ This library implements the following services:
     string accountNumber = "0690000032";
     string businessName = "Eternal Blue";
     string businessEmail = "user@gmail.com";
-    string country = "NG";
     double splitValue = 0.5;
     string businessContact = "Yemi Desola";
     string businessContactMobile = "08012345678";
     string businessMobile = "08012345678";
 
     CreateSubAccountResponse response = api.CreateSubAccount(bankCode,
-                                                           accountNumber,
-                                                           businessName,
-                                                           businessEmail,
-                                                           country,
-                                                           SplitType.Percentage,
-                                                           splitValue,
-                                                           businessContact,
-                                                           businessContactMobile,
-                                                           businessMobile);
+                                                             accountNumber,
+                                                             businessName,
+                                                             businessEmail,
+                                                             Country.Nigeria,
+                                                             SplitType.Percentage,
+                                                             splitValue,
+                                                             businessContact,
+                                                             businessContactMobile,
+                                                             businessMobile);
 
     // success
     if (response.Status == "success")
