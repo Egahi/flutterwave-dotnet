@@ -12,7 +12,7 @@ namespace flutterwave_dotnet_test.Apis
         public SubAccountsTests()
         {
             // Get rave secret key from environmental variables
-            var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
+            var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
             _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
         }
