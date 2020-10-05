@@ -21,7 +21,7 @@ namespace Flutterwave.Net
         /// <param name="accountNumber">This is the customer's account number.</param>
         /// <param name="businessName">This is the sub-account business name.</param>
         /// <param name="businessEmail">This is the sub-account business email</param>
-        /// <param name="country">This is the ISO country code of the merchant e.g. NG, GH, KE etc.</param>
+        /// <param name="country">Merchant's country</param>
         /// <param name="splitType">This can be set as percentage or flat</param>
         /// <param name="splitValue">
         /// This can be a percentage value or flat value depending on what was set on splitType. 
@@ -35,7 +35,7 @@ namespace Flutterwave.Net
                                                          string accountNumber,
                                                          string businessName,
                                                          string businessEmail,
-                                                         string country,
+                                                         Country country,
                                                          SplitType splitType,
                                                          double splitValue,
                                                          string businessContact = "",
@@ -46,7 +46,7 @@ namespace Flutterwave.Net
                                                    accountNumber,
                                                    businessName,
                                                    businessEmail,
-                                                   country,
+                                                   country.GetValue(),
                                                    splitType.GetValue(),
                                                    splitValue,
                                                    businessContact,

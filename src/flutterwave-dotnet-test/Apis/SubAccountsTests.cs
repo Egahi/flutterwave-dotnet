@@ -25,7 +25,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.SAMPLE_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 0.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -36,7 +35,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
@@ -47,7 +46,7 @@ namespace flutterwave_dotnet_test.Apis
                                                    accountNumber,
                                                    businessName,
                                                    businessEmail,
-                                                   country,
+                                                   Country.Nigeria,
                                                    SplitType.Percentage,
                                                    splitValue,
                                                    businessContact,
@@ -84,7 +83,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
@@ -118,7 +117,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
@@ -152,7 +151,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
@@ -190,7 +189,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
@@ -224,7 +223,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
@@ -258,7 +257,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
@@ -292,7 +291,7 @@ namespace flutterwave_dotnet_test.Apis
                                                        accountNumber,
                                                        businessName,
                                                        businessEmail,
-                                                       country,
+                                                       Country.Nigeria,
                                                        SplitType.Percentage,
                                                        splitValue,
                                                        businessContact,
