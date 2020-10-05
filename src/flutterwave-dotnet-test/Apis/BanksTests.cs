@@ -34,7 +34,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetBankBranchesResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -103,7 +103,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetBanksResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
