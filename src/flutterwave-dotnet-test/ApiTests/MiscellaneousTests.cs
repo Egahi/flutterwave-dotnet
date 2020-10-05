@@ -7,14 +7,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class MiscellaneousTests
     {
-        private Miscellaneous _miscellaneous;
+        private MiscellaneousService _miscellaneous;
 
         public MiscellaneousTests()
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
 
-            _miscellaneous = new Miscellaneous(new FlutterwaveApi(flutterwaveSecretKey));
+            _miscellaneous = new MiscellaneousService(new FlutterwaveApi(flutterwaveSecretKey));
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace flutterwave_dotnet_test.Apis
             var flutterwaveSecretKey = "";
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string bankCode = AppConstants.ACCESS_BANK_CODE;
-            _miscellaneous = new Miscellaneous(new FlutterwaveApi(flutterwaveSecretKey));
+            _miscellaneous = new MiscellaneousService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
@@ -41,8 +41,10 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyBankAccount_ValidSecretKey_InvalidAccountNumber_ReturnsError()
         {
             // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
             string accountNumber = AppConstants.INVALID_ACCOUNT_NUMBER;
             string bankCode = AppConstants.ACCESS_BANK_CODE;
+            _miscellaneous = new MiscellaneousService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
@@ -59,8 +61,10 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyBankAccount_ValidSecretKey_ValidAccountNumber_InvalidBankCode_ReturnsError()
         {
             // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string bankCode = AppConstants.INVALID_BANK_CODE;
+            _miscellaneous = new MiscellaneousService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
@@ -77,8 +81,10 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyBankAccount_ValidSecretKey_ValidAccountNumber_WrongBankCode_ReturnsError()
         {
             // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string bankCode = AppConstants.FIRST_BANK_CODE;
+            _miscellaneous = new MiscellaneousService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
@@ -95,8 +101,10 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyBankAccount_ValidSecretKey_ValidAccountNumber_ValidBankCode_ReturnsBankAccountDetails()
         {
             // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string bankCode = AppConstants.ACCESS_BANK_CODE;
+            _miscellaneous = new MiscellaneousService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);

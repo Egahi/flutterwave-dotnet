@@ -54,6 +54,7 @@
 
         // Transactions
         public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
+        public static string GET_SUBACCOUNT_SUCCESS_MESSAGE = "Subaccounts fetched";
         public static string INVALID_TRANSACTION_ID = "123";
         public static string VALID_TRANSACTION_ID = "1541948";
         public static string VERIFY_TRANSACTION_ERROR_MESSAGE = "No transaction was found for this id";

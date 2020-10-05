@@ -1,4 +1,6 @@
-﻿using Flutterwave.Net.Utilities;
+﻿using Flutterwave.Net.APIs.Implementations;
+using Flutterwave.Net.APIs.Interfaces;
+using Flutterwave.Net.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -14,6 +16,7 @@ namespace Flutterwave.Net
         public IMiscellaneous Miscellaneous { get; }
         public IPayments Payments { get; }
         public ITransactions Transactions { get; }
+        public ISubAccounts SubAccounts { get; }
 
         public FlutterwaveApi(string secretKey)
         {
@@ -21,7 +24,8 @@ namespace Flutterwave.Net
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", secretKey);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            Transactions = new Transactions(this);
+            Transactions = new TransactionService(this);
+            SubAccounts = new SubAccountService(this);
         }
 
         /// <summary>

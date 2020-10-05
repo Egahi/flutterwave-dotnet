@@ -7,14 +7,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class PaymentsTests
     {
-        private Payments _payments;
+        private PaymentService _payments;
 
         public PaymentsTests()
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
 
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _payments = new PaymentService(new FlutterwaveApi(flutterwaveSecretKey));
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace flutterwave_dotnet_test.Apis
             string brandLogoUrl = AppConstants.SAMPLE_BRAND_LOGO_URL;
 
             var flutterwaveSecretKey = "";
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _payments = new PaymentService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _payments.InitiatePayment(txRef,
@@ -57,6 +57,7 @@ namespace flutterwave_dotnet_test.Apis
         public void InitiatePayment_ValidSecretKey_CurrencySpecified_ReturnsSuccess()
         {
             // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
             string txRef = AppConstants.SAMPLE_TX_REF;
             decimal amount = 100;
             string redirectUrl = AppConstants.SAMPLE_REDIRECT_URL;
@@ -66,6 +67,8 @@ namespace flutterwave_dotnet_test.Apis
             string paymentTitle = AppConstants.SAMPLE_PAYMENT_TITLE;
             string paymentDescription = AppConstants.SAMPLE_PAYMENT_DESCRIPTION;
             string brandLogoUrl = AppConstants.SAMPLE_BRAND_LOGO_URL;
+            _payments = new PaymentService(new FlutterwaveApi(flutterwaveSecretKey));
+
 
             // Act
             var result = _payments.InitiatePayment(txRef,
@@ -92,6 +95,7 @@ namespace flutterwave_dotnet_test.Apis
         public void InitiatePayment_ValidSecretKey_NoCurrencySpecified_ReturnsSuccess()
         {
             // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
             string txRef = AppConstants.SAMPLE_TX_REF;
             decimal amount = 100;
             string redirectUrl = AppConstants.SAMPLE_REDIRECT_URL;
@@ -101,6 +105,7 @@ namespace flutterwave_dotnet_test.Apis
             string paymentTitle = AppConstants.SAMPLE_PAYMENT_TITLE;
             string paymentDescription = AppConstants.SAMPLE_PAYMENT_DESCRIPTION;
             string brandLogoUrl = AppConstants.SAMPLE_BRAND_LOGO_URL;
+            _payments = new PaymentService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _payments.InitiatePayment(txRef,

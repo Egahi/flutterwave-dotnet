@@ -8,14 +8,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class BanksTests
     {
-        private Banks _banks;
+        private BankService _banks;
 
         public BanksTests()
         {
             // Get wave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
 
-            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+            _banks = new BankService(new FlutterwaveApi(flutterwaveSecretKey));
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             var flutterwaveSecretKey = "";
-            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+            _banks = new BankService(new FlutterwaveApi(flutterwaveSecretKey));
             
             // Act
             var result = _banks.GetBanks(Country.Nigeria);
@@ -39,6 +39,10 @@ namespace flutterwave_dotnet_test.Apis
         [Fact]
         public void GetBanks_ValidSecretKey_ReturnsBanks()
         {
+            // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
+            _banks = new BankService(new FlutterwaveApi(flutterwaveSecretKey));
+
             // Act
             var result = _banks.GetBanks(Country.Nigeria);
 

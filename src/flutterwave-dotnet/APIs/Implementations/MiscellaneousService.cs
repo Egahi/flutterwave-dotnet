@@ -2,11 +2,11 @@
 
 namespace Flutterwave.Net
 {
-    public class Miscellaneous : IMiscellaneous
+    public class MiscellaneousService : IMiscellaneous
     {
         private FlutterwaveApi _flutterwaveApi { get; }
 
-        public Miscellaneous(FlutterwaveApi flutterwaveApi)
+        public MiscellaneousService(FlutterwaveApi flutterwaveApi)
         {
             _flutterwaveApi = flutterwaveApi;
         }

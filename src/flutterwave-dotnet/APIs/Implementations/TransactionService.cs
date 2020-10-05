@@ -2,11 +2,11 @@
 
 namespace Flutterwave.Net
 {
-    public class Transactions : ITransactions
+    public class TransactionService : ITransactions
     {
         private FlutterwaveApi _flutterwaveApi { get; }
 
-        public Transactions(FlutterwaveApi flutterwaveApi)
+        public TransactionService(FlutterwaveApi flutterwaveApi)
         {
             _flutterwaveApi = flutterwaveApi;
         }

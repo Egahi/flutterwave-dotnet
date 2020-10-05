@@ -8,14 +8,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class TransactionsTests
     {
-        private Transactions _transactions;
+        private TransactionService _transactions;
 
         public TransactionsTests()
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FlutterwaveSecretKey");
 
-            _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
+            _transactions = new TransactionService(new FlutterwaveApi(flutterwaveSecretKey));
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             var flutterwaveSecretKey = "";
-            _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
+            _transactions = new TransactionService(new FlutterwaveApi(flutterwaveSecretKey));
             
             // Act
             var result = _transactions.GetTransactions();
@@ -39,6 +39,10 @@ namespace flutterwave_dotnet_test.Apis
         [Fact]
         public void GetTransactions_ValidSecretKey_ReturnsAllTransactions()
         {
+            // Arrange
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
+            _transactions = new TransactionService(new FlutterwaveApi(flutterwaveSecretKey));
+
             // Act
             var result = _transactions.GetTransactions();
 
@@ -56,7 +60,7 @@ namespace flutterwave_dotnet_test.Apis
             // Arrange
             var flutterwaveSecretKey = "";
             string id = AppConstants.VALID_TRANSACTION_ID;
-            _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
+            _transactions = new TransactionService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _transactions.VerifyTransaction(id);
@@ -74,6 +78,8 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             string id = AppConstants.INVALID_TRANSACTION_ID;
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
+            _transactions = new TransactionService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _transactions.VerifyTransaction(id);
@@ -91,6 +97,8 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             string id = AppConstants.VALID_TRANSACTION_ID;
+            var flutterwaveSecretKey = "FLWSECK_TEST-SANDBOXDEMOKEY-X";
+            _transactions = new TransactionService(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
             var result = _transactions.VerifyTransaction(id);

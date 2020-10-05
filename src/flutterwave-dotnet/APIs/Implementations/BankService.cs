@@ -2,11 +2,11 @@
 
 namespace Flutterwave.Net
 {
-    public class Banks : IBanks
+    public class BankService : IBanks
     {
         private FlutterwaveApi _flutterwaveApi { get; }
 
-        public Banks(FlutterwaveApi flutterwaveApi)
+        public BankService(FlutterwaveApi flutterwaveApi)
         {
             _flutterwaveApi = flutterwaveApi;
         }
