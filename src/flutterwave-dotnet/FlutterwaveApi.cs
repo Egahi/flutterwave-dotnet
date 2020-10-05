@@ -66,5 +66,24 @@ namespace Flutterwave.Net
 
             return responseData;
         }
+
+        /// <summary>
+        /// Make Delete requests to Flutterwave to API
+        /// </summary>
+        /// <typeparam name="T">Response Data Type</typeparam>
+        /// <param name="relativeUrl">endpoint</param>
+        /// <returns></returns>
+        internal T Delete<T>(string relativeUrl)
+        {
+            string responseStr = _httpClient.DeleteAsync(relativeUrl)
+                                            .Result
+                                            .Content
+                                            .ReadAsStringAsync()
+                                            .Result;
+
+            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
+
+            return responseData;
+        }
     }
 }
