@@ -17,5 +17,7 @@ First off, thanks for taking the time to contribute! 🙌🙌🎉🎉
 5. Push the new branch to your fork
 6. Open a pull request
 
+**ps: All classes under Apis, Models, ModelDTOs should be created in the Flutterwave.Net namespace**
+
 ## Testing
 Write unit tests to verify your code does what you think it does 😉😉
