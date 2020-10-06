@@ -54,8 +54,9 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyTransaction_InvalidSecretKey_ReturnsError()
         {
             // Arrange
+            int id = AppConstants.VALID_TRANSACTION_ID;
+
             var flutterwaveSecretKey = "";
-            string id = AppConstants.VALID_TRANSACTION_ID;
             _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
@@ -73,7 +74,7 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyTransaction_ValidSecretKey_InvalidTransactionId_ReturnsError()
         {
             // Arrange
-            string id = AppConstants.INVALID_TRANSACTION_ID;
+            int id = AppConstants.INVALID_TRANSACTION_ID;
 
             // Act
             var result = _transactions.VerifyTransaction(id);
@@ -90,7 +91,7 @@ namespace flutterwave_dotnet_test.Apis
         public void VerifyTransaction_ValidSecretKey_ValidTransactionId_ReturnsTransactionDetails()
         {
             // Arrange
-            string id = AppConstants.VALID_TRANSACTION_ID;
+            int id = AppConstants.VALID_TRANSACTION_ID;
 
             // Act
             var result = _transactions.VerifyTransaction(id);
