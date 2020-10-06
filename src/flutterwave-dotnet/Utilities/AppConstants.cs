@@ -45,8 +45,7 @@
         public const string ZAMBIAN_KWACHA_CODE = "ZMW";
 
         // Numbers
-        public const int ONE_DECIMAL_PLACE = 1;
-        public const decimal ZERO_POINT_FIVE_DECIMAL = (decimal)0.5;
+        public static int ONE_DECIMAL_PLACE = 1;
 
         // Others
         public static string ERROR_STATUS = "error";
@@ -67,13 +66,13 @@
 
         // SubAccounts
         public static string CREATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount created";
-        public static string GET_SUBACCOUNTS_SUCCESS_MESSAGE = "Subaccounts fetched";
         public static string COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE = "Sorry we " +
             "couldn't verify your account number kindly pass a valid account number.";
         public static string DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount deleted";
         public static string DELETE_SUB_ACCOUNT_ERROR_MESSAGE = "Beneficiary not found";
         public static string EXISTING_SUB_ACCOUNT_ERROR_MESSAGE = "A subaccount with " +
             "the account number and bank already exists";
+        public static string GET_SUBACCOUNTS_SUCCESS_MESSAGE = "Subaccounts fetched";
         public static string INVALID_EMAIL_ERROR_MESSAGE = " failed isEmail validation";
         public static string INVALID_SPLIT_VALUE_ERROR_MESSAGE = "The split_value should " +
             "be in decimal instead of a whole number.";

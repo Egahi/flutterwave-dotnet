@@ -74,7 +74,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.SAMPLE_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 0.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -108,7 +107,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.INVALID_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 0.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -143,7 +141,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.SAMPLE_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 0.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -180,7 +177,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.INVALID_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.SAMPLE_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 1.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -214,7 +210,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.SAMPLE_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 0.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -248,7 +243,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.SAMPLE_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 0.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -279,7 +273,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.ACCESS_BANK_CODE, actual: result.Data.BankCode);
             Assert.Equal(expected: AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER, actual: result.Data.AccountNumber);
             Assert.Equal(expected: AppConstants.SPLIT_TYPE_PERCENTAGE, actual: result.Data.SplitType);
-            Assert.Equal(expected: AppConstants.ZERO_POINT_FIVE_DECIMAL, actual:result.Data.SplitValue, 
+            Assert.Equal(expected: (decimal)0.5, actual:result.Data.SplitValue, 
                 precision: AppConstants.ONE_DECIMAL_PLACE);
             Assert.Equal(expected:AppConstants.ACCESS_BANK, actual:result.Data.BankName);
         }
@@ -329,7 +323,6 @@ namespace flutterwave_dotnet_test.Apis
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
             string businessEmail = AppConstants.SAMPLE_EMAIL;
-            string country = AppConstants.NIGERIA_CODE;
             double splitValue = 0.5;
             string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
@@ -380,7 +373,7 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
-        public void GetSubAccounts_ValidSecretKey_ReturnsAllTransactions()
+        public void GetSubAccounts_ValidSecretKey_ReturnsAllSubAccounts()
         {
             // Act
             var result = _subAccounts.GetSubAccounts();
@@ -390,7 +383,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<GetSubAccountsResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_SUCCESS_MESSAGE, actual: result.Message);
-            Assert.IsType<List<GetSubAccounts>>(result.Data);
+            Assert.IsType<List<SubAccount>>(result.Data);
         }
     }
 }
