@@ -32,5 +32,14 @@
                                                          string businessContact = "",
                                                          string businessContactMobile = "",
                                                          string businessMobile = "");
+
+        /// <summary>
+        /// Delete a subaccount
+        /// </summary>
+        /// <param name="subAccountId">
+        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
+        /// </param>
+        /// <returns></returns>
+        public DeleteSubAccountResponse DeleteSubAccount(int subAccountId);
     }
 }
