@@ -66,6 +66,7 @@
         public static string SAMPLE_PAYMENT_TITLE = "Pied Piper Payments";
 
         // SubAccounts
+        public static string GET_SUBACCOUNTS_SUCCESS_MESSAGE = "Subaccounts fetched";
         public static string COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE = "Sorry we " +
             "couldn't verify your account number kindly pass a valid account number.";
         public static string EXISTING_SUB_ACCOUNT_ERROR_MESSAGE = "A subaccount with " +

@@ -55,5 +55,14 @@ namespace Flutterwave.Net
 
             return _flutterwaveApi.Post<CreateSubAccountResponse>(Endpoints.SUB_ACCOUNTS, data);
         }
+
+        /// <summary>
+        /// Get all Sub Accounts
+        /// </summary>
+        /// <returns>A list of SubAccounts</returns>
+        public GetSubAccountsResponse GetSubAccounts()
+        {
+            return _flutterwaveApi.Get<GetSubAccountsResponse>(Endpoints.SUB_ACCOUNTS);
+        }
     }
 }
