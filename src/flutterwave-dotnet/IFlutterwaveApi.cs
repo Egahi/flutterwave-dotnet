@@ -5,6 +5,7 @@
         public IBanks Banks { get; }
         public IMiscellaneous Miscellaneous { get; }
         public IPayments Payments { get; }
+        public ISubAccounts SubAccounts { get; }
         public ITransactions Transactions { get; }
     }
 }

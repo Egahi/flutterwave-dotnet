@@ -13,6 +13,7 @@ namespace Flutterwave.Net
         public IBanks Banks { get; }
         public IMiscellaneous Miscellaneous { get; }
         public IPayments Payments { get; }
+        public ISubAccounts SubAccounts { get; }
         public ITransactions Transactions { get; }
 
         public FlutterwaveApi(string secretKey)
@@ -21,6 +22,10 @@ namespace Flutterwave.Net
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", secretKey);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+            Banks = new Banks(this);
+            Miscellaneous = new Miscellaneous(this);
+            Payments = new Payments(this);
+            SubAccounts = new SubAccounts(this);
             Transactions = new Transactions(this);
         }
 
