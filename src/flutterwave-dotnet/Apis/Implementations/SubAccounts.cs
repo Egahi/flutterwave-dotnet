@@ -55,5 +55,15 @@ namespace Flutterwave.Net
 
             return _flutterwaveApi.Post<CreateSubAccountResponse>(Endpoints.SUB_ACCOUNTS, data);
         }
+
+        /// <summary>
+        /// Delete a subaccount
+        /// </summary>
+        /// <param name="id">The unique id of the sub account you want to delete</param>
+        /// <returns></returns>
+        public DeleteSubAccountResponse DeleteSubAccount(int id)
+        {
+            return _flutterwaveApi.Delete<DeleteSubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{id}");
+        }
     }
 }

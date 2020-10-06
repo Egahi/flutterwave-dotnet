@@ -46,7 +46,7 @@
 
         // Numbers
         public const int ONE_DECIMAL_PLACE = 1;
-        public const decimal ONE_POINT_FIVE_DECIMAL = (decimal)1.5;
+        public const decimal ZERO_POINT_FIVE_DECIMAL = (decimal)0.5;
 
         // Others
         public static string ERROR_STATUS = "error";
@@ -74,6 +74,8 @@
         public static string INVALID_SPLIT_VALUE_ERROR_MESSAGE = "The split_value should " +
             "be in decimal instead of a whole number.";
         public static string CREATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount created";
+        public static string DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount deleted";
+        public static string DELETE_SUB_ACCOUNT_ERROR_MESSAGE = "Beneficiary not found";
         public static string NIGERIA_CODE = "NG";
         public static string SAMPLE_BUSINESS_NAME = "Eternal Blue";
         public const string SPLIT_TYPE_FLAT = "flat";

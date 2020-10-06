@@ -272,7 +272,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Null(result.Data);
         }
 
-        //[Fact]
+        [Fact]
         public void CreateSubAccount_ValidParamters_ReturnsSubAccount()
         {
             // Arrange
@@ -307,12 +307,32 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.ACCESS_BANK_CODE, actual: result.Data.BankCode);
             Assert.Equal(expected: AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER, actual: result.Data.AccountNumber);
             Assert.Equal(expected: AppConstants.SPLIT_TYPE_PERCENTAGE, actual: result.Data.SplitType);
-            Assert.Equal(expected: AppConstants.ONE_POINT_FIVE_DECIMAL, actual:result.Data.SplitValue, 
+            Assert.Equal(expected: AppConstants.ZERO_POINT_FIVE_DECIMAL, actual:result.Data.SplitValue, 
                 precision: AppConstants.ONE_DECIMAL_PLACE);
-            Assert.Equal(expected:AppConstants.ACCESS_BANK_CODE, actual:result.Data.BankName);
+            Assert.Equal(expected:AppConstants.ACCESS_BANK, actual:result.Data.BankName);
 
-            // TODO
             // Delete subaccount
+            var deleteResult = _subAccounts.DeleteSubAccount(result.Data.Id);
+
+            Assert.NotNull(deleteResult);
+            Assert.IsType<DeleteSubAccountResponse>(deleteResult);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: deleteResult.Status);
+            Assert.Equal(expected: AppConstants.DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: deleteResult.Message);
+            Assert.Null(deleteResult.Data);
+        }
+
+        [Fact]
+        public void DeleteSubAccount_InvalidId_ReturnsError()
+        {
+            // Act
+            var result = _subAccounts.DeleteSubAccount(0);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<DeleteSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.DELETE_SUB_ACCOUNT_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
         }
     }
 }
