@@ -30,7 +30,7 @@ namespace Flutterwave.Net
         /// <param name="businessContact">This is the contact person for the sub-account</param>
         /// <param name="businessContactMobile">Business contact phone number</param>
         /// <param name="businessMobile">Primary business phone number</param>
-        /// <returns>The newly created subaccount details</returns>
+        /// <returns>The newly created sub account details</returns>
         public CreateSubAccountResponse CreateSubAccount(string bankCode,
                                                          string accountNumber,
                                                          string businessName,
@@ -54,6 +54,27 @@ namespace Flutterwave.Net
                                                    businessMobile);
 
             return _flutterwaveApi.Post<CreateSubAccountResponse>(Endpoints.SUB_ACCOUNTS, data);
+        }
+
+        /// <summary>
+        /// Delete a sub account
+        /// </summary>
+        /// <param name="subAccountId">
+        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
+        /// </param>
+        /// <returns>Success message</returns>
+        public DeleteSubAccountResponse DeleteSubAccount(int subAccountId)
+        {
+            return _flutterwaveApi.Delete<DeleteSubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}");
+        }
+
+        /// <summary>
+        /// Get all sub accounts
+        /// </summary>
+        /// <returns>A list of sub accounts</returns>
+        public GetSubAccountsResponse GetSubAccounts()
+        {
+            return _flutterwaveApi.Get<GetSubAccountsResponse>(Endpoints.SUB_ACCOUNTS);
         }
     }
 }

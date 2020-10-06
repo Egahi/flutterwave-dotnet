@@ -5,7 +5,7 @@
         /// <summary>
         /// Get all Transactions
         /// </summary>
-        /// <returns>A list of Transactions</returns>
+        /// <returns>A list of transactions</returns>
         public GetTransactionsResponse GetTransactions();
 
         /// <summary>
@@ -16,6 +16,6 @@
         /// call as data.id
         /// </param>
         /// <returns>The transaction with the specified id</returns>
-        public VerifyTransactionResponse VerifyTransaction(string id);
+        public VerifyTransactionResponse VerifyTransaction(int id);
     }
 }
