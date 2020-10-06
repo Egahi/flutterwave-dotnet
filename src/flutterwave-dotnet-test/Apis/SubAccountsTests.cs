@@ -18,40 +18,6 @@ namespace flutterwave_dotnet_test.Apis
             _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
         }
 
-
-        //Facts
-        [Fact]
-        public void GetSubAccounts_InvalidSecretKey_ReturnsError()
-        {
-            // Arrange
-            var flutterwaveSecretKey = "";
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
-
-            // Act
-            var result = _subAccounts.GetSubAccounts();
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<GetSubAccountsResponse>(result);
-            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
-            Assert.Null(result.Data);
-        }
-        
-        [Fact]
-        public void GetSubAccounts_ValidSecretKey_ReturnsAllTransactions()
-        {
-            // Act
-            var result = _subAccounts.GetSubAccounts();
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<GetSubAccountsResponse>(result);
-            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_SUCCESS_MESSAGE, actual: result.Message);
-            Assert.IsType<List<GetSubAccounts>>(result.Data);
-        }
-
         [Fact]
         public void CreateSubAccount_ExistingSubAccountWithAccountNumberAndBank_ReturnsError()
         {
@@ -395,6 +361,36 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Null(result2.Data);
         }
 
+        [Fact]
+        public void GetSubAccounts_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            var flutterwaveSecretKey = "";
+            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
 
+            // Act
+            var result = _subAccounts.GetSubAccounts();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetSubAccounts_ValidSecretKey_ReturnsAllTransactions()
+        {
+            // Act
+            var result = _subAccounts.GetSubAccounts();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<List<GetSubAccounts>>(result.Data);
+        }
     }
 }
