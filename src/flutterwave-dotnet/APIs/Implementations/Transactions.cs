@@ -14,7 +14,7 @@ namespace Flutterwave.Net
         /// <summary>
         /// Get all transactions
         /// </summary>
-        /// <returns>A list of Transactions</returns>
+        /// <returns>A list of transactions</returns>
         public GetTransactionsResponse GetTransactions()
         {
             return _flutterwaveApi.Get<GetTransactionsResponse>(Endpoints.TRANSACTIONS);

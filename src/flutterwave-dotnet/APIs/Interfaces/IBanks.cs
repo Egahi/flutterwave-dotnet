@@ -17,7 +17,7 @@
         /// <param name="country">
         /// Get list of banks in this country
         /// </param>
-        /// <returns>A list of Banks</returns>
+        /// <returns>A list of banks</returns>
         public GetBanksResponse GetBanks(Country country);
     }
 }
