@@ -32,5 +32,11 @@
                                                          string businessContact = "",
                                                          string businessContactMobile = "",
                                                          string businessMobile = "");
+
+        /// <summary>
+        /// Get all Sub Accounts
+        /// </summary>
+        /// <returns>A list of SubAccounts</returns>
+        public GetSubAccountsResponse GetSubAccounts();
     }
 }
