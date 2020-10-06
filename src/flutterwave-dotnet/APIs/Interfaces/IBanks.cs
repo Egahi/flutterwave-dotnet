@@ -9,7 +9,7 @@
         /// Unique bank ID, it is returned in the Get banks call as data.id
         /// </param>
         /// <returns>A list of bank branches</returns>
-        public GetBankBranchesResponse GetBankBranches(string bankId);
+        public GetBankBranchesResponse GetBankBranches(int bankId);
 
         /// <summary>
         /// Get all Banks

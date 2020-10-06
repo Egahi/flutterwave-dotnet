@@ -28,7 +28,7 @@ namespace Flutterwave.Net
         /// call as data.id
         /// </param>
         /// <returns>The transaction with the specified id</returns>
-        public VerifyTransactionResponse VerifyTransaction(string id)
+        public VerifyTransactionResponse VerifyTransaction(int id)
         {
             return _flutterwaveApi.Get<VerifyTransactionResponse>($"{Endpoints.TRANSACTIONS}/{id}/verify");
         }

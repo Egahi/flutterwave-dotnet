@@ -16,6 +16,6 @@
         /// call as data.id
         /// </param>
         /// <returns>The transaction with the specified id</returns>
-        public VerifyTransactionResponse VerifyTransaction(string id);
+        public VerifyTransactionResponse VerifyTransaction(int id);
     }
 }
