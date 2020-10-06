@@ -67,6 +67,7 @@
 
         // SubAccounts
         public static string CREATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount created";
+        public static string GET_SUBACCOUNTS_SUCCESS_MESSAGE = "Subaccounts fetched";
         public static string COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE = "Sorry we " +
             "couldn't verify your account number kindly pass a valid account number.";
         public static string DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount deleted";

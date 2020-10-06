@@ -1,6 +1,7 @@
 ﻿using Flutterwave.Net;
 using Flutterwave.Net.Utilities;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace flutterwave_dotnet_test.Apis
@@ -15,6 +16,40 @@ namespace flutterwave_dotnet_test.Apis
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
             _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+        }
+
+
+        //Facts
+        [Fact]
+        public void GetSubAccounts_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            var flutterwaveSecretKey = "";
+            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _subAccounts.GetSubAccounts();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+        
+        [Fact]
+        public void GetSubAccounts_ValidSecretKey_ReturnsAllTransactions()
+        {
+            // Act
+            var result = _subAccounts.GetSubAccounts();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<List<GetSubAccounts>>(result.Data);
         }
 
         [Fact]
@@ -359,5 +394,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: result2.Message);
             Assert.Null(result2.Data);
         }
+
+
     }
 }

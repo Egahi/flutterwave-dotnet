@@ -41,5 +41,11 @@
         /// </param>
         /// <returns></returns>
         public DeleteSubAccountResponse DeleteSubAccount(int subAccountId);
+
+        /// <summary>
+        /// Get all sub accounts
+        /// </summary>
+        /// <returns>A list of SubAccounts</returns>
+        public GetSubAccountsResponse GetSubAccounts();
     }
 }

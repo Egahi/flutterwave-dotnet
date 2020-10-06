@@ -57,7 +57,7 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Delete a subaccount
+        /// Delete a sub account
         /// </summary>
         /// <param name="subAccountId">
         /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
@@ -66,6 +66,15 @@ namespace Flutterwave.Net
         public DeleteSubAccountResponse DeleteSubAccount(int subAccountId)
         {
             return _flutterwaveApi.Delete<DeleteSubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}");
+        }
+
+        /// <summary>
+        /// Get all sub accounts
+        /// </summary>
+        /// <returns>A list of SubAccounts</returns>
+        public GetSubAccountsResponse GetSubAccounts()
+        {
+            return _flutterwaveApi.Get<GetSubAccountsResponse>(Endpoints.SUB_ACCOUNTS);
         }
     }
 }
