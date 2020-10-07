@@ -6,17 +6,17 @@
         public static string ACCESS_BANK = "ACCESS BANK NIGERIA";
         public static string ACCESS_BANK_CODE = "044";
         public static string FIRST_BANK_CODE = "011";
-        public static string FIRST_BANK_ID = "137";
+        public static int FIRST_BANK_ID = 137;
         public static string GET_BANK_BRANCHES_ERROR_MESSAGE = "No branches found for specified bank id";
         public static string GET_BANK_BRANCHES_SUCCESS_MESSAGE = "Bank branches fetched successfully";
         public static string GET_BANKS_ERROR_MESSAGE = "No banks found for country code";
         public static string GET_BANKS_SUCCESS_MESSAGE = "Banks fetched successfully";
         public static string INVALID_ACCOUNT_NUMBER = "1234567890";
         public static string INVALID_BANK_CODE = "000";
-        public static string INVALID_BANK_ID = "123";
+        public static int INVALID_BANK_ID = 123;
         public static string VALID_ACCESSBANK_ACCOUNT_NUMBER = "0690000032";
         public static string VALID_ACCESSBANK_ACCOUNT_NAME = "Pastor Bright";
-        public static string VALID_BANK_ID = "280";
+        public static int VALID_BANK_ID = 280;
         public static string VERIFY_BANK_ACCOUNT_ERROR_MESSAGE = "Sorry, recipient " +
             "account could not be validated. Please try again";
         public static string VERIFY_BANK_ACCOUNT_SUCCESS_MESSAGE = "Account details fetched";
@@ -45,8 +45,7 @@
         public const string ZAMBIAN_KWACHA_CODE = "ZMW";
 
         // Numbers
-        public const int ONE_DECIMAL_PLACE = 1;
-        public const decimal ONE_POINT_FIVE_DECIMAL = (decimal)1.5;
+        public static int ONE_DECIMAL_PLACE = 1;
 
         // Others
         public static string ERROR_STATUS = "error";
@@ -66,29 +65,35 @@
         public static string SAMPLE_PAYMENT_TITLE = "Pied Piper Payments";
 
         // SubAccounts
-        public static string GET_SUBACCOUNTS_SUCCESS_MESSAGE = "Subaccounts fetched";
+        public static string CREATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount created";
         public static string COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE = "Sorry we " +
             "couldn't verify your account number kindly pass a valid account number.";
+        public static string DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount deleted";
+        public static string DELETE_SUB_ACCOUNT_ERROR_MESSAGE = "Beneficiary not found";
         public static string EXISTING_SUB_ACCOUNT_ERROR_MESSAGE = "A subaccount with " +
             "the account number and bank already exists";
+        public static string GET_SUBACCOUNTS_SUCCESS_MESSAGE = "Subaccounts fetched";
         public static string INVALID_EMAIL_ERROR_MESSAGE = " failed isEmail validation";
         public static string INVALID_SPLIT_VALUE_ERROR_MESSAGE = "The split_value should " +
             "be in decimal instead of a whole number.";
-        public static string CREATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount created";
+        public static int INVALID_SUBACCOUNT_ID = 123;
         public static string NIGERIA_CODE = "NG";
         public static string SAMPLE_BUSINESS_NAME = "Eternal Blue";
         public const string SPLIT_TYPE_FLAT = "flat";
         public const string SPLIT_TYPE_PERCENTAGE = "percentage";
+
         public static int VALID_SUBACCOUNT_ID = 6678;
         public static int INVALID_SUBACCOUNTS_ID = 123;
         public static string GET_SUBACCOUNTS_ERROR_MESSAGE = "Subaccount not found";
         public static string GET_SUBACCOUNTSBYID_SUCCESS_MESSAGE = "Subaccount fetched";
 
 
+
+
         // Transactions
         public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
-        public static string INVALID_TRANSACTION_ID = "123";
-        public static string VALID_TRANSACTION_ID = "1541948";
+        public static int INVALID_TRANSACTION_ID = 123;
+        public static int VALID_TRANSACTION_ID = 1541948;
         public static string VERIFY_TRANSACTION_ERROR_MESSAGE = "No transaction was found for this id";
         public static string VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE = "Invalid secret key passed";
         public static string VERIFY_TRANSACTION_SUCCESS_MESSAGE = "Transaction fetched successfully";
