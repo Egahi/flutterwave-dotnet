@@ -13,7 +13,7 @@ namespace Flutterwave.Net
         public string AccountNumber { get; set; }
 
         [JsonProperty("account_bank")]
-        public string AccountBank { get; set; }
+        public string BankCode { get; set; }
 
         [JsonProperty("business_name")]
         public string BusinessName { get; set; }
@@ -37,7 +37,7 @@ namespace Flutterwave.Net
         public string SplitType { get; set; }
 
         [JsonProperty("split_value")]
-        public string SplitValue { get; set; }
+        public decimal SplitValue { get; set; }
 
         [JsonProperty("subaccount_id")]
         public string SubaccountId { get; set; }

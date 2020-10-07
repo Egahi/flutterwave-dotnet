@@ -385,5 +385,97 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_SUCCESS_MESSAGE, actual: result.Message);
             Assert.IsType<List<SubAccount>>(result.Data);
         }
+
+        [Fact]
+        public void UpdateSubAccount_InvalidSubAccountId_ReturnsError()
+        {
+            // Arrange
+            int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;            
+            string businessName = AppConstants.SAMPLE_BUSINESS_NAME;            
+            string businessEmail = AppConstants.SAMPLE_EMAIL;            
+            string bankCode = AppConstants.ACCESS_BANK_CODE;
+            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            double splitValue = 0.5;
+
+            // Act
+            var result = _subAccounts.UpdateSubAccount(subAccountId,
+                                                       businessName,
+                                                       businessEmail,            
+                                                       bankCode,
+                                                       accountNumber,                                                       
+                                                       SplitType.Percentage,
+                                                       splitValue);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_SUB_ACCOUNT_ID_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void UpdateSubAccounts_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            var flutterwaveSecretKey = "";
+            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+            int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;            
+            string businessName = AppConstants.SAMPLE_BUSINESS_NAME;            
+            string businessEmail = AppConstants.SAMPLE_EMAIL;            
+            string bankCode = AppConstants.ACCESS_BANK_CODE;
+            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            double splitValue = 0.5;
+
+            // Act
+            var result = _subAccounts.UpdateSubAccount(subAccountId,
+                                                       businessName,
+                                                       businessEmail,            
+                                                       bankCode,
+                                                       accountNumber,                                                       
+                                                       SplitType.Percentage,
+                                                       splitValue);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void UpdateSubAccount_ValidParamters_ReturnsSubAccount()
+        {
+            // Arrange
+            int subAccountId = AppConstants.VALID_SUBACCOUNT_ID;            
+            string businessName = AppConstants.SAMPLE_BUSINESS_NAME;            
+            string businessEmail = AppConstants.SAMPLE_EMAIL;            
+            string bankCode = AppConstants.ACCESS_BANK_CODE;
+            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            double splitValue = 0.5;
+
+            // Act
+            var result = _subAccounts.UpdateSubAccount(subAccountId,
+                                                       businessName,
+                                                       businessEmail,            
+                                                       bankCode,
+                                                       accountNumber,                                                       
+                                                       SplitType.Percentage,
+                                                       splitValue);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.UPDATE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<UpdateSubAccount>(result.Data);
+            Assert.Equal(expected: AppConstants.ACCESS_BANK_CODE, actual: result.Data.BankCode);
+            Assert.Equal(expected: AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER, actual: result.Data.AccountNumber);
+            Assert.Equal(expected: AppConstants.SPLIT_TYPE_PERCENTAGE, actual: result.Data.SplitType);
+            Assert.Equal(expected: (decimal)0.5, actual:result.Data.SplitValue, 
+                precision: AppConstants.ONE_DECIMAL_PLACE);
+            Assert.Equal(expected:AppConstants.ACCESS_BANK, actual:result.Data.BankName);
+        }
     }
 }
