@@ -38,5 +38,14 @@
         /// </summary>
         /// <returns>A list of SubAccounts</returns>
         public GetSubAccountsResponse GetSubAccounts();
+
+        /// <summary>
+        /// Get SubAccounts
+        /// </summary>
+        /// <param name="id">
+        /// Unique SubAccounts ID, it is returned in the Get SubAccounts call as data.id
+        /// </param>
+        /// <returns>A SubAccounts</returns>
+        public GetSubAccountsByIdResponse GetSubAccountsById(int id);
     }
 }

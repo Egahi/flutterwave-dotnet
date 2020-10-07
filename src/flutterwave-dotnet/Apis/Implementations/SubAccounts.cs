@@ -64,5 +64,17 @@ namespace Flutterwave.Net
         {
             return _flutterwaveApi.Get<GetSubAccountsResponse>(Endpoints.SUB_ACCOUNTS);
         }
+
+        /// <summary>
+        /// Get SubAccounts
+        /// </summary>
+        /// <param name="id">
+        /// Unique SubAccounts ID, it is returned in the Get SubAccounts call as data.id
+        /// </param>
+        /// <returns>A SubAccounts</returns>
+        public GetSubAccountsByIdResponse GetSubAccountsById(int id)
+        {
+            return _flutterwaveApi.Get<GetSubAccountsByIdResponse>($"{Endpoints.SUB_ACCOUNTS}/{id}");
+        }
     }
 }

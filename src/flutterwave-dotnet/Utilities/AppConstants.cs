@@ -79,6 +79,11 @@
         public static string SAMPLE_BUSINESS_NAME = "Eternal Blue";
         public const string SPLIT_TYPE_FLAT = "flat";
         public const string SPLIT_TYPE_PERCENTAGE = "percentage";
+        public const int VALID_SUBACCOUNTS_ID = 6678;
+        public const int INVALID_SUBACCOUNTS_ID = 123;
+        public static string GET_SUBACCOUNTS_ERROR_MESSAGE = "Subaccount not found";
+        public static string GET_SUBACCOUNTSBYID_SUCCESS_MESSAGE = "Subaccount fetched";
+
 
         // Transactions
         public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";

@@ -53,6 +53,60 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
+        public void GetSubAccountsById_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            int id = AppConstants.VALID_SUBACCOUNTS_ID;
+
+            var flutterwaveSecretKey = "";
+            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _subAccounts.GetSubAccountsById(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsByIdResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetSubAccountsById_ValidSecretKey_SubAccountsId_ReturnsError()
+        {
+            // Arrange
+            int id = AppConstants.INVALID_SUBACCOUNTS_ID;
+
+            // Act 
+            var result = _subAccounts.GetSubAccountsById(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsByIdResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetSubAccountsById_ValidSecretKey_ReturnsSubAccounts()
+        {
+            // Arrange
+            int id = AppConstants.VALID_SUBACCOUNTS_ID;
+
+            // Act
+            var result = _subAccounts.GetSubAccountsById(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsByIdResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNTSBYID_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<GetSubAccounts>(result.Data);
+        }
+
+        [Fact]
         public void CreateSubAccount_ExistingSubAccountWithAccountNumberAndBank_ReturnsError()
         {
             // Arrange
