@@ -93,7 +93,7 @@ namespace flutterwave_dotnet_test.Apis
         public void GetSubAccountsById_ValidSecretKey_ReturnsSubAccounts()
         {
             // Arrange
-            int id = AppConstants.VALID_SUBACCOUNTS_ID;
+            int id = AppConstants.VALID_SUBACCOUNT_ID;
 
             // Act
             var result = _subAccounts.GetSubAccountsById(id);
