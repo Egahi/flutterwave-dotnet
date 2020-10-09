@@ -72,18 +72,16 @@
         public static string DELETE_SUB_ACCOUNT_ERROR_MESSAGE = "Beneficiary not found";
         public static string EXISTING_SUB_ACCOUNT_ERROR_MESSAGE = "A subaccount with " +
             "the account number and bank already exists";
+        public static string GET_SUBACCOUNT_ERROR_MESSAGE = "Subaccount not found";
+        public static string GET_SUBACCOUNT_SUCCESS_MESSAGE = "Subaccount fetched";
         public static string GET_SUBACCOUNTS_SUCCESS_MESSAGE = "Subaccounts fetched";
         public static string INVALID_EMAIL_ERROR_MESSAGE = " failed isEmail validation";
         public static string INVALID_SPLIT_VALUE_ERROR_MESSAGE = "The split_value should " +
             "be in decimal instead of a whole number.";
         public static int INVALID_SUBACCOUNT_ID = 123;
-        public static string NIGERIA_CODE = "NG";
         public static string SAMPLE_BUSINESS_NAME = "Eternal Blue";
         public const string SPLIT_TYPE_FLAT = "flat";
         public const string SPLIT_TYPE_PERCENTAGE = "percentage";
-        public static int INVALID_SUBACCOUNTS_ID = 123;
-        public static string GET_SUBACCOUNTS_ERROR_MESSAGE = "Subaccount not found";
-        public static string GET_SUBACCOUNTSBYID_SUCCESS_MESSAGE = "Subaccount fetched";
         public static int VALID_SUBACCOUNT_ID = 6692;
 
         // Transactions
