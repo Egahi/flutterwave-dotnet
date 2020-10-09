@@ -16,8 +16,9 @@ This library implements the following services:
     * Initiate payment
 4. Sub accounts
     * Create a sub account
-    * Fetch all sub accounts
     * Delete a sub account
+    * Fetch a sub account
+    * Fetch all sub accounts
     * Update a sub account
 5. Transactions
     * Get all transactions
@@ -171,24 +172,7 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
-2. Fetch all sub accounts
-    ```c#
-    GetSubAccountsResponse response = api.GetSubAccounts();
-
-    // success
-    if (response.Status == "success")
-    {
-        // Get all sub accounts
-        List<SubAccount> subAccounts = response.Data;
-    }
-    // error
-    else
-    {
-        // Get error message
-        string errorMessage = response.Message;
-    }
-    ```
-3. Delete a sub account
+2. Delete a sub account
     ```c#
     int subAccountId = 12345
     
@@ -207,14 +191,49 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
-3. Update a sub account
+3. Fetch a sub account
+    ```c#
+    int subAccountId = 12345
+    
+    GetSubAccountResponse response = api.GetSubAccount(subAccountId);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get the sub account
+        SubAccount subAccounts = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+4. Fetch all sub accounts
+    ```c#
+    GetSubAccountsResponse response = api.GetSubAccounts();
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get all sub accounts
+        List<SubAccount> subAccounts = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+5. Update a sub account
     ```c#
     int subAccountId = 12345;
     string businessName = "Eternal Blue";
     string businessEmail = "user@gmail.com";
     string bankCode = "044";
     string accountNumber = "0690000032";
-    string splitType = "percent";
     double splitValue = 0.5;
 
     UpdateSubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
@@ -222,14 +241,14 @@ This library implements the following services:
                                                                      businessEmail,
                                                                      bankCode,
                                                                      accountNumber,
-                                                                     splitType,
+                                                                     SplitType.Percentage,
                                                                      splitValue);
 
     // success
     if (response.Status == "success")
     {
         // Get updated sub account
-        UpdateSubAccount subAccount = response.Data;
+        SubAccount subAccount = response.Data;
     }
     // error
     else
