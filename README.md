@@ -18,6 +18,7 @@ This library implements the following services:
     * Create a sub account
     * Fetch all sub accounts
     * Delete a sub account
+    * Update a sub account
 5. Transactions
     * Get all transactions
     * Verify a transaction
@@ -198,6 +199,37 @@ This library implements the following services:
     {
         // Get success message
         string successMessage = response.Message;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+3. Update a sub account
+    ```c#
+    int subAccountId = 12345;
+    string businessName = "Eternal Blue";
+    string businessEmail = "user@gmail.com";
+    string bankCode = "044";
+    string accountNumber = "0690000032";
+    string splitType = "percent";
+    double splitValue = 0.5;
+
+    UpdateSubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
+                                                                     businessName,
+                                                                     businessEmail,
+                                                                     bankCode,
+                                                                     accountNumber,
+                                                                     splitType,
+                                                                     splitValue);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get updated sub account
+        UpdateSubAccount subAccount = response.Data;
     }
     // error
     else
