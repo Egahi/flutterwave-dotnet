@@ -30,6 +30,25 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
+        /// Make Delete requests to Flutterwave to API
+        /// </summary>
+        /// <typeparam name="T">Response Data Type</typeparam>
+        /// <param name="relativeUrl">endpoint</param>
+        /// <returns></returns>
+        internal T Delete<T>(string relativeUrl)
+        {
+            string responseStr = _httpClient.DeleteAsync(relativeUrl)
+                                            .Result
+                                            .Content
+                                            .ReadAsStringAsync()
+                                            .Result;
+
+            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
+
+            return responseData;
+        }
+
+        /// <summary>
         /// Make Get requests to Flutterwave API
         /// </summary>
         /// <typeparam name="T">Response Data Type</typeparam>
@@ -62,25 +81,6 @@ namespace Flutterwave.Net
                                              "application/json");
 
             string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
-                                            .Result
-                                            .Content
-                                            .ReadAsStringAsync()
-                                            .Result;
-
-            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
-
-            return responseData;
-        }
-
-        /// <summary>
-        /// Make Delete requests to Flutterwave to API
-        /// </summary>
-        /// <typeparam name="T">Response Data Type</typeparam>
-        /// <param name="relativeUrl">endpoint</param>
-        /// <returns></returns>
-        internal T Delete<T>(string relativeUrl)
-        {
-            string responseStr = _httpClient.DeleteAsync(relativeUrl)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()
