@@ -16,6 +16,8 @@ This library implements the following services:
     * Initiate payment
 4. Sub accounts
     * Create a sub account
+    * Fetch all sub accounts
+    * Delete a sub account
 5. Transactions
     * Get all transactions
     * Verify a transaction
@@ -38,7 +40,7 @@ This library implements the following services:
 ### - Banks
 1. Get bank branches
     ```c#
-    string bankId = "280";
+    int bankId = 280;
 
     GetBankBranchesResponse response = api.GetBankBranches(bankId)
 
@@ -168,6 +170,42 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
+2. Fetch all sub accounts
+    ```c#
+    GetSubAccountsResponse response = api.GetSubAccounts();
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get all sub accounts
+        List<SubAccount> subAccounts = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+3. Delete a sub account
+    ```c#
+    int subAccountId = 12345
+    
+    DeleteSubAccountResponse response = api.DeleteSubAccount(subAccountId);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get success message
+        string successMessage = response.Message;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
     
 ### - Transactions
 1. Get all transactions
@@ -189,7 +227,8 @@ This library implements the following services:
     ```
 2. Verify a transaction
     ```c#
-    string id = "1234567";
+    int transactionId = 1234567;
+    
     VerifyTransactionResponse response = api.Transactions.VerifyTransaction(id);
 
     // success

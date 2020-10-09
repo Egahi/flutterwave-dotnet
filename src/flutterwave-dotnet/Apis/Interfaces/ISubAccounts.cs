@@ -21,7 +21,7 @@
         /// <param name="businessContact">This is the contact person for the sub-account</param>
         /// <param name="businessContactMobile">Business contact phone number</param>
         /// <param name="businessMobile">Primary business phone number</param>
-        /// <returns>The newly created subaccount details</returns>
+        /// <returns>The newly created sub account details</returns>
         public CreateSubAccountResponse CreateSubAccount(string bankCode,
                                                          string accountNumber,
                                                          string businessName,
@@ -34,9 +34,18 @@
                                                          string businessMobile = "");
 
         /// <summary>
-        /// Get all Sub Accounts
+        /// Delete a subaccount
         /// </summary>
-        /// <returns>A list of SubAccounts</returns>
+        /// <param name="subAccountId">
+        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
+        /// </param>
+        /// <returns>Success message</returns>
+        public DeleteSubAccountResponse DeleteSubAccount(int subAccountId);
+
+        /// <summary>
+        /// Get all sub accounts
+        /// </summary>
+        /// <returns>A list of sub accounts</returns>
         public GetSubAccountsResponse GetSubAccounts();
 
         /// <summary>
