@@ -30,14 +30,14 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Make Get requests to Flutterwave API
+        /// Make Delete requests to Flutterwave to API
         /// </summary>
         /// <typeparam name="T">Response Data Type</typeparam>
         /// <param name="relativeUrl">endpoint</param>
         /// <returns></returns>
-        internal T Get<T>(string relativeUrl)
+        internal T Delete<T>(string relativeUrl)
         {
-            string responseStr = _httpClient.GetAsync(relativeUrl)
+            string responseStr = _httpClient.DeleteAsync(relativeUrl)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()
@@ -49,19 +49,14 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Make Post requests to Flutterwave to API
+        /// Make Get requests to Flutterwave API
         /// </summary>
         /// <typeparam name="T">Response Data Type</typeparam>
         /// <param name="relativeUrl">endpoint</param>
-        /// <param name="data"></param>
         /// <returns></returns>
-        internal T Post<T>(string relativeUrl, object data)
+        internal T Get<T>(string relativeUrl)
         {
-            var jsonData = new StringContent(JsonConvert.SerializeObject(data),
-                                             Encoding.UTF8,
-                                             "application/json");
-
-            string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
+            string responseStr = _httpClient.GetAsync(relativeUrl)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()
@@ -97,14 +92,19 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Make Delete requests to Flutterwave to API
+        /// Make Post requests to Flutterwave to API
         /// </summary>
         /// <typeparam name="T">Response Data Type</typeparam>
         /// <param name="relativeUrl">endpoint</param>
+        /// <param name="data"></param>
         /// <returns></returns>
-        internal T Delete<T>(string relativeUrl)
+        internal T Post<T>(string relativeUrl, object data)
         {
-            string responseStr = _httpClient.DeleteAsync(relativeUrl)
+            var jsonData = new StringContent(JsonConvert.SerializeObject(data),
+                                             Encoding.UTF8,
+                                             "application/json");
+
+            string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()

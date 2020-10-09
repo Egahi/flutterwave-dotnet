@@ -411,6 +411,24 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<UpdateSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_SUB_ACCOUNT_ID_ERROR_MESSAGE, actual: result.Message);
+        }
+      
+        public void GetSubAccount_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            int subAccountId = AppConstants.VALID_SUBACCOUNT_ID;
+
+            var flutterwaveSecretKey = "";
+            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _subAccounts.GetSubAccount(subAccountId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -441,6 +459,21 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<UpdateSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+        }
+      
+        public void GetSubAccount_ValidSecretKey_InvalidSubAccountsId_ReturnsError()
+        {
+            // Arrange
+            int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
+
+            // Act 
+            var result = _subAccounts.GetSubAccount(subAccountId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNT_ERROR_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -476,6 +509,22 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: (decimal)0.5, actual:result.Data.SplitValue, 
                 precision: AppConstants.ONE_DECIMAL_PLACE);
             Assert.Equal(expected:AppConstants.ACCESS_BANK, actual:result.Data.BankName);
+        }
+      
+        public void GetSubAccount_ValidSecretKey_ValidSubAccountId_ReturnsSubAccount()
+        {
+            // Arrange
+            int subAccountId = AppConstants.VALID_SUBACCOUNT_ID;
+
+            // Act
+            var result = _subAccounts.GetSubAccount(subAccountId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNT_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<SubAccount>(result.Data);
         }
     }
 }
