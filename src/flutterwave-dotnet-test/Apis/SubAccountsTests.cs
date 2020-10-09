@@ -22,6 +22,9 @@ namespace flutterwave_dotnet_test.Apis
         public void CreateSubAccount_ExistingSubAccountWithAccountNumberAndBank_ReturnsError()
         {
             // Arrange
+            // Create a sub account to test with
+            var createTestSubAccountReponse = CreateTestSubAccount();
+
             string bankCode = AppConstants.ACCESS_BANK_CODE;
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
             string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
@@ -32,38 +35,28 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             // Act
-            var result1 = _subAccounts.CreateSubAccount(bankCode,
-                                                        accountNumber,
-                                                        businessName,
-                                                        businessEmail,
-                                                        Country.Nigeria,
-                                                        SplitType.Percentage,
-                                                        splitValue,
-                                                        businessContact,
-                                                        businessContactMobile,
-                                                        businessMobile);
-
-            var result2 = _subAccounts.CreateSubAccount(bankCode,
-                                                        accountNumber,
-                                                        businessName,
-                                                        businessEmail,
-                                                        Country.Nigeria,
-                                                        SplitType.Percentage,
-                                                        splitValue,
-                                                        businessContact,
-                                                        businessContactMobile,
-                                                        businessMobile);
-
-            // Delete newly created subAccount
-            // for purposing of re-creating in future test runs
-            _subAccounts.DeleteSubAccount(result1.Data.Id);
+            var result = _subAccounts.CreateSubAccount(bankCode,
+                                                       accountNumber,
+                                                       businessName,
+                                                       businessEmail,
+                                                       Country.Nigeria,
+                                                       SplitType.Percentage,
+                                                       splitValue,
+                                                       businessContact,
+                                                       businessContactMobile,
+                                                       businessMobile);
 
             // Assert
-            Assert.NotNull(result2);
-            Assert.IsType<CreateSubAccountResponse>(result2);
-            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result2.Status);
-            Assert.Equal(expected: AppConstants.EXISTING_SUB_ACCOUNT_ERROR_MESSAGE, actual: result2.Message);
-            Assert.Null(result2.Data);
+            Assert.NotNull(result);
+            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.EXISTING_SUB_ACCOUNT_ERROR_MESSAGE, 
+                actual: result.Message);
+            Assert.Null(result.Data);
+
+            // Delete test subAccount
+            // for purposing of re-creating in future test runs
+            DeleteTestSubAccount(createTestSubAccountReponse.Data.Id);
         }
 
         [Fact]
@@ -95,7 +88,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<CreateSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -165,7 +159,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<CreateSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -198,7 +193,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<CreateSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_SPLIT_VALUE_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_SPLIT_VALUE_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -231,7 +227,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<CreateSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -260,10 +257,6 @@ namespace flutterwave_dotnet_test.Apis
                                                        businessContactMobile,
                                                        businessMobile);
 
-            // Delete newly created subAccount
-            // for purposing of re-creating in future test runs
-            _subAccounts.DeleteSubAccount(result.Data.Id);
-
             // Assert
             Assert.NotNull(result);
             Assert.IsType<CreateSubAccountResponse>(result);
@@ -276,13 +269,17 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: (decimal)0.5, actual:result.Data.SplitValue, 
                 precision: AppConstants.ONE_DECIMAL_PLACE);
             Assert.Equal(expected:AppConstants.ACCESS_BANK, actual:result.Data.BankName);
+
+            // Delete subAccount
+            // for purposing of re-creating in future test runs
+            DeleteTestSubAccount(result.Data.Id);
         }
 
         [Fact]
         public void DeleteSubAccount_InvalidSecretKey_ReturnsError()
         {
             // Arrange
-            int subAccountId = AppConstants.VALID_SUBACCOUNT_ID;
+            int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
 
             var flutterwaveSecretKey = "";
             _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
@@ -294,7 +291,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<DeleteSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -319,78 +317,27 @@ namespace flutterwave_dotnet_test.Apis
         public void DeleteSubAccount_ValidId_ReturnsSuccessMessage()
         {
             // Arrange
-            string bankCode = AppConstants.ACCESS_BANK_CODE;
-            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
-            string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
-            string businessEmail = AppConstants.SAMPLE_EMAIL;
-            double splitValue = 0.5;
-            string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
-            string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
-            string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
+            // Create a sub account to test with
+            var createTestSubAccountReponse = CreateTestSubAccount();
+            int subAccountId = createTestSubAccountReponse.Data.Id;
 
             // Act
-            var result1 = _subAccounts.CreateSubAccount(bankCode,
-                                                        accountNumber,
-                                                        businessName,
-                                                        businessEmail,
-                                                        Country.Nigeria,
-                                                        SplitType.Percentage,
-                                                        splitValue,
-                                                        businessContact,
-                                                        businessContactMobile,
-                                                        businessMobile);
-
-            // Arrange
-            int subAccountId = result1.Data.Id;
-
-            // Act
-            var result2 = _subAccounts.DeleteSubAccount(subAccountId);
-
-            // Assert
-            Assert.NotNull(result2);
-            Assert.IsType<DeleteSubAccountResponse>(result2);
-            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result2.Status);
-            Assert.Equal(expected: AppConstants.DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: result2.Message);
-            Assert.Null(result2.Data);
-        }
-
-        [Fact]
-        public void GetSubAccounts_InvalidSecretKey_ReturnsError()
-        {
-            // Arrange
-            var flutterwaveSecretKey = "";
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
-
-            // Act
-            var result = _subAccounts.GetSubAccounts();
+            var result = _subAccounts.DeleteSubAccount(subAccountId);
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<GetSubAccountsResponse>(result);
-            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
-            Assert.Null(result.Data);
-        }
-
-        [Fact]
-        public void GetSubAccounts_ValidSecretKey_ReturnsAllSubAccounts()
-        {
-            // Act
-            var result = _subAccounts.GetSubAccounts();
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsType<GetSubAccountsResponse>(result);
+            Assert.IsType<DeleteSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_SUCCESS_MESSAGE, actual: result.Message);
-            Assert.IsType<List<SubAccount>>(result.Data);
+            Assert.Equal(expected: AppConstants.DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE, 
+                actual: result.Message);
+            Assert.Null(result.Data);
         }
 
         [Fact]
         public void GetSubAccount_InvalidSecretKey_ReturnsError()
         {
             // Arrange
-            int subAccountId = AppConstants.VALID_SUBACCOUNT_ID;
+            int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
 
             var flutterwaveSecretKey = "";
             _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
@@ -402,7 +349,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -427,7 +375,9 @@ namespace flutterwave_dotnet_test.Apis
         public void GetSubAccount_ValidSecretKey_ValidSubAccountId_ReturnsSubAccount()
         {
             // Arrange
-            int subAccountId = AppConstants.VALID_SUBACCOUNT_ID;
+            // Create a sub account to test with
+            var createTestSubAccountReponse = CreateTestSubAccount();
+            int subAccountId = createTestSubAccountReponse.Data.Id;
 
             // Act
             var result = _subAccounts.GetSubAccount(subAccountId);
@@ -436,8 +386,186 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetSubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_SUBACCOUNT_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNT_SUCCESS_MESSAGE, 
+                actual: result.Message);
             Assert.IsType<SubAccount>(result.Data);
+
+            // Delete test subAccount
+            // for purposing of re-creating in future test runs
+            DeleteTestSubAccount(createTestSubAccountReponse.Data.Id);
+        }
+
+        [Fact]
+        public void GetSubAccounts_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            var flutterwaveSecretKey = "";
+            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _subAccounts.GetSubAccounts();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetSubAccounts_ValidSecretKey_ReturnsAllSubAccounts()
+        {
+            // Act
+            var result = _subAccounts.GetSubAccounts();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetSubAccountsResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_SUBACCOUNTS_SUCCESS_MESSAGE, 
+                actual: result.Message);
+            Assert.IsType<List<SubAccount>>(result.Data);
+        }
+
+        [Fact]
+        public void UpdateSubAccounts_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
+
+            string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
+            string businessEmail = AppConstants.SAMPLE_EMAIL;
+            string bankCode = AppConstants.ACCESS_BANK_CODE;
+            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            double splitValue = 0.5;
+
+            var flutterwaveSecretKey = "";
+            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+
+            // Act
+            var result = _subAccounts.UpdateSubAccount(subAccountId,
+                                                       businessName,
+                                                       businessEmail,
+                                                       bankCode,
+                                                       accountNumber,
+                                                       SplitType.Percentage,
+                                                       splitValue);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
+        }
+
+        [Fact]
+        public void UpdateSubAccount_ValidSecretKey_InvalidSubAccountId_ReturnsError()
+        {
+            // Arrange
+            int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
+            string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
+            string businessEmail = AppConstants.SAMPLE_EMAIL;
+            string bankCode = AppConstants.ACCESS_BANK_CODE;
+            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            double splitValue = 0.5;
+
+            // Act
+            var result = _subAccounts.UpdateSubAccount(subAccountId,
+                                                       businessName,
+                                                       businessEmail,
+                                                       bankCode,
+                                                       accountNumber,
+                                                       SplitType.Percentage,
+                                                       splitValue);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.UPDATE_SUB_ACCOUNT_ERROR_MESSAGE, 
+                actual: result.Message);
+        }
+
+        [Fact]
+        public void UpdateSubAccount_ValidParamters_ReturnsSubAccount()
+        {
+            // Arrange
+            // Create a sub account to test with
+            var createTestSubAccountReponse = CreateTestSubAccount();
+
+            int subAccountId = createTestSubAccountReponse.Data.Id;
+            string newBusinessName = AppConstants.SAMPLE_BUSINESS_NAME;
+            string newBusinessEmail = AppConstants.SAMPLE_EMAIL;
+            string newBankCode = AppConstants.ACCESS_BANK_CODE;
+            string newAccountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            double newSplitValue = 0.5;
+
+            // Act
+            var result = _subAccounts.UpdateSubAccount(subAccountId,
+                                                       newBusinessName,
+                                                       newBusinessEmail,
+                                                       newBankCode,
+                                                       newAccountNumber,
+                                                       SplitType.Percentage,
+                                                       newSplitValue);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.UPDATE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<SubAccount>(result.Data);
+            Assert.Equal(expected: AppConstants.ACCESS_BANK_CODE, actual: result.Data.BankCode);
+            Assert.Equal(expected: AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER, actual: result.Data.AccountNumber);
+            Assert.Equal(expected: AppConstants.SPLIT_TYPE_PERCENTAGE, actual: result.Data.SplitType);
+            Assert.Equal(expected: (decimal)0.5, actual: result.Data.SplitValue,
+                precision: AppConstants.ONE_DECIMAL_PLACE);
+            Assert.Equal(expected: AppConstants.ACCESS_BANK, actual: result.Data.BankName);
+
+            // Delete test subAccount
+            // for purposing of re-creating in future test runs
+            DeleteTestSubAccount(createTestSubAccountReponse.Data.Id);
+        }
+
+        /// <summary>
+        /// Create test sub account for unit tests
+        /// </summary>
+        /// <returns></returns>
+        private CreateSubAccountResponse CreateTestSubAccount()
+        {
+            string bankCode = AppConstants.ACCESS_BANK_CODE;
+            string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
+            string businessName = AppConstants.SAMPLE_BUSINESS_NAME;
+            string businessEmail = AppConstants.SAMPLE_EMAIL;
+            double splitValue = 0.5;
+            string businessContact = AppConstants.SAMPLE_CUSTOMER_NAME;
+            string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
+            string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
+
+            var result = _subAccounts.CreateSubAccount(bankCode,
+                                                        accountNumber,
+                                                        businessName,
+                                                        businessEmail,
+                                                        Country.Nigeria,
+                                                        SplitType.Percentage,
+                                                        splitValue,
+                                                        businessContact,
+                                                        businessContactMobile,
+                                                        businessMobile);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Delete test sub account
+        /// </summary>
+        /// <returns></returns>
+        private void DeleteTestSubAccount(int subAccountId)
+        {
+            _subAccounts.DeleteSubAccount(subAccountId);
         }
     }
 }

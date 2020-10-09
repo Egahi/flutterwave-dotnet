@@ -16,8 +16,10 @@ This library implements the following services:
     * Initiate payment
 4. Sub accounts
     * Create a sub account
-    * Fetch all sub accounts
     * Delete a sub account
+    * Fetch a sub account
+    * Fetch all sub accounts
+    * Update a sub account
 5. Transactions
     * Get all transactions
     * Verify a transaction
@@ -170,7 +172,45 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
-2. Fetch all sub accounts
+2. Delete a sub account
+    ```c#
+    int subAccountId = 12345
+    
+    DeleteSubAccountResponse response = api.DeleteSubAccount(subAccountId);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get success message
+        string successMessage = response.Message;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+3. Fetch a sub account
+    ```c#
+    int subAccountId = 12345
+    
+    GetSubAccountResponse response = api.GetSubAccount(subAccountId);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get the sub account
+        SubAccount subAccounts = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+4. Fetch all sub accounts
     ```c#
     GetSubAccountsResponse response = api.GetSubAccounts();
 
@@ -187,17 +227,28 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
-3. Delete a sub account
+5. Update a sub account
     ```c#
-    int subAccountId = 12345
-    
-    DeleteSubAccountResponse response = api.DeleteSubAccount(subAccountId);
+    int subAccountId = 12345;
+    string businessName = "Eternal Blue";
+    string businessEmail = "user@gmail.com";
+    string bankCode = "044";
+    string accountNumber = "0690000032";
+    double splitValue = 0.5;
+
+    UpdateSubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
+                                                                     businessName,
+                                                                     businessEmail,
+                                                                     bankCode,
+                                                                     accountNumber,
+                                                                     SplitType.Percentage,
+                                                                     splitValue);
 
     // success
     if (response.Status == "success")
     {
-        // Get success message
-        string successMessage = response.Message;
+        // Get updated sub account
+        SubAccount subAccount = response.Data;
     }
     // error
     else

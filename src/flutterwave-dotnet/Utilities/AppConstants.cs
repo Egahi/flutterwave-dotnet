@@ -82,7 +82,8 @@
         public static string SAMPLE_BUSINESS_NAME = "Eternal Blue";
         public const string SPLIT_TYPE_FLAT = "flat";
         public const string SPLIT_TYPE_PERCENTAGE = "percentage";
-        public static int VALID_SUBACCOUNT_ID = 6692;
+        public static string UPDATE_SUB_ACCOUNT_ERROR_MESSAGE = "Merchant not found";
+        public static string UPDATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount edited";
 
         // Transactions
         public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
