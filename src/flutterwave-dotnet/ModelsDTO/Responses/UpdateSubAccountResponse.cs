@@ -1,6 +1,6 @@
 namespace Flutterwave.Net
 {
-    public class UpdateSubAccountResponse : Response<UpdateSubAccount>
+    public class UpdateSubAccountResponse : Response<SubAccount>
     {
     }
 }

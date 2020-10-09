@@ -95,13 +95,12 @@ namespace Flutterwave.Net
         /// <param name="subAccountId">
         /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
         /// </param>
-        /// <param name="businessName">This is the sub-account business name.</param>
+        /// <param name="businessName">This is the sub-account business name</param>
         /// <param name="businessEmail">This is the sub-account business email</param>        
         /// <param name="bankCode">
-        /// This is the sub-accounts bank ISO code. 
-        /// It is returned in the Get banks call as data.code
+        /// This is the sub-accounts bank ISO code. It is returned in the Get banks call as data.code
         /// </param>
-        /// <param name="accountNumber">This is the customer's account number.</param>
+        /// <param name="accountNumber">This is the customer's account number</param>
         /// <param name="splitType">This can be set as percentage or flat</param>
         /// <param name="splitValue">
         /// This can be a percentage value or flat value depending on what was set on splitType. 
