@@ -4,6 +4,7 @@ namespace Flutterwave.Net
 {
     public class PageInfo
     {
+        [JsonProperty("total")]
         public int Total { get; set; }
         [JsonProperty("current_page")]
         public int CurrentPage { get; set; }

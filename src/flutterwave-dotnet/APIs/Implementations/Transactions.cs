@@ -25,7 +25,7 @@ namespace Flutterwave.Net
         /// </summary>
         /// <param name="transactionId">
         /// This is the transaction unique identifier. It is returned in the Get transactions 
-        /// call as data.id
+        /// call as data.Id
         /// </param>
         /// <returns>The transaction with the specified id</returns>
         public VerifyTransactionResponse VerifyTransaction(int transactionId)

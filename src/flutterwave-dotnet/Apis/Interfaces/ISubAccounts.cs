@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="bankCode">
         /// This is the sub-accounts bank ISO code. 
-        /// It is returned in the Get banks call as data.code
+        /// It is returned in the Get banks call as data.Code
         /// </param>
         /// <param name="accountNumber">This is the customer's account number.</param>
         /// <param name="businessName">This is the sub-account business name.</param>
@@ -18,7 +18,7 @@
         /// This can be a percentage value or flat value depending on what was set on splitType. 
         /// Note that the % value is in decimal. So 50% is 0.5 and so on.
         /// </param>
-        /// <param name="businessContact">This is the contact person for the sub-account</param>
+        /// <param name="businessContact">This is the contact person for the sub account</param>
         /// <param name="businessContactMobile">Business contact phone number</param>
         /// <param name="businessMobile">Primary business phone number</param>
         /// <returns>The newly created sub account details</returns>

@@ -6,7 +6,7 @@
         /// Get bank branches
         /// </summary>
         /// <param name="bankId">
-        /// Unique bank ID, it is returned in the Get banks call as data.id
+        /// Unique bank ID, it is returned in the Get banks call as data.Id
         /// </param>
         /// <returns>A list of bank branches</returns>
         public GetBankBranchesResponse GetBankBranches(int bankId);

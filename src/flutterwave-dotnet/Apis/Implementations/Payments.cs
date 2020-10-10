@@ -1,4 +1,5 @@
 ﻿using Flutterwave.Net.Utilities;
+using System.Collections.Generic;
 
 namespace Flutterwave.Net
 {
@@ -24,6 +25,9 @@ namespace Flutterwave.Net
         /// <param name="paymentDescription">A description for this payment</param>
         /// <param name="brandLogoUrl">A link to your brand's logo</param>
         /// <param name="currency">Currency of payment, default value is Naira - "NGN"</param>
+        /// <param name="splitPaymentRequests">
+        /// List of parameters to split payment. It is called subaccounts on the offical documentation
+        /// </param>
         /// <returns>A hosted link with the payment details</returns>
         public InitiatePaymentResponse InitiatePayment(string referenceNumber,
                                                        decimal amount,
@@ -34,8 +38,27 @@ namespace Flutterwave.Net
                                                        string paymentTitle,
                                                        string paymentDescription,
                                                        string brandLogoUrl,
-                                                       Currency currency = Currency.NigerianNaira)
+                                                       Currency currency = Currency.NigerianNaira,
+                                                       List<SplitPaymentRequest> splitPaymentRequests = null)
         {
+            List<SplitPayment> splitPayments = null;
+
+            if (splitPaymentRequests != null)
+            {
+                splitPayments = new List<SplitPayment>();
+
+                foreach (var request in splitPaymentRequests)
+                {
+                    splitPayments.Add(new SplitPayment
+                    {
+                        SubAccountId = request.SubAccountId,
+                        TransactionSplitRatio = request.TransactionSplitRatio,
+                        TransactionChargeType = request.TransactionChargeType.GetValue(),
+                        TransactionCharge = request.TransactionCharge
+                    });
+                }
+            }
+
             var data = new InitiatePaymentRequest(referenceNumber,
                                                   amount,
                                                   currency.GetValue(),
@@ -45,7 +68,8 @@ namespace Flutterwave.Net
                                                   customerPhoneNumber,
                                                   paymentTitle,
                                                   paymentDescription,
-                                                  brandLogoUrl);
+                                                  brandLogoUrl,
+                                                  splitPayments);
 
             return _flutterwaveApi.Post<InitiatePaymentResponse>(Endpoints.PAYMENTS, data);
         }

@@ -5,6 +5,7 @@ namespace Flutterwave.Net
 {
     public class SubAccount
     {
+        [JsonProperty("id")]
         public int Id { get; set; }
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; }

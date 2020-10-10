@@ -1,4 +1,6 @@
-﻿namespace Flutterwave.Net
+﻿using Newtonsoft.Json;
+
+namespace Flutterwave.Net
 {
     public class Customizations
     {
@@ -11,8 +13,11 @@
             Logo = logo;
         }
 
+        [JsonProperty("title")]
         public string Title { get; set; }
+        [JsonProperty("description")]
         public string Description { get; set; }
+        [JsonProperty("logo")]
         public string Logo { get; set; }
     }
 }
