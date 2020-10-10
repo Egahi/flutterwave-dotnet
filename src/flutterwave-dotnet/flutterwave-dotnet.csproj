@@ -4,12 +4,34 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Flutterwave.Net</RootNamespace>
     <LangVersion>8.0</LangVersion>
+    <Authors>Egahi S. O.</Authors>
+    <PackageId>Flutterwave.Net</PackageId>
+    <Product>Flutterwave.Net</Product>
+    <Description>.NET Library for Flutterwave v3 APIs</Description>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright>© 2020 Egahi S. O.</Copyright>
+    <PackageTags>.Net, API, Fluttwerwave, Gateway, Payment, Rave</PackageTags>
+    <RepositoryUrl>https://github.com/Egahi/flutterwave-dotnet/tree/release-v1.0.0</RepositoryUrl>
+    <PackageIcon>Flutterwave.Net.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Egahi/flutterwave-dotnet/tree/release-v1.0.0</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="NuGet.CommandLine" Version="5.7.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\Flutterwave.Net.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
