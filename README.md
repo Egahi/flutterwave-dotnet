@@ -24,6 +24,20 @@ This library implements the following services:
     * Get all transactions
     * Verify a transaction
     
+## Installation
+* From Nuget <br/>
+    ```c#
+    Install-Package Flutterwave.Net -Version 1.0.0
+    ```
+* From .NET CLI
+    ```c#
+    dotnet add package Flutterwave.Net --version 1.0.0
+    ```
+* As a package reference
+    ```c#
+    <PackageReference Include="Flutterwave.Net" Version="1.0.0" />
+    ```
+    
 ## Configuration
 1. Include the Flutterwave.Net namespace to expose all types
     ```c#
