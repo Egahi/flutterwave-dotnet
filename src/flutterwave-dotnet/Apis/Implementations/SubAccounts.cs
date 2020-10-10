@@ -16,7 +16,7 @@ namespace Flutterwave.Net
         /// </summary>
         /// <param name="bankCode">
         /// This is the sub-accounts bank ISO code. 
-        /// It is returned in the Get banks call as data.code
+        /// It is returned in the Get banks call as data.Code
         /// </param>
         /// <param name="accountNumber">This is the customer's account number.</param>
         /// <param name="businessName">This is the sub-account business name.</param>
@@ -27,7 +27,7 @@ namespace Flutterwave.Net
         /// This can be a percentage value or flat value depending on what was set on splitType. 
         /// Note that the % value is in decimal. So 50% is 0.5 and so on.
         /// </param>
-        /// <param name="businessContact">This is the contact person for the sub-account</param>
+        /// <param name="businessContact">This is the contact person for the sub account</param>
         /// <param name="businessContactMobile">Business contact phone number</param>
         /// <param name="businessMobile">Primary business phone number</param>
         /// <returns>The newly created sub account details</returns>
@@ -60,7 +60,7 @@ namespace Flutterwave.Net
         /// Delete a sub account
         /// </summary>
         /// <param name="subAccountId">
-        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
+        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.Id
         /// </param>
         /// <returns>Success message</returns>
         public DeleteSubAccountResponse DeleteSubAccount(int subAccountId)
@@ -72,7 +72,7 @@ namespace Flutterwave.Net
         /// Get a single sub account
         /// </summary>
         /// <param name="subAccountId">
-        /// Unique sub account Id, it is returned in the Get SubAccounts call as data.id
+        /// Unique sub account Id, it is returned in the Get SubAccounts call as data.Id
         /// </param>
         /// <returns>A Sub Account</returns>
         public GetSubAccountResponse GetSubAccount(int subAccountId)
@@ -93,7 +93,7 @@ namespace Flutterwave.Net
         /// Update a subaccount
         /// </summary>
         /// <param name="subAccountId">
-        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
+        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.Id
         /// </param>
         /// <param name="businessName">This is the sub-account business name</param>
         /// <param name="businessEmail">This is the sub-account business email</param>        
