@@ -12,7 +12,7 @@ First off, thanks for taking the time to contribute! 🙌🙌🎉🎉
 ## How to contribute
 1. Fork this repository
 2. Clone your fork locally
-3. Branch off dev
+3. Branch off master
 4. Write your code and commit them (mutiple commits during development is preferred)
 5. Push the new branch to your fork
 6. Open a pull request
