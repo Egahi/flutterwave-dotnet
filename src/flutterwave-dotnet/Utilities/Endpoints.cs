@@ -8,5 +8,6 @@
         public static string PAYMENTS = "payments";
         public static string SUB_ACCOUNTS = "subaccounts";
         public static string TRANSACTIONS = "transactions";
+        public static string PAYMENT_PLANS = "payment-plans"; 
     }
 }
