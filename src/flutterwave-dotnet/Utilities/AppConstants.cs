@@ -96,5 +96,26 @@
         // Urls
         public static string SAMPLE_BRAND_LOGO_URL = "https://assets.piedpiper.com/logo.png";
         public static string SAMPLE_REDIRECT_URL = "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc";
+
+        // Intervals
+        public const string YEARLY = "yearly";
+        public const string QUARTERLY = "quarterly";
+        public const string MONTHLY = "monthly";
+        public const string WEEKLY = "weekly";
+        public const string DAILY = "daily";
+
+        // PaymentPlans
+        public static string CANCEL_PAYMENTPLAN_ERROR_MESSAGE = "Payment plan does not exist";
+        public static string CANCEL_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan cancelled";
+        public static string CREATE_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan created";
+        public static string GET_PAYMENTPLAN_ERROR_MESSAGE = "No payment plan found";
+        public static string GET_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan fetched";
+        public static string GET_PAYMENTPLANS_SUCCESS_MESSAGE = "Payment plans fetched";
+        public static int INVALID_PAYMENTPLAN_ID = 1234;
+        public static decimal PAYMENTPLAN_AMOUNT = 5000;
+        public static string PAYMENTPLAN_NAME = "Monthly Nepa Bill Collection";
+        public static decimal PAYMENTPLAN_DURATION = 24;
+        public static string UPDATE_PAYMENTPLAN_ERROR_MESSAGE = "Payment plan does not exist";
+        public static string UPDATE_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan updated";
     }
 }
