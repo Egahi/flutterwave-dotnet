@@ -92,7 +92,10 @@ namespace flutterwave_dotnet_test.Apis
             _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
 
             // Act
-            var result = _payments.CreatePaymentPlan(amount, name, Interval.Monthly, duration);
+            var result = _payments.CreatePaymentPlan(amount, 
+                                                     name, 
+                                                     Interval.Monthly, 
+                                                     duration);
 
             // Assert
             Assert.NotNull(result);
@@ -112,7 +115,10 @@ namespace flutterwave_dotnet_test.Apis
             int duration = 24;
 
             // Act
-            var result = _payments.CreatePaymentPlan(amount, name, Interval.Monthly, duration);
+            var result = _payments.CreatePaymentPlan(amount, 
+                                                     name, 
+                                                     Interval.Monthly, 
+                                                     duration);
 
             // Assert
             Assert.NotNull(result);
@@ -379,8 +385,8 @@ namespace flutterwave_dotnet_test.Apis
 
             // Act
             var result = _payments.UpdatePaymentPlan(paymentPlanId,
-                                                          name,
-                                                          Status.Active);
+                                                     name,
+                                                     Status.Active);
 
             // Assert
             Assert.NotNull(result);
