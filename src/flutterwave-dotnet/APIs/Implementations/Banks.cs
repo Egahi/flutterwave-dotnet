@@ -12,7 +12,7 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Get bank branches
+        /// Get a list of bank branches
         /// </summary>
         /// <param name="bankId">
         /// Unique bank ID, it is returned in the Get banks call as data.Id
@@ -24,7 +24,7 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Get all Banks
+        /// Get list of banks you can transfer to
         /// </summary>
         /// <param name="country">Get list of banks in this country</param>
         /// <returns>A list of Banks</returns>
