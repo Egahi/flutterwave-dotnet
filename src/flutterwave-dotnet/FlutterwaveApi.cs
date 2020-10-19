@@ -12,7 +12,6 @@ namespace Flutterwave.Net
         private HttpClient _httpClient { get; }
         public IBanks Banks { get; }
         public IMiscellaneous Miscellaneous { get; }
-        public IPaymentPlans PaymentPlans { get; }
         public IPayments Payments { get; }
         public ISubAccounts SubAccounts { get; }
         public ITransactions Transactions { get; }
@@ -25,7 +24,6 @@ namespace Flutterwave.Net
 
             Banks = new Banks(this);
             Miscellaneous = new Miscellaneous(this);
-            PaymentPlans = new PaymentPlans(this);
             Payments = new Payments(this);
             SubAccounts = new SubAccounts(this);
             Transactions = new Transactions(this);
