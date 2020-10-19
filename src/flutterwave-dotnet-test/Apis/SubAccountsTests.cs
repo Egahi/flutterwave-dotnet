@@ -389,6 +389,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.GET_SUBACCOUNT_SUCCESS_MESSAGE, 
                 actual: result.Message);
             Assert.IsType<SubAccount>(result.Data);
+            Assert.Equal(expected: subAccountId, actual: result.Data.Id);
 
             // Delete test subAccount
             // for purposing of re-creating in future test runs
@@ -518,6 +519,7 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.UPDATE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: result.Message);
             Assert.IsType<SubAccount>(result.Data);
+            Assert.Equal(expected: subAccountId, actual: result.Data.Id);
             Assert.Equal(expected: AppConstants.ACCESS_BANK_CODE, actual: result.Data.BankCode);
             Assert.Equal(expected: AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER, actual: result.Data.AccountNumber);
             Assert.Equal(expected: AppConstants.SPLIT_TYPE_PERCENTAGE, actual: result.Data.SplitType);
