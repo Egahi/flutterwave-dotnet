@@ -11,7 +11,7 @@ namespace Flutterwave.Net
          /// The unique id of the Payment Plan you want to cancel, it is returned in the Get Payment Plan call as data.id
          /// </param>
          /// <returns>Success message</returns>
-        public CancelPaymentPlanResponse CancelPaymentPlan(int paymentPlanId);
+        public PaymentPlanResponse CancelPaymentPlan(int paymentPlanId);
 
         /// <summary>
         /// Create a payment plan
@@ -30,10 +30,10 @@ namespace Flutterwave.Net
         /// you would be charged 5 months, and then the subscription stops
         /// </param>
         /// <returns>The newly created payment plan details</returns>
-        public CreatePaymentPlanResponse CreatePaymentPlan(decimal amount,
-                                                           string name,
-                                                           Interval interval,
-                                                           int duration);
+        public PaymentPlanResponse CreatePaymentPlan(decimal amount,
+                                                     string name,
+                                                     Interval interval,
+                                                     int duration);
 
         /// <summary>
         /// Get a single payment plan
@@ -42,7 +42,7 @@ namespace Flutterwave.Net
         /// Unique payment plan Id, it is returned in the Get Payment Plans call as data.id
         /// </param>
         /// <returns>A payment plan</returns>
-        public GetPaymentPlanResponse GetPaymentPlan(int paymentPlanId);
+        public PaymentPlanResponse GetPaymentPlan(int paymentPlanId);
 
         /// <summary>
         /// Get all payment plans
@@ -88,8 +88,8 @@ namespace Flutterwave.Net
         /// <param name="name">The new name of the payment plan</param>
         /// <param name="status">The new status of the payment plan</param>        
         /// <returns>The updated payment plan details</returns>
-        public UpdatePaymentPlanResponse UpdatePaymentPlan(int paymentPlanId,
-                                                           string name,
-                                                           Status status);
+        public PaymentPlanResponse UpdatePaymentPlan(int paymentPlanId,
+                                                     string name,
+                                                     Status status);
     }
 }

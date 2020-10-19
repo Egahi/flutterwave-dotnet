@@ -33,7 +33,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CancelPaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -51,7 +51,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CancelPaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.CANCEL_PAYMENT_PLAN_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -71,7 +71,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CancelPaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.CANCEL_PAYMENT_PLAN_SUCCESS_MESSAGE, 
                 actual: result.Message);
@@ -99,7 +99,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreatePaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE,
                 actual: result.Message);
@@ -122,7 +122,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreatePaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.CREATE_PAYMENT_PLAN_SUCCESS_MESSAGE, 
                 actual: result.Message);
@@ -143,7 +143,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<GetPaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -161,7 +161,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<GetPaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_PAYMENT_PLAN_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -181,7 +181,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<GetPaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_PAYMENT_PLAN_SUCCESS_MESSAGE, 
                 actual: result.Message);
@@ -348,7 +348,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UpdatePaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -368,7 +368,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UpdatePaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.UPDATE_PAYMENT_PLAN_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -390,7 +390,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UpdatePaymentPlanResponse>(result);
+            Assert.IsType<PaymentPlanResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.UPDATE_PAYMENT_PLAN_SUCCESS_MESSAGE, 
                 actual: result.Message);
@@ -404,7 +404,7 @@ namespace flutterwave_dotnet_test.Apis
         /// Create test Payment Plan for unit tests
         /// </summary>
         /// <returns></returns>
-        private CreatePaymentPlanResponse CreatePaymentPlan()
+        private PaymentPlanResponse CreatePaymentPlan()
         {
             decimal amount = 5000;
             string name = AppConstants.SAMPLE_PAYMENT_PLAN_NAME;

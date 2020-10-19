@@ -19,9 +19,9 @@ namespace Flutterwave.Net
         /// The unique id of the Payment Plan you want to cancel, it is returned in the Get Payment Plan call as data.id
         /// </param>
         /// <returns>Success message</returns>
-        public CancelPaymentPlanResponse CancelPaymentPlan(int paymentPlanId)
+        public PaymentPlanResponse CancelPaymentPlan(int paymentPlanId)
         {
-            return _flutterwaveApi.Put<CancelPaymentPlanResponse>($"{Endpoints.PAYMENT_PLANS}/{paymentPlanId}/cancel");
+            return _flutterwaveApi.Put<PaymentPlanResponse>($"{Endpoints.PAYMENT_PLANS}/{paymentPlanId}/cancel");
         }
 
         /// <summary>
@@ -41,17 +41,17 @@ namespace Flutterwave.Net
         /// you would be charged 5 months, and then the subscription stops
         /// </param>
         /// <returns>The newly created payment plan details</returns>
-        public CreatePaymentPlanResponse CreatePaymentPlan(decimal amount,
-                                                           string name,
-                                                           Interval interval,
-                                                           int duration)
+        public PaymentPlanResponse CreatePaymentPlan(decimal amount,
+                                                     string name,
+                                                     Interval interval,
+                                                     int duration)
         {
             var data = new CreatePaymentPlanRequest(amount,
                                                     name,
                                                     interval.GetValue(),
                                                     duration);
 
-            return _flutterwaveApi.Post<CreatePaymentPlanResponse>(Endpoints.PAYMENT_PLANS, data);
+            return _flutterwaveApi.Post<PaymentPlanResponse>(Endpoints.PAYMENT_PLANS, data);
         }
 
         /// <summary>
@@ -61,9 +61,9 @@ namespace Flutterwave.Net
         /// Unique payment plan Id, it is returned in the Get Payment Plans call as data.id
         /// </param>
         /// <returns>A payment plan</returns>
-        public GetPaymentPlanResponse GetPaymentPlan(int paymentPlanId)
+        public PaymentPlanResponse GetPaymentPlan(int paymentPlanId)
         {
-            return _flutterwaveApi.Get<GetPaymentPlanResponse>($"{Endpoints.PAYMENT_PLANS}/{paymentPlanId}");
+            return _flutterwaveApi.Get<PaymentPlanResponse>($"{Endpoints.PAYMENT_PLANS}/{paymentPlanId}");
         }
 
         /// <summary>
@@ -146,13 +146,13 @@ namespace Flutterwave.Net
         /// <param name="name">The new name of the payment plan</param>
         /// <param name="status">The new status of the payment plan</param>        
         /// <returns>The updated payment plan details</returns>
-        public UpdatePaymentPlanResponse UpdatePaymentPlan(int paymentPlanId,
-                                                           string name,
-                                                           Status status)
+        public PaymentPlanResponse UpdatePaymentPlan(int paymentPlanId,
+                                                     string name,
+                                                     Status status)
         {
             var data = new UpdatePaymentPlanRequest(name, status.GetValue());
 
-            return _flutterwaveApi.Put<UpdatePaymentPlanResponse>($"{Endpoints.PAYMENT_PLANS}/{paymentPlanId}", data);
+            return _flutterwaveApi.Put<PaymentPlanResponse>($"{Endpoints.PAYMENT_PLANS}/{paymentPlanId}", data);
         }
     }
 }
