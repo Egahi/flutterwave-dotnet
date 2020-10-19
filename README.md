@@ -123,7 +123,7 @@ This library implements the following services:
     ```c#
     int paymentPlanId = 123;
     
-    CancelPaymentPlanResponse response = api.CancelPaymentPlan(paymentPlanId);
+    PaymentPlanResponse response = api.CancelPaymentPlan(paymentPlanId);
 
     // success
     if (response.Status == "success")
@@ -147,7 +147,7 @@ This library implements the following services:
     string name = "Monthly Nepa Bill Collection";
     int duration = 24;
     
-    CreatePaymentPlanResponse response = api.CreatePaymentPlan(amount, 
+    PaymentPlanResponse response = api.CreatePaymentPlan(amount, 
                                                                name, 
                                                                Interval.Monthly, 
                                                                duration);
@@ -169,7 +169,7 @@ This library implements the following services:
     ```c#
     int paymentPlanId = 123;
     
-    GetPaymentPlanResponse response = api.GetPaymentPlan(paymentPlanId);
+    PaymentPlanResponse response = api.GetPaymentPlan(paymentPlanId);
 
     // success
     if (response.Status == "success")
@@ -241,7 +241,7 @@ This library implements the following services:
     int paymentPlanId = 123;
     string name = "January neighbourhood";
     
-    UpdatePaymentPlanResponse response = api.UpdatePaymentPlan(paymentPlanId,
+    PaymentPlanResponse response = api.UpdatePaymentPlan(paymentPlanId,
                                                                name,
                                                                Status.Active);
 
@@ -271,7 +271,7 @@ This library implements the following services:
     string businessContactMobile = "08012345678";
     string businessMobile = "08012345678";
 
-    CreateSubAccountResponse response = api.CreateSubAccount(bankCode,
+    SubAccountResponse response = api.CreateSubAccount(bankCode,
                                                              accountNumber,
                                                              businessName,
                                                              businessEmail,
@@ -299,7 +299,7 @@ This library implements the following services:
     ```c#
     int subAccountId = 12345
     
-    DeleteSubAccountResponse response = api.DeleteSubAccount(subAccountId);
+    SubAccountResponse response = api.DeleteSubAccount(subAccountId);
 
     // success
     if (response.Status == "success")
@@ -318,7 +318,7 @@ This library implements the following services:
     ```c#
     int subAccountId = 12345;
     
-    GetSubAccountResponse response = api.GetSubAccount(subAccountId);
+    SubAccountResponse response = api.GetSubAccount(subAccountId);
 
     // success
     if (response.Status == "success")
@@ -359,7 +359,7 @@ This library implements the following services:
     string accountNumber = "0690000032";
     double splitValue = 0.5;
 
-    UpdateSubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
+    SubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
                                                                      businessName,
                                                                      businessEmail,
                                                                      bankCode,
