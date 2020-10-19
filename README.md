@@ -9,11 +9,16 @@ This library makes it easy to consume [Flutterwave API (v3)](https://developer.f
 This library implements the following services:
 1. Banks
     * Get bank branches
-    * Get all banks
+    * Get banks
 2. Miscellaneous
     * Verify a bank account number
 3. Payments
+    * Cancel a payment plan
+    * Create a payment plan
+    * Get a payment plan
+    * Get payment plans
     * Initiate payment
+    * Update a payment plan
 4. Sub accounts
     * Create a sub account
     * Delete a sub account
@@ -58,7 +63,7 @@ This library implements the following services:
     ```c#
     int bankId = 280;
 
-    GetBankBranchesResponse response = api.GetBankBranches(bankId)
+    GetBankBranchesResponse response = api.GetBankBranches(bankId);
 
     // success
     if (response.Status == "success")
@@ -74,9 +79,9 @@ This library implements the following services:
     }
     ```
     
-2. Get all banks
+2. Get banks
     ```c#
-    GetBanksResponse response = api.GetBanks(Country.Nigeria)
+    GetBanksResponse response = api.GetBanks(Country.Nigeria);
 
     // success
     if (response.Status == "success")
@@ -114,7 +119,89 @@ This library implements the following services:
     ```
 
 ### - Payments
-1. Initiate payment
+1. Cancel a payment plan
+    ```c#
+    int paymentPlanId = 123;
+    
+    PaymentPlanResponse response = api.CancelPaymentPlan(paymentPlanId);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get payment plan
+        PaymentPlan paymentPlan = response.Data;
+        
+        // Verify payment plan status
+        bool isCancelled = paymentPlan.Status == "cancelled";
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+2. Create a payment plan
+    ```c#
+    decimal amount = 5000;
+    string name = "Monthly Nepa Bill Collection";
+    int duration = 24;
+    
+    PaymentPlanResponse response = api.CreatePaymentPlan(amount, 
+                                                               name, 
+                                                               Interval.Monthly, 
+                                                               duration);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get payment plan
+        PaymentPlan paymentPlan = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+3. Get a payment plan
+    ```c#
+    int paymentPlanId = 123;
+    
+    PaymentPlanResponse response = api.GetPaymentPlan(paymentPlanId);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get payment plan
+        PaymentPlan paymentPlan = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+4. Get payment plans
+    ```c#
+    GetPaymentPlansResponse response = api.GetPaymentPlans();
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get payment plans
+        List<PaymentPlan> paymentPlans = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+5. Initiate payment
     ```c#
     string txRef = "hooli-tx-1920bbtytty";
     decimal amount = 100;
@@ -149,6 +236,28 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
+6. Update a payment plan
+    ```c#
+    int paymentPlanId = 123;
+    string name = "January neighbourhood";
+    
+    PaymentPlanResponse response = api.UpdatePaymentPlan(paymentPlanId,
+                                                               name,
+                                                               Status.Active);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get payment plan
+        PaymentPlan paymentPlan = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
 
 ### - Sub accounts
 1. Create a sub account
@@ -162,7 +271,7 @@ This library implements the following services:
     string businessContactMobile = "08012345678";
     string businessMobile = "08012345678";
 
-    CreateSubAccountResponse response = api.CreateSubAccount(bankCode,
+    SubAccountResponse response = api.CreateSubAccount(bankCode,
                                                              accountNumber,
                                                              businessName,
                                                              businessEmail,
@@ -190,7 +299,7 @@ This library implements the following services:
     ```c#
     int subAccountId = 12345
     
-    DeleteSubAccountResponse response = api.DeleteSubAccount(subAccountId);
+    SubAccountResponse response = api.DeleteSubAccount(subAccountId);
 
     // success
     if (response.Status == "success")
@@ -207,9 +316,9 @@ This library implements the following services:
     ```
 3. Fetch a sub account
     ```c#
-    int subAccountId = 12345
+    int subAccountId = 12345;
     
-    GetSubAccountResponse response = api.GetSubAccount(subAccountId);
+    SubAccountResponse response = api.GetSubAccount(subAccountId);
 
     // success
     if (response.Status == "success")
@@ -250,7 +359,7 @@ This library implements the following services:
     string accountNumber = "0690000032";
     double splitValue = 0.5;
 
-    UpdateSubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
+    SubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
                                                                      businessName,
                                                                      businessEmail,
                                                                      bankCode,

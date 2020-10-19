@@ -31,16 +31,16 @@ namespace Flutterwave.Net
         /// <param name="businessContactMobile">Business contact phone number</param>
         /// <param name="businessMobile">Primary business phone number</param>
         /// <returns>The newly created sub account details</returns>
-        public CreateSubAccountResponse CreateSubAccount(string bankCode,
-                                                         string accountNumber,
-                                                         string businessName,
-                                                         string businessEmail,
-                                                         Country country,
-                                                         SplitType splitType,
-                                                         double splitValue,
-                                                         string businessContact = "",
-                                                         string businessContactMobile = "",
-                                                         string businessMobile = "")
+        public SubAccountResponse CreateSubAccount(string bankCode,
+                                                   string accountNumber,
+                                                   string businessName,
+                                                   string businessEmail,
+                                                   Country country,
+                                                   SplitType splitType,
+                                                   double splitValue,
+                                                   string businessContact = "",
+                                                   string businessContactMobile = "",
+                                                   string businessMobile = "")
         {
             var data = new CreateSubAccountRequest(bankCode,
                                                    accountNumber,
@@ -53,7 +53,7 @@ namespace Flutterwave.Net
                                                    businessContactMobile,
                                                    businessMobile);
 
-            return _flutterwaveApi.Post<CreateSubAccountResponse>(Endpoints.SUB_ACCOUNTS, data);
+            return _flutterwaveApi.Post<SubAccountResponse>(Endpoints.SUB_ACCOUNTS, data);
         }
 
         /// <summary>
@@ -63,9 +63,9 @@ namespace Flutterwave.Net
         /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.Id
         /// </param>
         /// <returns>Success message</returns>
-        public DeleteSubAccountResponse DeleteSubAccount(int subAccountId)
+        public SubAccountResponse DeleteSubAccount(int subAccountId)
         {
-            return _flutterwaveApi.Delete<DeleteSubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}");
+            return _flutterwaveApi.Delete<SubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}");
         }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace Flutterwave.Net
         /// Unique sub account Id, it is returned in the Get SubAccounts call as data.Id
         /// </param>
         /// <returns>A Sub Account</returns>
-        public GetSubAccountResponse GetSubAccount(int subAccountId)
+        public SubAccountResponse GetSubAccount(int subAccountId)
         {
-            return _flutterwaveApi.Get<GetSubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}");
+            return _flutterwaveApi.Get<SubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}");
         }
 
         /// <summary>
@@ -107,13 +107,13 @@ namespace Flutterwave.Net
         /// Note that the % value is in decimal. So 50% is 0.5 and so on.
         /// </param>
         /// <returns>The updated sub account details</returns>
-        public UpdateSubAccountResponse UpdateSubAccount(int subAccountId,
-                                                         string businessName, 
-                                                         string businessEmail, 
-                                                         string bankCode, 
-                                                         string accountNumber, 
-                                                         SplitType splitType, 
-                                                         double splitValue)
+        public SubAccountResponse UpdateSubAccount(int subAccountId,
+                                                   string businessName, 
+                                                   string businessEmail, 
+                                                   string bankCode, 
+                                                   string accountNumber, 
+                                                   SplitType splitType, 
+                                                   double splitValue)
         {
             var data = new UpdateSubAccountRequest(businessName,
                                                    businessEmail,
@@ -122,7 +122,7 @@ namespace Flutterwave.Net
                                                    splitType.GetValue(),
                                                    splitValue);
             
-            return _flutterwaveApi.Put<UpdateSubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}", data);
+            return _flutterwaveApi.Put<SubAccountResponse>($"{Endpoints.SUB_ACCOUNTS}/{subAccountId}", data);
         }
     }
 }

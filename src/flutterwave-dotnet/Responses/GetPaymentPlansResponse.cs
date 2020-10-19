@@ -2,7 +2,7 @@
 
 namespace Flutterwave.Net
 {
-    public class GetSubAccountsResponse : Response<List<SubAccount>>
+    public class GetPaymentPlansResponse : Response<List<PaymentPlan>>
     {
         public Meta Meta { get; set; }
     }
