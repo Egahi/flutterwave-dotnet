@@ -6,16 +6,10 @@ namespace Flutterwave.Net
     public enum Interval
     {
         /// <summary>
-        /// "Yearly"
+        /// "Daily"
         /// </summary>
-        [Description(AppConstants.YEARLY)]
-        Yearly,
-
-        /// <summary>
-        /// "Quarterly"
-        /// </summary>
-        [Description(AppConstants.QUARTERLY)]
-        Quarterly,
+        [Description(AppConstants.DAILY)]
+        Daily,
 
         /// <summary>
         /// "Monthly"
@@ -24,15 +18,21 @@ namespace Flutterwave.Net
         Monthly,
 
         /// <summary>
+        /// "Quarterly"
+        /// </summary>
+        [Description(AppConstants.QUARTERLY)]
+        Quarterly,
+
+        /// <summary>
         /// "Weekly" 
         /// </summary>
         [Description(AppConstants.WEEKLY)]
         Weekly,
 
         /// <summary>
-        /// "Daily"
+        /// "Yearly"
         /// </summary>
-        [Description(AppConstants.DAILY)]
-        Daily
+        [Description(AppConstants.YEARLY)]
+        Yearly
     }
 }

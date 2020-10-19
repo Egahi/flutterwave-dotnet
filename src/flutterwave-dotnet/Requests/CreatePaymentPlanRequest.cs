@@ -7,7 +7,7 @@ namespace Flutterwave.Net
         public CreatePaymentPlanRequest(decimal amount,
                                         string name,
                                         string interval,
-                                        decimal duration)
+                                        int duration)
         {
             Amount = amount;
             Name = name;
@@ -25,6 +25,6 @@ namespace Flutterwave.Net
         public string Interval { get; set; }
 
         [JsonProperty("duration")]
-        public decimal Duration { get; set; } 
+        public int Duration { get; set; } 
     }
 }

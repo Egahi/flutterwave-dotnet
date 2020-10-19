@@ -12,6 +12,7 @@ namespace Flutterwave.Net
         private HttpClient _httpClient { get; }
         public IBanks Banks { get; }
         public IMiscellaneous Miscellaneous { get; }
+        public IPaymentPlans PaymentPlans { get; }
         public IPayments Payments { get; }
         public ISubAccounts SubAccounts { get; }
         public ITransactions Transactions { get; }
@@ -24,6 +25,7 @@ namespace Flutterwave.Net
 
             Banks = new Banks(this);
             Miscellaneous = new Miscellaneous(this);
+            PaymentPlans = new PaymentPlans(this);
             Payments = new Payments(this);
             SubAccounts = new SubAccounts(this);
             Transactions = new Transactions(this);
@@ -81,6 +83,29 @@ namespace Flutterwave.Net
                                              "application/json");
 
             string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
+                                            .Result
+                                            .Content
+                                            .ReadAsStringAsync()
+                                            .Result;
+
+            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
+
+            return responseData;
+        }
+
+        /// <summary>
+        /// Make Put requests (without a payload) to Flutterwave to API
+        /// </summary>
+        /// <typeparam name="T">Response Data Type</typeparam>
+        /// <param name="relativeUrl">endpoint</param>
+        /// <returns></returns>
+        internal T Put<T>(string relativeUrl)
+        {
+            var jsonData = new StringContent(JsonConvert.SerializeObject(new { }),
+                                             Encoding.UTF8,
+                                             "application/json");
+
+            string responseStr = _httpClient.PutAsync(relativeUrl, jsonData)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()

@@ -44,6 +44,13 @@
         public const string WEST_AFRICAN_CFA_FRANC_CODE = "XOF";
         public const string ZAMBIAN_KWACHA_CODE = "ZMW";
 
+        // Intervals
+        public const string YEARLY = "yearly";
+        public const string QUARTERLY = "quarterly";
+        public const string MONTHLY = "monthly";
+        public const string WEEKLY = "weekly";
+        public const string DAILY = "daily";
+
         // Numbers
         public static int ONE_DECIMAL_PLACE = 1;
 
@@ -58,11 +65,28 @@
         public static string SUCCESS_STATUS = "success";
         public static string SUCCESSFUL_STATUS = "successful";
 
+        // PaymentPlans
+        public static string CANCEL_PAYMENT_PLAN_ERROR_MESSAGE = "Payment plan does not exist";
+        public static string CANCEL_PAYMENT_PLAN_SUCCESS_MESSAGE = "Payment plan cancelled";
+        public static string CREATE_PAYMENT_PLAN_SUCCESS_MESSAGE = "Payment plan created";
+        public static string GET_PAYMENT_PLAN_ERROR_MESSAGE = "No payment plan found";
+        public static string GET_PAYMENT_PLAN_SUCCESS_MESSAGE = "Payment plan fetched";
+        public static string GET_PAYMENT_PLANS_SUCCESS_MESSAGE = "Payment plans fetched";
+        public static int INVALID_PAYMENT_PLAN_ID = 1234;
+        public static string SAMPLE_PAYMENT_PLAN_NAME = "Monthly Nepa Bill Collection";
+        public static string SAMPLE_NEW_PAYMENT_PLAN_NAME = "January neighbourhood";
+        public static string UPDATE_PAYMENT_PLAN_ERROR_MESSAGE = "Payment plan does not exist";
+        public static string UPDATE_PAYMENT_PLAN_SUCCESS_MESSAGE = "Payment plan updated";
+
         // Payments
         public static string INITIATE_PAYMENT_RESPONSE_MESSAGE = "Hosted Link";
         public static string SAMPLE_PAYMENT_DESCRIPTION = "Middleout isn't free. " +
             "Pay the price";
         public static string SAMPLE_PAYMENT_TITLE = "Pied Piper Payments";
+
+        // Status
+        public const string ACTIVE = "active";
+        public const string CANCELLED = "cancelled";
 
         // SubAccounts
         public static string CREATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount created";
@@ -96,26 +120,5 @@
         // Urls
         public static string SAMPLE_BRAND_LOGO_URL = "https://assets.piedpiper.com/logo.png";
         public static string SAMPLE_REDIRECT_URL = "https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc";
-
-        // Intervals
-        public const string YEARLY = "yearly";
-        public const string QUARTERLY = "quarterly";
-        public const string MONTHLY = "monthly";
-        public const string WEEKLY = "weekly";
-        public const string DAILY = "daily";
-
-        // PaymentPlans
-        public static string CANCEL_PAYMENTPLAN_ERROR_MESSAGE = "Payment plan does not exist";
-        public static string CANCEL_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan cancelled";
-        public static string CREATE_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan created";
-        public static string GET_PAYMENTPLAN_ERROR_MESSAGE = "No payment plan found";
-        public static string GET_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan fetched";
-        public static string GET_PAYMENTPLANS_SUCCESS_MESSAGE = "Payment plans fetched";
-        public static int INVALID_PAYMENTPLAN_ID = 1234;
-        public static decimal PAYMENTPLAN_AMOUNT = 5000;
-        public static string PAYMENTPLAN_NAME = "Monthly Nepa Bill Collection";
-        public static decimal PAYMENTPLAN_DURATION = 24;
-        public static string UPDATE_PAYMENTPLAN_ERROR_MESSAGE = "Payment plan does not exist";
-        public static string UPDATE_PAYMENTPLAN_SUCCESS_MESSAGE = "Payment plan updated";
     }
 }

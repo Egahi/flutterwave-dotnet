@@ -2,6 +2,5 @@
 {
     public class GetPaymentPlanResponse : Response<PaymentPlan>
     {
-
     }
 }

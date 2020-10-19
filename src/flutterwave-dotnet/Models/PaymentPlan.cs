@@ -18,7 +18,7 @@ namespace Flutterwave.Net
         public string Interval { get; set; }
          
         [JsonProperty("duration")]
-        public decimal Duration { get; set; }
+        public int Duration { get; set; }
 
         [JsonProperty("status")]
         public string  Status{ get; set; }
