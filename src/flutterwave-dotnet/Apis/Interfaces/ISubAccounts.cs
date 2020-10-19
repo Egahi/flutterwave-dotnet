@@ -22,34 +22,34 @@
         /// <param name="businessContactMobile">Business contact phone number</param>
         /// <param name="businessMobile">Primary business phone number</param>
         /// <returns>The newly created sub account details</returns>
-        public CreateSubAccountResponse CreateSubAccount(string bankCode,
-                                                         string accountNumber,
-                                                         string businessName,
-                                                         string businessEmail,
-                                                         Country country,
-                                                         SplitType splitType,
-                                                         double splitValue,
-                                                         string businessContact = "",
-                                                         string businessContactMobile = "",
-                                                         string businessMobile = "");
+        public SubAccountResponse CreateSubAccount(string bankCode,
+                                                   string accountNumber,
+                                                   string businessName,
+                                                   string businessEmail,
+                                                   Country country,
+                                                   SplitType splitType,
+                                                   double splitValue,
+                                                   string businessContact = "",
+                                                   string businessContactMobile = "",
+                                                   string businessMobile = "");
 
         /// <summary>
-        /// Delete a subaccount
+        /// Delete a sub account
         /// </summary>
         /// <param name="subAccountId">
-        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
+        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.Id
         /// </param>
         /// <returns>Success message</returns>
-        public DeleteSubAccountResponse DeleteSubAccount(int subAccountId);
+        public SubAccountResponse DeleteSubAccount(int subAccountId);
 
         /// <summary>
         /// Get a single sub account
         /// </summary>
         /// <param name="subAccountId">
-        /// Unique sub account Id, it is returned in the Get SubAccounts call as data.id
+        /// Unique sub account Id, it is returned in the Get SubAccounts call as data.Id
         /// </param>
         /// <returns>A Sub Account</returns>
-        public GetSubAccountResponse GetSubAccount(int subAccountId);
+        public SubAccountResponse GetSubAccount(int subAccountId);
 
         /// <summary>
         /// Get all sub accounts
@@ -61,7 +61,7 @@
         /// Update a subaccount
         /// </summary>
         /// <param name="subAccountId">
-        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.id
+        /// The unique id of the sub account you want to delete, it is returned in the Get SubAccount call as data.Id
         /// </param>
         /// <param name="businessName">This is the sub-account business name</param>
         /// <param name="businessEmail">This is the sub-account business email</param>        
@@ -75,12 +75,12 @@
         /// Note that the % value is in decimal. So 50% is 0.5 and so on.
         /// </param>
         /// <returns>The updated sub account details</returns>
-        public UpdateSubAccountResponse UpdateSubAccount(int subAccountId,
-                                                         string businessName,
-                                                         string businessEmail,
-                                                         string bankCode,
-                                                         string accountNumber,
-                                                         SplitType splitType,
-                                                         double splitValue);
+        public SubAccountResponse UpdateSubAccount(int subAccountId,
+                                                   string businessName,
+                                                   string businessEmail,
+                                                   string bankCode,
+                                                   string accountNumber,
+                                                   SplitType splitType,
+                                                   double splitValue);
     }
 }

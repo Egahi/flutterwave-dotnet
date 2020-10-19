@@ -48,7 +48,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.EXISTING_SUB_ACCOUNT_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -86,7 +86,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -120,7 +120,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_EMAIL + AppConstants.INVALID_EMAIL_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -157,7 +157,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -191,7 +191,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_SPLIT_VALUE_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -225,7 +225,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.COULD_NOT_VERIFY_ACCOUNT_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -259,7 +259,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<CreateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.CREATE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: result.Message);
             Assert.IsType<SubAccount>(result.Data);
@@ -289,7 +289,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<DeleteSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -307,7 +307,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<DeleteSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.DELETE_SUB_ACCOUNT_ERROR_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
@@ -326,7 +326,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<DeleteSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.DELETE_SUB_ACCOUNT_SUCCESS_MESSAGE, 
                 actual: result.Message);
@@ -347,7 +347,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<GetSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -365,7 +365,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<GetSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_SUBACCOUNT_ERROR_MESSAGE, actual: result.Message);
             Assert.Null(result.Data);
@@ -384,7 +384,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<GetSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_SUBACCOUNT_SUCCESS_MESSAGE, 
                 actual: result.Message);
@@ -456,7 +456,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -484,7 +484,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.UPDATE_SUB_ACCOUNT_ERROR_MESSAGE, 
                 actual: result.Message);
@@ -515,7 +515,7 @@ namespace flutterwave_dotnet_test.Apis
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<UpdateSubAccountResponse>(result);
+            Assert.IsType<SubAccountResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.UPDATE_SUB_ACCOUNT_SUCCESS_MESSAGE, actual: result.Message);
             Assert.IsType<SubAccount>(result.Data);
@@ -536,7 +536,7 @@ namespace flutterwave_dotnet_test.Apis
         /// Create test sub account for unit tests
         /// </summary>
         /// <returns></returns>
-        private CreateSubAccountResponse CreateTestSubAccount()
+        private SubAccountResponse CreateTestSubAccount()
         {
             string bankCode = AppConstants.ACCESS_BANK_CODE;
             string accountNumber = AppConstants.VALID_ACCESSBANK_ACCOUNT_NUMBER;
