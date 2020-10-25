@@ -8,14 +8,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class TransactionsTests
     {
-        private Transactions _transactions;
+        private IFlutterwaveApi _api;
 
         public TransactionsTests()
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
-            _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
         }
 
         [Fact]
@@ -23,10 +23,10 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             var flutterwaveSecretKey = "";
-            _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
             
             // Act
-            var result = _transactions.GetTransactions();
+            var result = _api.Transactions.GetTransactions();
 
             // Assert
             Assert.NotNull(result);
@@ -40,7 +40,7 @@ namespace flutterwave_dotnet_test.Apis
         public void GetTransactions_ValidSecretKey_ReturnsAllTransactions()
         {
             // Act
-            var result = _transactions.GetTransactions();
+            var result = _api.Transactions.GetTransactions();
 
             // Assert
             Assert.NotNull(result); 
@@ -57,10 +57,10 @@ namespace flutterwave_dotnet_test.Apis
             int id = AppConstants.VALID_TRANSACTION_ID;
 
             var flutterwaveSecretKey = "";
-            _transactions = new Transactions(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _transactions.VerifyTransaction(id);
+            var result = _api.Transactions.VerifyTransaction(id);
 
             // Assert
             Assert.NotNull(result);
@@ -77,7 +77,7 @@ namespace flutterwave_dotnet_test.Apis
             int id = AppConstants.INVALID_TRANSACTION_ID;
 
             // Act
-            var result = _transactions.VerifyTransaction(id);
+            var result = _api.Transactions.VerifyTransaction(id);
 
             // Assert
             Assert.NotNull(result);
@@ -94,7 +94,7 @@ namespace flutterwave_dotnet_test.Apis
             int id = AppConstants.VALID_TRANSACTION_ID;
 
             // Act
-            var result = _transactions.VerifyTransaction(id);
+            var result = _api.Transactions.VerifyTransaction(id);
 
             // Assert
             Assert.NotNull(result);

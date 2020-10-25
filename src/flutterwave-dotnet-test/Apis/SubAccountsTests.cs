@@ -8,14 +8,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class SubAccountsTests
     {
-        private SubAccounts _subAccounts;
+        private IFlutterwaveApi _api;
 
         public SubAccountsTests()
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
         }
 
         [Fact]
@@ -35,16 +35,16 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             // Act
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                       accountNumber,
-                                                       businessName,
-                                                       businessEmail,
-                                                       Country.Nigeria,
-                                                       SplitType.Percentage,
-                                                       splitValue,
-                                                       businessContact,
-                                                       businessContactMobile,
-                                                       businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             // Assert
             Assert.NotNull(result);
@@ -73,16 +73,16 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             // Act
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                       accountNumber,
-                                                       businessName,
-                                                       businessEmail,
-                                                       Country.Nigeria,
-                                                       SplitType.Percentage,
-                                                       splitValue,
-                                                       businessContact,
-                                                       businessContactMobile,
-                                                       businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             // Assert
             Assert.NotNull(result);
@@ -107,16 +107,16 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             // Act
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                       accountNumber,
-                                                       businessName,
-                                                       businessEmail,
-                                                       Country.Nigeria,
-                                                       SplitType.Percentage,
-                                                       splitValue,
-                                                       businessContact,
-                                                       businessContactMobile,
-                                                       businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             // Assert
             Assert.NotNull(result);
@@ -141,19 +141,19 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             var flutterwaveSecretKey = "";
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                       accountNumber,
-                                                       businessName,
-                                                       businessEmail,
-                                                       Country.Nigeria,
-                                                       SplitType.Percentage,
-                                                       splitValue,
-                                                       businessContact,
-                                                       businessContactMobile,
-                                                       businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             // Assert
             Assert.NotNull(result);
@@ -178,16 +178,16 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             // Act
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                       accountNumber,
-                                                       businessName,
-                                                       businessEmail,
-                                                       Country.Nigeria,
-                                                       SplitType.Percentage,
-                                                       splitValue,
-                                                       businessContact,
-                                                       businessContactMobile,
-                                                       businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             // Assert
             Assert.NotNull(result);
@@ -212,16 +212,16 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             // Act
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                       accountNumber,
-                                                       businessName,
-                                                       businessEmail,
-                                                       Country.Nigeria,
-                                                       SplitType.Percentage,
-                                                       splitValue,
-                                                       businessContact,
-                                                       businessContactMobile,
-                                                       businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             // Assert
             Assert.NotNull(result);
@@ -246,16 +246,16 @@ namespace flutterwave_dotnet_test.Apis
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
             // Act
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                       accountNumber,
-                                                       businessName,
-                                                       businessEmail,
-                                                       Country.Nigeria,
-                                                       SplitType.Percentage,
-                                                       splitValue,
-                                                       businessContact,
-                                                       businessContactMobile,
-                                                       businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             // Assert
             Assert.NotNull(result);
@@ -282,10 +282,10 @@ namespace flutterwave_dotnet_test.Apis
             int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
 
             var flutterwaveSecretKey = "";
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _subAccounts.DeleteSubAccount(subAccountId);
+            var result = _api.SubAccounts.DeleteSubAccount(subAccountId);
 
             // Assert
             Assert.NotNull(result);
@@ -303,7 +303,7 @@ namespace flutterwave_dotnet_test.Apis
             int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
 
             // Act
-            var result = _subAccounts.DeleteSubAccount(subAccountId);
+            var result = _api.SubAccounts.DeleteSubAccount(subAccountId);
 
             // Assert
             Assert.NotNull(result);
@@ -322,7 +322,7 @@ namespace flutterwave_dotnet_test.Apis
             int subAccountId = createTestSubAccountReponse.Data.Id;
 
             // Act
-            var result = _subAccounts.DeleteSubAccount(subAccountId);
+            var result = _api.SubAccounts.DeleteSubAccount(subAccountId);
 
             // Assert
             Assert.NotNull(result);
@@ -340,10 +340,10 @@ namespace flutterwave_dotnet_test.Apis
             int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
 
             var flutterwaveSecretKey = "";
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _subAccounts.GetSubAccount(subAccountId);
+            var result = _api.SubAccounts.GetSubAccount(subAccountId);
 
             // Assert
             Assert.NotNull(result);
@@ -361,7 +361,7 @@ namespace flutterwave_dotnet_test.Apis
             int subAccountId = AppConstants.INVALID_SUBACCOUNT_ID;
 
             // Act 
-            var result = _subAccounts.GetSubAccount(subAccountId);
+            var result = _api.SubAccounts.GetSubAccount(subAccountId);
 
             // Assert
             Assert.NotNull(result);
@@ -380,7 +380,7 @@ namespace flutterwave_dotnet_test.Apis
             int subAccountId = createTestSubAccountReponse.Data.Id;
 
             // Act
-            var result = _subAccounts.GetSubAccount(subAccountId);
+            var result = _api.SubAccounts.GetSubAccount(subAccountId);
 
             // Assert
             Assert.NotNull(result);
@@ -401,10 +401,10 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             var flutterwaveSecretKey = "";
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _subAccounts.GetSubAccounts();
+            var result = _api.SubAccounts.GetSubAccounts();
 
             // Assert
             Assert.NotNull(result);
@@ -419,7 +419,7 @@ namespace flutterwave_dotnet_test.Apis
         public void GetSubAccounts_ValidSecretKey_ReturnsAllSubAccounts()
         {
             // Act
-            var result = _subAccounts.GetSubAccounts();
+            var result = _api.SubAccounts.GetSubAccounts();
 
             // Assert
             Assert.NotNull(result);
@@ -443,16 +443,16 @@ namespace flutterwave_dotnet_test.Apis
             double splitValue = 0.5;
 
             var flutterwaveSecretKey = "";
-            _subAccounts = new SubAccounts(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _subAccounts.UpdateSubAccount(subAccountId,
-                                                       businessName,
-                                                       businessEmail,
-                                                       bankCode,
-                                                       accountNumber,
-                                                       SplitType.Percentage,
-                                                       splitValue);
+            var result = _api.SubAccounts.UpdateSubAccount(subAccountId,
+                                                           businessName,
+                                                           businessEmail,
+                                                           bankCode,
+                                                           accountNumber,
+                                                           SplitType.Percentage,
+                                                           splitValue);
 
             // Assert
             Assert.NotNull(result);
@@ -474,13 +474,13 @@ namespace flutterwave_dotnet_test.Apis
             double splitValue = 0.5;
 
             // Act
-            var result = _subAccounts.UpdateSubAccount(subAccountId,
-                                                       businessName,
-                                                       businessEmail,
-                                                       bankCode,
-                                                       accountNumber,
-                                                       SplitType.Percentage,
-                                                       splitValue);
+            var result = _api.SubAccounts.UpdateSubAccount(subAccountId,
+                                                           businessName,
+                                                           businessEmail,
+                                                           bankCode,
+                                                           accountNumber,
+                                                           SplitType.Percentage,
+                                                           splitValue);
 
             // Assert
             Assert.NotNull(result);
@@ -505,13 +505,13 @@ namespace flutterwave_dotnet_test.Apis
             double newSplitValue = 0.5;
 
             // Act
-            var result = _subAccounts.UpdateSubAccount(subAccountId,
-                                                       newBusinessName,
-                                                       newBusinessEmail,
-                                                       newBankCode,
-                                                       newAccountNumber,
-                                                       SplitType.Percentage,
-                                                       newSplitValue);
+            var result = _api.SubAccounts.UpdateSubAccount(subAccountId,
+                                                           newBusinessName,
+                                                           newBusinessEmail,
+                                                           newBankCode,
+                                                           newAccountNumber,
+                                                           SplitType.Percentage,
+                                                           newSplitValue);
 
             // Assert
             Assert.NotNull(result);
@@ -547,16 +547,16 @@ namespace flutterwave_dotnet_test.Apis
             string businessContactMobile = AppConstants.SAMPLE_PHONE_NUMBER;
             string businessMobile = AppConstants.SAMPLE_PHONE_NUMBER;
 
-            var result = _subAccounts.CreateSubAccount(bankCode,
-                                                        accountNumber,
-                                                        businessName,
-                                                        businessEmail,
-                                                        Country.Nigeria,
-                                                        SplitType.Percentage,
-                                                        splitValue,
-                                                        businessContact,
-                                                        businessContactMobile,
-                                                        businessMobile);
+            var result = _api.SubAccounts.CreateSubAccount(bankCode,
+                                                           accountNumber,
+                                                           businessName,
+                                                           businessEmail,
+                                                           Country.Nigeria,
+                                                           SplitType.Percentage,
+                                                           splitValue,
+                                                           businessContact,
+                                                           businessContactMobile,
+                                                           businessMobile);
 
             return result;
         }
@@ -567,7 +567,7 @@ namespace flutterwave_dotnet_test.Apis
         /// <returns></returns>
         private void DeleteTestSubAccount(int subAccountId)
         {
-            _subAccounts.DeleteSubAccount(subAccountId);
+            _api.SubAccounts.DeleteSubAccount(subAccountId);
         }
     }
 }

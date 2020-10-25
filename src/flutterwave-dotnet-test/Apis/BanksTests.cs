@@ -8,14 +8,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class BanksTests
     {
-        private Banks _banks;
+        private IFlutterwaveApi _api;
 
         public BanksTests()
         {
             // Get flutterwave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
-            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
         }
 
         [Fact]
@@ -25,10 +25,10 @@ namespace flutterwave_dotnet_test.Apis
             int bankId = AppConstants.VALID_BANK_ID;
 
             var flutterwaveSecretKey = "";
-            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _banks.GetBankBranches(bankId);
+            var result = _api.Banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -45,7 +45,7 @@ namespace flutterwave_dotnet_test.Apis
             int bankId = AppConstants.INVALID_BANK_ID;
 
             // Act
-            var result = _banks.GetBankBranches(bankId);
+            var result = _api.Banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -62,7 +62,7 @@ namespace flutterwave_dotnet_test.Apis
             int bankId = AppConstants.VALID_BANK_ID;
 
             // Act
-            var result = _banks.GetBankBranches(bankId);
+            var result = _api.Banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -79,7 +79,7 @@ namespace flutterwave_dotnet_test.Apis
             int bankId = AppConstants.FIRST_BANK_ID;
 
             // Act
-            var result = _banks.GetBankBranches(bankId);
+            var result = _api.Banks.GetBankBranches(bankId);
 
             // Assert
             Assert.NotNull(result);
@@ -94,10 +94,10 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             var flutterwaveSecretKey = "";
-            _banks = new Banks(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
             
             // Act
-            var result = _banks.GetBanks(Country.Nigeria);
+            var result = _api.Banks.GetBanks(Country.Nigeria);
 
             // Assert
             Assert.NotNull(result);
@@ -111,7 +111,7 @@ namespace flutterwave_dotnet_test.Apis
         public void GetBanks_ValidSecretKey_ReturnsBanks()
         {
             // Act
-            var result = _banks.GetBanks(Country.Nigeria);
+            var result = _api.Banks.GetBanks(Country.Nigeria);
 
             // Assert
             Assert.NotNull(result); 
