@@ -7,14 +7,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class MiscellaneousTests
     {
-        private Miscellaneous _miscellaneous;
+        private IFlutterwaveApi _api;
 
         public MiscellaneousTests()
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
-            _miscellaneous = new Miscellaneous(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
         }
 
         [Fact]
@@ -25,10 +25,10 @@ namespace flutterwave_dotnet_test.Apis
             string bankCode = AppConstants.ACCESS_BANK_CODE;
 
             var flutterwaveSecretKey = "";
-            _miscellaneous = new Miscellaneous(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
+            var result = _api.Miscellaneous.VerifyBankAccount(accountNumber, bankCode);
 
             // Assert
             Assert.NotNull(result);
@@ -46,7 +46,7 @@ namespace flutterwave_dotnet_test.Apis
             string bankCode = AppConstants.ACCESS_BANK_CODE;
 
             // Act
-            var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
+            var result = _api.Miscellaneous.VerifyBankAccount(accountNumber, bankCode);
 
             // Assert
             Assert.NotNull(result);
@@ -64,7 +64,7 @@ namespace flutterwave_dotnet_test.Apis
             string bankCode = AppConstants.INVALID_BANK_CODE;
 
             // Act
-            var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
+            var result = _api.Miscellaneous.VerifyBankAccount(accountNumber, bankCode);
 
             // Assert
             Assert.NotNull(result);
@@ -82,7 +82,7 @@ namespace flutterwave_dotnet_test.Apis
             string bankCode = AppConstants.ACCESS_BANK_CODE;
 
             // Act
-            var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
+            var result = _api.Miscellaneous.VerifyBankAccount(accountNumber, bankCode);
 
             // Assert
             Assert.NotNull(result);
@@ -102,7 +102,7 @@ namespace flutterwave_dotnet_test.Apis
             string bankCode = AppConstants.FIRST_BANK_CODE;
 
             // Act
-            var result = _miscellaneous.VerifyBankAccount(accountNumber, bankCode);
+            var result = _api.Miscellaneous.VerifyBankAccount(accountNumber, bankCode);
 
             // Assert
             Assert.NotNull(result);

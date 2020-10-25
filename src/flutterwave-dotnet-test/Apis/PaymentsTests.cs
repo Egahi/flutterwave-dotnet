@@ -8,14 +8,14 @@ namespace flutterwave_dotnet_test.Apis
 {
     public class PaymentsTests
     {
-        private Payments _payments;
+        private IFlutterwaveApi _api;
 
         public PaymentsTests()
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
 
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
         }
 
 
@@ -26,10 +26,10 @@ namespace flutterwave_dotnet_test.Apis
             int paymenPlanId = AppConstants.INVALID_PAYMENT_PLAN_ID;
 
             var flutterwaveSecretKey = "";
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _payments.CancelPaymentPlan(paymenPlanId);
+            var result = _api.Payments.CancelPaymentPlan(paymenPlanId);
 
             // Assert
             Assert.NotNull(result);
@@ -47,7 +47,7 @@ namespace flutterwave_dotnet_test.Apis
             int paymentPlanId = AppConstants.INVALID_PAYMENT_PLAN_ID;
 
             // Act
-            var result = _payments.CancelPaymentPlan(paymentPlanId);
+            var result = _api.Payments.CancelPaymentPlan(paymentPlanId);
 
             // Assert
             Assert.NotNull(result);
@@ -67,7 +67,7 @@ namespace flutterwave_dotnet_test.Apis
             int paymentPlanId = createTestPaymentPlanReponse.Data.Id;
 
             // Act
-            var result = _payments.CancelPaymentPlan(paymentPlanId);
+            var result = _api.Payments.CancelPaymentPlan(paymentPlanId);
 
             // Assert
             Assert.NotNull(result);
@@ -89,13 +89,13 @@ namespace flutterwave_dotnet_test.Apis
             int duration = 24;
 
             var flutterwaveSecretKey = "";
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _payments.CreatePaymentPlan(amount, 
-                                                     name, 
-                                                     Interval.Monthly, 
-                                                     duration);
+            var result = _api.Payments.CreatePaymentPlan(amount, 
+                                                         name, 
+                                                         Interval.Monthly, 
+                                                         duration);
 
             // Assert
             Assert.NotNull(result);
@@ -115,10 +115,10 @@ namespace flutterwave_dotnet_test.Apis
             int duration = 24;
 
             // Act
-            var result = _payments.CreatePaymentPlan(amount, 
-                                                     name, 
-                                                     Interval.Monthly, 
-                                                     duration);
+            var result = _api.Payments.CreatePaymentPlan(amount, 
+                                                         name, 
+                                                         Interval.Monthly, 
+                                                         duration);
 
             // Assert
             Assert.NotNull(result);
@@ -136,10 +136,10 @@ namespace flutterwave_dotnet_test.Apis
             int paymentPlanId = AppConstants.INVALID_PAYMENT_PLAN_ID;
 
             var flutterwaveSecretKey = "";
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _payments.GetPaymentPlan(paymentPlanId);
+            var result = _api.Payments.GetPaymentPlan(paymentPlanId);
 
             // Assert
             Assert.NotNull(result);
@@ -157,7 +157,7 @@ namespace flutterwave_dotnet_test.Apis
             int paymentPlanId = AppConstants.INVALID_PAYMENT_PLAN_ID;
 
             // Act 
-            var result = _payments.GetPaymentPlan(paymentPlanId);
+            var result = _api.Payments.GetPaymentPlan(paymentPlanId);
 
             // Assert
             Assert.NotNull(result);
@@ -177,7 +177,7 @@ namespace flutterwave_dotnet_test.Apis
             int paymentPlanId = createTestPaymentPlanReponse.Data.Id;
 
             // Act
-            var result = _payments.GetPaymentPlan(paymentPlanId);
+            var result = _api.Payments.GetPaymentPlan(paymentPlanId);
 
             // Assert
             Assert.NotNull(result);
@@ -194,10 +194,10 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Arrange
             var flutterwaveSecretKey = "";
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _payments.GetPaymentPlans();
+            var result = _api.Payments.GetPaymentPlans();
 
             // Assert
             Assert.NotNull(result);
@@ -212,7 +212,7 @@ namespace flutterwave_dotnet_test.Apis
         public void GetPaymentPlans_ValidSecretKey_ReturnsAllPaymentPlans()
         {
             // Act
-            var result = _payments.GetPaymentPlans();
+            var result = _api.Payments.GetPaymentPlans();
 
             // Assert
             Assert.NotNull(result);
@@ -238,18 +238,18 @@ namespace flutterwave_dotnet_test.Apis
             string brandLogoUrl = AppConstants.SAMPLE_BRAND_LOGO_URL;
 
             var flutterwaveSecretKey = "";
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _payments.InitiatePayment(txRef,
-                                                   amount,
-                                                   redirectUrl,
-                                                   customerName,
-                                                   customerEmail,
-                                                   customerPhonenumber,
-                                                   paymentTitle,
-                                                   paymentDescription,
-                                                   brandLogoUrl);
+            var result = _api.Payments.InitiatePayment(txRef,
+                                                       amount,
+                                                       redirectUrl,
+                                                       customerName,
+                                                       customerEmail,
+                                                       customerPhonenumber,
+                                                       paymentTitle,
+                                                       paymentDescription,
+                                                       brandLogoUrl);
 
             // Assert
             Assert.NotNull(result);
@@ -275,16 +275,16 @@ namespace flutterwave_dotnet_test.Apis
             string brandLogoUrl = AppConstants.SAMPLE_BRAND_LOGO_URL;
 
             // Act
-            var result = _payments.InitiatePayment(txRef,
-                                                   amount,
-                                                   redirectUrl,
-                                                   customerName,
-                                                   customerEmail,
-                                                   customerPhonenumber,
-                                                   paymentTitle,
-                                                   paymentDescription,
-                                                   brandLogoUrl,
-                                                   Currency.UnitedStatesDollar);
+            var result = _api.Payments.InitiatePayment(txRef,
+                                                       amount,
+                                                       redirectUrl,
+                                                       customerName,
+                                                       customerEmail,
+                                                       customerPhonenumber,
+                                                       paymentTitle,
+                                                       paymentDescription,
+                                                       brandLogoUrl,
+                                                       Currency.UnitedStatesDollar);
 
             // Assert
             Assert.NotNull(result);
@@ -311,15 +311,15 @@ namespace flutterwave_dotnet_test.Apis
             string brandLogoUrl = AppConstants.SAMPLE_BRAND_LOGO_URL;
 
             // Act
-            var result = _payments.InitiatePayment(txRef,
-                                                   amount,
-                                                   redirectUrl,
-                                                   customerName,
-                                                   customerEmail,
-                                                   customerPhonenumber,
-                                                   paymentTitle,
-                                                   paymentDescription,
-                                                   brandLogoUrl);
+            var result = _api.Payments.InitiatePayment(txRef,
+                                                       amount,
+                                                       redirectUrl,
+                                                       customerName,
+                                                       customerEmail,
+                                                       customerPhonenumber,
+                                                       paymentTitle,
+                                                       paymentDescription,
+                                                       brandLogoUrl);
 
             // Assert
             Assert.NotNull(result);
@@ -339,12 +339,12 @@ namespace flutterwave_dotnet_test.Apis
             string name = AppConstants.SAMPLE_NEW_PAYMENT_PLAN_NAME;
 
             var flutterwaveSecretKey = "";
-            _payments = new Payments(new FlutterwaveApi(flutterwaveSecretKey));
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
 
             // Act
-            var result = _payments.UpdatePaymentPlan(paymentPlanId,
-                                                          name,
-                                                          Status.Active);
+            var result = _api.Payments.UpdatePaymentPlan(paymentPlanId,
+                                                         name,
+                                                         Status.Active);
 
             // Assert
             Assert.NotNull(result);
@@ -362,9 +362,9 @@ namespace flutterwave_dotnet_test.Apis
             string name = AppConstants.SAMPLE_NEW_PAYMENT_PLAN_NAME;
 
             // Act
-            var result = _payments.UpdatePaymentPlan(paymentPlanId,
-                                                          name,
-                                                          Status.Active);
+            var result = _api.Payments.UpdatePaymentPlan(paymentPlanId,
+                                                         name,
+                                                         Status.Active);
 
             // Assert
             Assert.NotNull(result);
@@ -384,9 +384,9 @@ namespace flutterwave_dotnet_test.Apis
             string name = AppConstants.SAMPLE_NEW_PAYMENT_PLAN_NAME;
 
             // Act
-            var result = _payments.UpdatePaymentPlan(paymentPlanId,
-                                                     name,
-                                                     Status.Active);
+            var result = _api.Payments.UpdatePaymentPlan(paymentPlanId,
+                                                         name,
+                                                         Status.Active);
 
             // Assert
             Assert.NotNull(result);
@@ -410,10 +410,10 @@ namespace flutterwave_dotnet_test.Apis
             string name = AppConstants.SAMPLE_PAYMENT_PLAN_NAME;
             int duration = 24;
 
-            var result = _payments.CreatePaymentPlan(amount,
-                                                     name,
-                                                     Interval.Monthly,
-                                                     duration);
+            var result = _api.Payments.CreatePaymentPlan(amount,
+                                                         name,
+                                                         Interval.Monthly,
+                                                         duration);
 
             return result;
         }
