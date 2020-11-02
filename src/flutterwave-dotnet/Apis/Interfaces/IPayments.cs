@@ -90,6 +90,6 @@ namespace Flutterwave.Net
         /// <returns>The updated payment plan details</returns>
         public PaymentPlanResponse UpdatePaymentPlan(int paymentPlanId,
                                                      string name,
-                                                     Status status);
+                                                     PaymentPlanStatus status);
     }
 }

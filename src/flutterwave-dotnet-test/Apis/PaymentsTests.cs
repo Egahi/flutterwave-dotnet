@@ -344,7 +344,7 @@ namespace flutterwave_dotnet_test.Apis
             // Act
             var result = _api.Payments.UpdatePaymentPlan(paymentPlanId,
                                                          name,
-                                                         Status.Active);
+                                                         PaymentPlanStatus.Active);
 
             // Assert
             Assert.NotNull(result);
@@ -364,7 +364,7 @@ namespace flutterwave_dotnet_test.Apis
             // Act
             var result = _api.Payments.UpdatePaymentPlan(paymentPlanId,
                                                          name,
-                                                         Status.Active);
+                                                         PaymentPlanStatus.Active);
 
             // Assert
             Assert.NotNull(result);
@@ -386,7 +386,7 @@ namespace flutterwave_dotnet_test.Apis
             // Act
             var result = _api.Payments.UpdatePaymentPlan(paymentPlanId,
                                                          name,
-                                                         Status.Active);
+                                                         PaymentPlanStatus.Active);
 
             // Assert
             Assert.NotNull(result);

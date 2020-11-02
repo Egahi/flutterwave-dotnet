@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace Flutterwave.Net
 {
-    public enum Status
+    public enum PaymentPlanStatus
     {
         /// <summary>
         /// "Active"

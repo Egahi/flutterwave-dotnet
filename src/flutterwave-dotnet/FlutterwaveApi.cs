@@ -1,6 +1,7 @@
 ﻿using Flutterwave.Net.Utilities;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -57,6 +58,33 @@ namespace Flutterwave.Net
         internal T Get<T>(string relativeUrl)
         {
             string responseStr = _httpClient.GetAsync(relativeUrl)
+                                            .Result
+                                            .Content
+                                            .ReadAsStringAsync()
+                                            .Result;
+
+            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
+
+            return responseData;
+        }
+
+        /// <summary>
+        /// Make Get requests to Flutterwave API with query parameters
+        /// </summary>
+        /// <typeparam name="T">Response Data Type</typeparam>
+        /// <param name="relativeUrl">endpoint</param>
+        /// <param name="queryParameters">Dictionary of query parameters</param>
+        /// <returns></returns>
+        internal T Get<T>(string relativeUrl, Dictionary<string, string> queryParameters)
+        {
+            string queryString = "?";
+
+            foreach (var param in queryParameters)
+            {
+                queryString += param.Key + "=" + param.Value + "&";
+            }
+
+            string responseStr = _httpClient.GetAsync(relativeUrl + queryString)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()

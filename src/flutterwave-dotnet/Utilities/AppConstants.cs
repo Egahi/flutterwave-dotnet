@@ -55,15 +55,18 @@
         public static int ONE_DECIMAL_PLACE = 1;
 
         // Others
+        public static string END_DATE = "2020-11-01";
         public static string ERROR_STATUS = "error";
+        public const string FAILED_STATUS = "failed";
         public static string INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE = "Invalid authorization key";
         public static string INVALID_EMAIL = "user";
         public static string SAMPLE_CUSTOMER_NAME = "Yemi Desola";
         public static string SAMPLE_EMAIL = "user@gmail.com";
         public static string SAMPLE_PHONE_NUMBER = "08012345678";
         public static string SAMPLE_TX_REF = "hooli-tx-1920bbtytty";
+        public static string START_DATE = "2020-01-01";
         public static string SUCCESS_STATUS = "success";
-        public static string SUCCESSFUL_STATUS = "successful";
+        public const string SUCCESSFUL_STATUS = "successful";
 
         // PaymentPlans
         public static string CANCEL_PAYMENT_PLAN_ERROR_MESSAGE = "Payment plan does not exist";
