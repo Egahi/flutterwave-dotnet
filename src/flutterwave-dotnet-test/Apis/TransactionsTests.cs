@@ -43,6 +43,35 @@ namespace flutterwave_dotnet_test.Apis
             var result = _api.Transactions.GetTransactions();
 
             // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetTransactionsResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<List<Transaction>>(result.Data);
+        }
+
+        [Fact]
+        public void GetTransactions_ValidSecretKey_QueryParameters_ReturnsAllTransactions()
+        {
+            // Arrange
+            string from = AppConstants.START_DATE;
+            string to = AppConstants.END_DATE;
+            int page = 1;
+            string customerEmail = AppConstants.SAMPLE_EMAIL;
+            string txRef = AppConstants.SAMPLE_TX_REF;
+            string customerFullName = AppConstants.SAMPLE_CUSTOMER_NAME;
+            
+            // Act
+            var result = _api.Transactions.GetTransactions(from,
+                                                           to,
+                                                           page,
+                                                           customerEmail, 
+                                                           TransactionStatus.Successful, 
+                                                           txRef,
+                                                           customerFullName,
+                                                           Currency.NigerianNaira);
+
+            // Assert
             Assert.NotNull(result); 
             Assert.IsType<GetTransactionsResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);

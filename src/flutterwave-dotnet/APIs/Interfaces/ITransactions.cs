@@ -2,11 +2,27 @@
 {
     public interface ITransactions
     {
+
         /// <summary>
         /// Get all Transactions
         /// </summary>
+        /// <param name="from">This is the specified date to start the list from. YYYY-MM-DD</param>
+        /// <param name="to">The is the specified end period for the search . YYYY-MM-DD</param>
+        /// <param name="page">This is the page number to retrieve</param>
+        /// <param name="customerEmail">This is the email of the customer who carried out a transaction. Use for more specific listing.</param>
+        /// <param name="status">This is the transaction status to filter the listing</param>
+        /// <param name="txRef">This is the merchant reference tied to a transaction. Use for more specific listing</param>
+        /// <param name="customerFullName">This is the combination of the customer first name and last name passed to rave during transaction.</param>
+        /// <param name="currency">This is the currency the transaction list should come in</param>
         /// <returns>A list of transactions</returns>
-        public GetTransactionsResponse GetTransactions();
+        public GetTransactionsResponse GetTransactions(string from = null,
+                                                       string to = null,
+                                                       int page = 1,
+                                                       string customerEmail = null,
+                                                       TransactionStatus? status = null,
+                                                       string txRef = null,
+                                                       string customerFullName = null,
+                                                       Currency currency = Currency.NigerianNaira);
 
         /// <summary>
         /// Verify a transaction
