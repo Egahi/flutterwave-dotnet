@@ -148,9 +148,9 @@ This library implements the following services:
     int duration = 24;
     
     PaymentPlanResponse response = api.CreatePaymentPlan(amount, 
-                                                               name, 
-                                                               Interval.Monthly, 
-                                                               duration);
+                                                         name, 
+                                                         Interval.Monthly, 
+                                                         duration);
 
     // success
     if (response.Status == "success")
@@ -242,8 +242,8 @@ This library implements the following services:
     string name = "January neighbourhood";
     
     PaymentPlanResponse response = api.UpdatePaymentPlan(paymentPlanId,
-                                                               name,
-                                                               Status.Active);
+                                                         name,
+                                                         PaymentPlanStatus.Active);
 
     // success
     if (response.Status == "success")
@@ -272,15 +272,15 @@ This library implements the following services:
     string businessMobile = "08012345678";
 
     SubAccountResponse response = api.CreateSubAccount(bankCode,
-                                                             accountNumber,
-                                                             businessName,
-                                                             businessEmail,
-                                                             Country.Nigeria,
-                                                             SplitType.Percentage,
-                                                             splitValue,
-                                                             businessContact,
-                                                             businessContactMobile,
-                                                             businessMobile);
+                                                       accountNumber,
+                                                       businessName,
+                                                       businessEmail,
+                                                       Country.Nigeria,
+                                                       SplitType.Percentage,
+                                                       splitValue,
+                                                       businessContact,
+                                                       businessContactMobile,
+                                                       businessMobile);
 
     // success
     if (response.Status == "success")
@@ -360,12 +360,12 @@ This library implements the following services:
     double splitValue = 0.5;
 
     SubAccountResponse response = api.UpdateSubAccountRequest(subAccountId,
-                                                                     businessName,
-                                                                     businessEmail,
-                                                                     bankCode,
-                                                                     accountNumber,
-                                                                     SplitType.Percentage,
-                                                                     splitValue);
+                                                              businessName,
+                                                              businessEmail,
+                                                              bankCode,
+                                                              accountNumber,
+                                                              SplitType.Percentage,
+                                                              splitValue);
 
     // success
     if (response.Status == "success")
