@@ -430,4 +430,4 @@ This library implements the following services:
 ## Support
 Create a new issue or add a comment to an open issue to request for new features and/or report bugs
 
-[Send a mail](mailto:hello@egahi.net) for further assistance using this library
+[Send a mail](mailto:hello@egahi.so) for further assistance using this library
