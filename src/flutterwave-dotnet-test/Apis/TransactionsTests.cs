@@ -19,6 +19,42 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
+        public void GetTransactionFees_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            decimal amount = 5000;
+
+            var flutterwaveSecretKey = "";
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
+
+            // Act
+            var result = _api.Transactions.GetTransactionFee(amount);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetTransactionFeeResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void GetTransactionFee_ValidSecretKey_ReturnsAllTransactionFees()
+        {
+            // Act
+            decimal amount = 5000;
+
+            var result = _api.Transactions.GetTransactionFee(amount);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetTransactionFeeResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTION_FEES_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.IsType<TransactionFee>(result.Data);
+        }
+
+        [Fact]
         public void GetTransactions_InvalidSecretKey_ReturnsError()
         {
             // Arrange
