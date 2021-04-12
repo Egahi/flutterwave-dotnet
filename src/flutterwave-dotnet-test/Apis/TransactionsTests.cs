@@ -39,7 +39,7 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
-        public void GetTransactionFee_ValidSecretKey_ReturnsAllTransactionFees()
+        public void GetTransactionFee_ValidSecretKey_ReturnsTransactionFees()
         {
             // Act
             decimal amount = 5000;
