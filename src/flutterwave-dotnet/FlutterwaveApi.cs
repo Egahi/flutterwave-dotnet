@@ -103,11 +103,7 @@ namespace Flutterwave.Net
         /// <returns></returns>
         internal T Post<T>(string relativeUrl)
         {
-            var jsonData = new StringContent(JsonConvert.SerializeObject(new { }),
-                                             Encoding.UTF8,
-                                             "application/json");
-
-            string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
+            string responseStr = _httpClient.PostAsync(relativeUrl, null)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()
@@ -150,11 +146,7 @@ namespace Flutterwave.Net
         /// <returns></returns>
         internal T Put<T>(string relativeUrl)
         {
-            var jsonData = new StringContent(JsonConvert.SerializeObject(new { }),
-                                             Encoding.UTF8,
-                                             "application/json");
-
-            string responseStr = _httpClient.PutAsync(relativeUrl, jsonData)
+            string responseStr = _httpClient.PutAsync(relativeUrl, null)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()
