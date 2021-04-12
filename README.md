@@ -26,6 +26,7 @@ This library implements the following services:
     * Fetch all sub accounts
     * Update a sub account
 5. Transactions
+    * Get transaction fees
     * Get all transactions
     * Verify a transaction
     
@@ -382,7 +383,26 @@ This library implements the following services:
     ```
     
 ### - Transactions
-1. Get all transactions
+1. Get transaction fees
+    ```c#
+    decimal amount = 5000;
+    
+    GetTransactionFeeResponse response = api.Transactions.GetTransactionFee(amount);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get transaction fees
+        TransactionFee transactionFees = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+2. Get all transactions
     ```c#
     GetTransactionsResponse response = api.Transactions.GetTransactions();
 
@@ -399,7 +419,7 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
-2. Verify a transaction
+3. Verify a transaction
     ```c#
     int transactionId = 1234567;
     

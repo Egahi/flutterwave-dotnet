@@ -113,6 +113,7 @@
         public static string UPDATE_SUB_ACCOUNT_SUCCESS_MESSAGE = "Subaccount edited";
 
         // Transactions
+        public static string GET_TRANSACTION_FEES_SUCCESS_MESSAGE = "Charged fee";
         public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
         public static int INVALID_TRANSACTION_ID = 123;
         public static int VALID_TRANSACTION_ID = 1541948;
