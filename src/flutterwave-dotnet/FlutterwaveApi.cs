@@ -96,6 +96,29 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
+        /// Make Post requests (without a payload) to Flutterwave to API
+        /// </summary>
+        /// <typeparam name="T">Response Data Type</typeparam>
+        /// <param name="relativeUrl">endpoint</param>
+        /// <returns></returns>
+        internal T Post<T>(string relativeUrl)
+        {
+            var jsonData = new StringContent(JsonConvert.SerializeObject(new { }),
+                                             Encoding.UTF8,
+                                             "application/json");
+
+            string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
+                                            .Result
+                                            .Content
+                                            .ReadAsStringAsync()
+                                            .Result;
+
+            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
+
+            return responseData;
+        }
+
+        /// <summary>
         /// Make Post requests to Flutterwave to API
         /// </summary>
         /// <typeparam name="T">Response Data Type</typeparam>

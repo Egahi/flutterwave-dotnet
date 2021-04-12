@@ -33,6 +33,16 @@
                                                        Currency currency = Currency.NigerianNaira);
 
         /// <summary>
+        /// Resend a failed transaction webhook to your server
+        /// </summary>
+        /// <param name="transactionId">
+        /// This is the transaction unique identifier. It is returned in the 
+        /// initiate transaction call as data.Id
+        /// </param>
+        /// <returns>Success</returns>
+        public ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId);
+
+        /// <summary>
         /// Verify a transaction
         /// </summary>
         /// <param name="transactionId">
