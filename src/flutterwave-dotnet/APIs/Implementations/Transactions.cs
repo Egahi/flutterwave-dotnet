@@ -110,7 +110,7 @@ namespace Flutterwave.Net
         public ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId)
         {
             return _flutterwaveApi.Post<ResendTransactionWebhookResponse>(
-                $"{Endpoints.PAYMENT_PLANS}/{transactionId}/resend-hook");
+                $"{Endpoints.TRANSACTIONS}/{transactionId}/resend-hook");
         }
 
         /// <summary>
