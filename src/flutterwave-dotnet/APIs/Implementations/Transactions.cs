@@ -13,7 +13,25 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Get all Transactions
+        /// Get transaction fees
+        /// </summary>
+        /// <param name="amount">This is the amount of the product or service to be charged from the customer</param>
+        /// <param name="currency">This is the specified currency to charge in</param>
+        /// <returns>The transaction fees</returns>
+        public GetTransactionFeeResponse GetTransactionFee(decimal amount,
+                                                           Currency currency = Currency.NigerianNaira)
+        {
+            var queryParameters = new Dictionary<string, string>()
+            {
+                { "amount", amount.ToString() },
+                { "currency", currency.GetValue() }
+            };
+
+            return _flutterwaveApi.Get<GetTransactionFeeResponse>($"{Endpoints.TRANSACTION_FEE}", queryParameters);
+        }
+
+        /// <summary>
+        /// Get all transactions
         /// </summary>
         /// <param name="from">This is the specified date to start the list from. YYYY-MM-DD</param>
         /// <param name="to">The is the specified end period for the search . YYYY-MM-DD</param>
@@ -39,7 +57,7 @@ namespace Flutterwave.Net
             var queryParameters = new Dictionary<string, string>()
             {
                 { "page", page.ToString() },
-                { "currency", currency.GetValue().ToString() }
+                { "currency", currency.GetValue() }
             };
 
             if (!string.IsNullOrWhiteSpace(from))
@@ -52,7 +70,7 @@ namespace Flutterwave.Net
                 queryParameters.Add("customer_email", customerEmail);
 
             if (status != null)
-                queryParameters.Add("status", status.GetValue().ToString());
+                queryParameters.Add("status", status.GetValue());
 
             if (!string.IsNullOrWhiteSpace(txRef))
                 queryParameters.Add("tx_ref", txRef);

@@ -2,6 +2,14 @@
 {
     public interface ITransactions
     {
+        /// <summary>
+        /// Get transaction fees
+        /// </summary>
+        /// <param name="amount">This is the amount of the product or service to be charged from the customer</param>
+        /// <param name="currency">This is the specified currency to charge in</param>
+        /// <returns>The transaction fees</returns>
+        public GetTransactionFeeResponse GetTransactionFee(decimal amount,
+                                                           Currency currency = Currency.NigerianNaira);
 
         /// <summary>
         /// Get all Transactions
