@@ -116,6 +116,43 @@ namespace flutterwave_dotnet_test.Apis
         }
 
         [Fact]
+        public void ResendTransactionWebhook_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            int id = AppConstants.VALID_TRANSACTION_ID;
+
+            var flutterwaveSecretKey = "";
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
+
+            // Act
+            var result = _api.Transactions.ResendTransactionWebhook(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<ResendTransactionWebhookResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void ResendTransactionWebhook_WebHookNotConfigured_ReturnsError()
+        {
+            // Arrange
+            int id = AppConstants.VALID_TRANSACTION_ID;
+
+            // Act
+            var result = _api.Transactions.ResendTransactionWebhook(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<ResendTransactionWebhookResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.RESEND_TRANSACTION_WEBHOOK_ERROR_MESSAGE, actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
         public void VerifyTransaction_InvalidSecretKey_ReturnsError()
         {
             // Arrange
