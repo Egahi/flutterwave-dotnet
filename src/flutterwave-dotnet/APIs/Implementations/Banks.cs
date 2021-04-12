@@ -20,17 +20,21 @@ namespace Flutterwave.Net
         /// <returns>A list of bank branches</returns>
         public GetBankBranchesResponse GetBankBranches(int bankId)
         {
-            return _flutterwaveApi.Get<GetBankBranchesResponse>($"{Endpoints.BANKS}/{bankId}/branches");
+            return _flutterwaveApi.Get<GetBankBranchesResponse>(
+                $"{Endpoints.BANKS}/{bankId}/branches");
         }
 
         /// <summary>
         /// Get list of banks you can transfer to
         /// </summary>
-        /// <param name="country">Get list of banks in this country</param>
+        /// <param name="country">
+        /// Get list of banks in this country
+        /// </param>
         /// <returns>A list of Banks</returns>
         public GetBanksResponse GetBanks(Country country)
         {
-            return _flutterwaveApi.Get<GetBanksResponse>($"{Endpoints.BANKS}/{country.GetValue()}");
+            return _flutterwaveApi.Get<GetBanksResponse>(
+                $"{Endpoints.BANKS}/{country.GetValue()}");
         }
     }
 }

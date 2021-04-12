@@ -16,7 +16,8 @@ namespace Flutterwave.Net
         /// Cancel an existing payment plan
         /// </summary>
         /// <param name="paymentPlanId">
-        /// The unique id of the Payment Plan you want to cancel, it is returned in the Get Payment Plan call as data.id
+        /// The unique id of the Payment Plan you want to cancel, it is returned in the 
+        /// Get Payment Plan call as data.id
         /// </param>
         /// <returns>Success message</returns>
         public PaymentPlanResponse CancelPaymentPlan(int paymentPlanId)
@@ -89,7 +90,8 @@ namespace Flutterwave.Net
         /// <param name="brandLogoUrl">A link to your brand's logo</param>
         /// <param name="currency">Currency of payment, default value is Naira - "NGN"</param>
         /// <param name="splitPaymentRequests">
-        /// List of parameters to split payment. It is called subaccounts on the offical documentation
+        /// List of parameters to split payment. It is called subaccounts on the offical 
+        /// documentation
         /// </param>
         /// <returns>A hosted link with the payment details</returns>
         public InitiatePaymentResponse InitiatePayment(string referenceNumber,
