@@ -122,8 +122,6 @@
         public static string VERIFY_TRANSACTION_ERROR_MESSAGE = "No transaction was found for this id";
         public static string VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE = "Invalid secret key passed";
         public static string VERIFY_TRANSACTION_SUCCESS_MESSAGE = "Transaction fetched successfully";
-        public static string RESEND_WEBHOOK_SUCCESS_MESSAGE = "hook sent successfully";
-        public static string RESEND_WEBHOOK_ERROR_MESSAGE = "no hook data found"; 
 
         // Urls
         public static string SAMPLE_BRAND_LOGO_URL = "https://assets.piedpiper.com/logo.png";

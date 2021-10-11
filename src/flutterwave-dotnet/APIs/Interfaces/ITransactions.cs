@@ -39,8 +39,14 @@
         /// This is the transaction unique identifier. It is returned in the 
         /// initiate transaction call as data.Id
         /// </param>
+        /// <param name="shouldWait">
+        /// If this is passed the endpoint would hold for the hook response and 
+        /// return what you respond with as the response. 
+        /// (This parameter is called "wait" on the offical docs)
+        /// </param>
         /// <returns>Success</returns>
-        public ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId);
+        public ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId,
+                                                                         bool shouldWait = false);
 
         /// <summary>
         /// Verify a transaction
@@ -51,19 +57,5 @@
         /// </param>
         /// <returns>The transaction with the specified id</returns>
         public VerifyTransactionResponse VerifyTransaction(int transactionId);
-
-
-
-
-        /// <summary>
-        /// Resend transaction webhook
-        /// </summary>
-        /// <param name="transactionId"></param>
-        /// This is the transaction unique identifier. It is returned in the Get transactions 
-        /// <param name="wait"></param>
-        /// If this is passed the endpoint would hold for the hook response and return what you respond with as the response. 
-        /// The expected value is 1
-        /// <returns>Success or Error if no hook was found</returns>
-        ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId, int wait = 1);
     }
 }
