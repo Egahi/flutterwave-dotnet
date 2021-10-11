@@ -126,5 +126,24 @@ namespace Flutterwave.Net
             return _flutterwaveApi.Get<VerifyTransactionResponse>(
                 $"{Endpoints.TRANSACTIONS}/{transactionId}/verify");
         }
+
+        /// <summary>
+        /// Resend transaction webhook
+        /// </summary>
+        /// <param name="transactionId"></param>
+        /// This is the transaction unique identifier. It is returned in the Get transactions 
+        /// <param name="wait"></param>
+        /// If this is passed the endpoint would hold for the hook response and return what you respond with as the response. 
+        /// The expected value is 1
+        /// <returns>Success or Error if no hook was found</returns>
+        public ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId,int wait = 1)
+        {
+            var queryParameters = new Dictionary<string, string>()
+            {
+                { "wait", wait.ToString()}, 
+            };
+
+            return _flutterwaveApi.Post<ResendTransactionWebhookResponse>($"{Endpoints.TRANSACTIONS}/{transactionId}/resend-hook", queryParameters, new object());
+        }
     }
 }

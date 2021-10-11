@@ -208,5 +208,23 @@ namespace flutterwave_dotnet_test.Apis
             Assert.Equal(expected: AppConstants.SUCCESSFUL_STATUS, actual: result.Data.Status);
             Assert.Equal(expected: AppConstants.NIGERIAN_NAIRA_CODE, actual: result.Data.Currency);
         }
+
+
+        [Fact]
+        public void ResendTransactionWebhook_ValidTransactionId_NoWebHook_ReturnsError()
+        {
+            // Arrange
+            int id = AppConstants.VALID_TRANSACTION_ID;
+
+            // Act
+            var result = _api.Transactions.ResendTransactionWebhook(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<ResendTransactionWebhookResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.RESEND_WEBHOOK_ERROR_MESSAGE, actual: result.Message); 
+            Assert.Null(result.Data);
+        }
     }
 }
