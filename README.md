@@ -28,6 +28,7 @@ This library implements the following services:
 5. Transactions
     * Get transaction fees
     * Get all transactions
+    * Resend transaction webhook
     * Verify a transaction
     
 ## Installation
@@ -419,7 +420,26 @@ This library implements the following services:
         string errorMessage = response.Message;
     }
     ```
-3. Verify a transaction
+3. Resend transaction webhook
+    ```c#
+    int transactionId = 1234567;
+    
+    ResendTransactionWebhookResponse response = api.Transactions.ResendTransactionWebhook(id);
+    
+    string responseMessage = response.Message;
+    
+    // success
+    if (response.Status == "success")
+    {
+        // Provide Value
+    }
+    // error
+    else
+    {
+        // Handle error
+    }
+    ```
+4. Verify a transaction
     ```c#
     int transactionId = 1234567;
     

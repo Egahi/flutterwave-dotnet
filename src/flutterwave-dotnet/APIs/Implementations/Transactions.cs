@@ -27,20 +27,37 @@ namespace Flutterwave.Net
                 { "currency", currency.GetValue() }
             };
 
-            return _flutterwaveApi.Get<GetTransactionFeeResponse>($"{Endpoints.TRANSACTION_FEE}", queryParameters);
+            return _flutterwaveApi.Get<GetTransactionFeeResponse>(
+                Endpoints.TRANSACTION_FEE, queryParameters);
         }
 
         /// <summary>
         /// Get all transactions
         /// </summary>
-        /// <param name="from">This is the specified date to start the list from. YYYY-MM-DD</param>
-        /// <param name="to">The is the specified end period for the search . YYYY-MM-DD</param>
-        /// <param name="page">This is the page number to retrieve</param>
-        /// <param name="customerEmail">This is the email of the customer who carried out a transaction. Use for more specific listing.</param>
-        /// <param name="status">This is the transaction status to filter the listing</param>
-        /// <param name="txRef">This is the merchant reference tied to a transaction. Use for more specific listing</param>
-        /// <param name="customerFullName">This is the combination of the customer first name and last name passed to rave during transaction.</param>
-        /// <param name="currency">This is the currency the transaction list should come in</param>
+        /// <param name="from">
+        /// This is the specified date to start the list from. YYYY-MM-DD
+        /// </param>
+        /// <param name="to">
+        /// The is the specified end period for the search . YYYY-MM-DD
+        /// </param>
+        /// <param name="page">
+        /// This is the page number to retrieve
+        /// </param>
+        /// <param name="customerEmail">
+        /// This is the email of the customer who carried out a transaction. Use for more specific listing.
+        /// </param>
+        /// <param name="status">
+        /// This is the transaction status to filter the listing
+        /// </param>
+        /// <param name="txRef">
+        /// This is the merchant reference tied to a transaction. Use for more specific listing
+        /// </param>
+        /// <param name="customerFullName">
+        /// This is the combination of the customer first name and last name passed to rave during transaction.
+        /// </param>
+        /// <param name="currency">
+        /// This is the currency the transaction list should come in
+        /// </param>
         /// <returns>A list of transactions</returns>
         public GetTransactionsResponse GetTransactions(string from = null,
                                                        string to = null,
@@ -78,7 +95,38 @@ namespace Flutterwave.Net
             if (!string.IsNullOrWhiteSpace(customerFullName))
                 queryParameters.Add("customer_fullname", customerFullName);
 
-            return _flutterwaveApi.Get<GetTransactionsResponse>($"{Endpoints.TRANSACTIONS}", queryParameters);
+            return _flutterwaveApi.Get<GetTransactionsResponse>(
+                Endpoints.TRANSACTIONS, queryParameters);
+        }
+
+        /// <summary>
+        /// Resend a failed transaction webhook to your server
+        /// </summary>
+        /// <param name="transactionId">
+        /// This is the transaction unique identifier. It is returned in the 
+        /// initiate transaction call as data.Id
+        /// </param>
+        /// <param name="shouldWait">
+        /// If this is passed the endpoint would hold for the hook response and 
+        /// return what you respond with as the response. 
+        /// (This parameter is called "wait" on the offical docs)
+        /// </param>
+        /// <returns>Success</returns>
+        public ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId, 
+                                                                         bool shouldWait = false)
+        {
+            Dictionary<string, string> queryParameters = null;
+            
+            if(shouldWait)
+            {
+                queryParameters = new Dictionary<string, string>()
+                {
+                    { "wait", "1" }
+                };
+            }
+
+            return _flutterwaveApi.Post<ResendTransactionWebhookResponse>(
+                $"{Endpoints.TRANSACTIONS}/{transactionId}/resend-hook", queryParameters: queryParameters);
         }
 
         /// <summary>
@@ -91,7 +139,8 @@ namespace Flutterwave.Net
         /// <returns>The transaction with the specified id</returns>
         public VerifyTransactionResponse VerifyTransaction(int transactionId)
         {
-            return _flutterwaveApi.Get<VerifyTransactionResponse>($"{Endpoints.TRANSACTIONS}/{transactionId}/verify");
+            return _flutterwaveApi.Get<VerifyTransactionResponse>(
+                $"{Endpoints.TRANSACTIONS}/{transactionId}/verify");
         }
     }
 }

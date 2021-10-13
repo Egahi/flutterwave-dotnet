@@ -117,6 +117,8 @@
         public static string GET_TRANSACTIONS_SUCCESS_MESSAGE = "Transactions fetched";
         public static int INVALID_TRANSACTION_ID = 123;
         public static int VALID_TRANSACTION_ID = 1541948;
+        public static string RESEND_TRANSACTION_WEBHOOK_ERROR_MESSAGE = "no hook data found";
+        public static string RESEND_TRANSACTION_WEBHOOK_SUCCESS_MESSAGE = "hook sent successfully";
         public static string VERIFY_TRANSACTION_ERROR_MESSAGE = "No transaction was found for this id";
         public static string VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE = "Invalid secret key passed";
         public static string VERIFY_TRANSACTION_SUCCESS_MESSAGE = "Transaction fetched successfully";

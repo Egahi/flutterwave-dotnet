@@ -100,38 +100,33 @@ namespace Flutterwave.Net
         /// </summary>
         /// <typeparam name="T">Response Data Type</typeparam>
         /// <param name="relativeUrl">endpoint</param>
-        /// <param name="data"></param>
+        /// <param name="data">Payload to pass in body of request</param>
+        /// <param name="queryParameters">Dictionary of query parameters</param>
         /// <returns></returns>
-        internal T Post<T>(string relativeUrl, object data)
+        internal T Post<T>(string relativeUrl, 
+                           object data = null, 
+                           Dictionary<string, string> queryParameters = null)
         {
-            var jsonData = new StringContent(JsonConvert.SerializeObject(data),
+            StringContent jsonData = null;
+
+            if (data != null)
+            {
+                jsonData = new StringContent(JsonConvert.SerializeObject(data),
                                              Encoding.UTF8,
                                              "application/json");
+            }
 
-            string responseStr = _httpClient.PostAsync(relativeUrl, jsonData)
-                                            .Result
-                                            .Content
-                                            .ReadAsStringAsync()
-                                            .Result;
+            string queryString = "?";
 
-            var responseData = JsonConvert.DeserializeObject<T>(responseStr);
+            if(queryParameters != null)
+            {
+                foreach (var param in queryParameters)
+                {
+                    queryString += param.Key + "=" + param.Value + "&";
+                }
+            }
 
-            return responseData;
-        }
-
-        /// <summary>
-        /// Make Put requests (without a payload) to Flutterwave to API
-        /// </summary>
-        /// <typeparam name="T">Response Data Type</typeparam>
-        /// <param name="relativeUrl">endpoint</param>
-        /// <returns></returns>
-        internal T Put<T>(string relativeUrl)
-        {
-            var jsonData = new StringContent(JsonConvert.SerializeObject(new { }),
-                                             Encoding.UTF8,
-                                             "application/json");
-
-            string responseStr = _httpClient.PutAsync(relativeUrl, jsonData)
+            string responseStr = _httpClient.PostAsync(relativeUrl + queryString, jsonData)
                                             .Result
                                             .Content
                                             .ReadAsStringAsync()
@@ -149,11 +144,16 @@ namespace Flutterwave.Net
         /// <param name="relativeUrl">endpoint</param>
         /// <param name="data"></param>
         /// <returns></returns>
-        internal T Put<T>(string relativeUrl, object data)
+        internal T Put<T>(string relativeUrl, object data = null)
         {
-            var jsonData = new StringContent(JsonConvert.SerializeObject(data),
+            StringContent jsonData = null;
+
+            if (data != null)
+            {
+                jsonData = new StringContent(JsonConvert.SerializeObject(data),
                                              Encoding.UTF8,
                                              "application/json");
+            }
 
             string responseStr = _httpClient.PutAsync(relativeUrl, jsonData)
                                             .Result

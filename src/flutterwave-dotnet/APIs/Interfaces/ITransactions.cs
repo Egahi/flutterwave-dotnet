@@ -33,6 +33,22 @@
                                                        Currency currency = Currency.NigerianNaira);
 
         /// <summary>
+        /// Resend a failed transaction webhook to your server
+        /// </summary>
+        /// <param name="transactionId">
+        /// This is the transaction unique identifier. It is returned in the 
+        /// initiate transaction call as data.Id
+        /// </param>
+        /// <param name="shouldWait">
+        /// If this is passed the endpoint would hold for the hook response and 
+        /// return what you respond with as the response. 
+        /// (This parameter is called "wait" on the offical docs)
+        /// </param>
+        /// <returns>Success</returns>
+        public ResendTransactionWebhookResponse ResendTransactionWebhook(int transactionId,
+                                                                         bool shouldWait = false);
+
+        /// <summary>
         /// Verify a transaction
         /// </summary>
         /// <param name="transactionId">
