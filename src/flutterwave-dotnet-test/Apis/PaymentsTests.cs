@@ -1,7 +1,7 @@
-﻿using Flutterwave.Net;
-using Flutterwave.Net.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Flutterwave.Net;
+using Flutterwave.Net.Utilities;
 using Xunit;
 
 namespace flutterwave_dotnet_test.Apis
@@ -14,7 +14,7 @@ namespace flutterwave_dotnet_test.Apis
         {
             // Get rave secret key from environmental variables
             var flutterwaveSecretKey = Environment.GetEnvironmentVariable("FLUTTERWAVESECRETKEY");
-
+            
             _api = new FlutterwaveApi(flutterwaveSecretKey);
         }
 
@@ -219,6 +219,35 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<GetPaymentPlansResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
             Assert.Equal(expected: AppConstants.GET_PAYMENT_PLANS_SUCCESS_MESSAGE, 
+                actual: result.Message);
+            Assert.IsType<List<PaymentPlan>>(result.Data);
+        }
+
+        [Fact]
+        public void GetPaymentPlans_ValidSecretKey_QueryParameter_ReturnsPaymentPlans()
+        {
+            // Arrange
+            decimal amount = 5000;
+            string from = AppConstants.START_DATE;
+            string to = AppConstants.END_DATE;
+            int page = 1;
+            string interval = AppConstants.WEEKLY;
+            string status = AppConstants.ACTIVE;
+
+            // Act
+            var result = _api.Payments.GetPaymentPlans(amount, 
+                                                        from, 
+                                                        to, 
+                                                        page, 
+                                                        Currency.NigerianNaira, 
+                                                        interval, 
+                                                        status);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetPaymentPlansResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_PAYMENT_PLANS_SUCCESS_MESSAGE,
                 actual: result.Message);
             Assert.IsType<List<PaymentPlan>>(result.Data);
         }
