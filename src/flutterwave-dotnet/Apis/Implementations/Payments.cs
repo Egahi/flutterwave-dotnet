@@ -67,79 +67,87 @@ namespace Flutterwave.Net
             return _flutterwaveApi.Get<PaymentPlanResponse>($"{Endpoints.PAYMENT_PLANS}/{paymentPlanId}");
         }
 
-        /// <summary>
-        /// Get all payment plans
+        /// <summary> 
+        /// Get all payment plans 
         /// </summary>
+        /// <param name="amount">
+        /// This is the exact amount set when creating the payment plan
+        /// </param>
+        /// <param name="from">
+        /// This is the specified date to start the list from. YYYY-MM-DD
+        /// </param>
+        /// <param name="to">
+        /// This is the specified end period for the search. YYYY-MM-DD 
+        /// </param>
+        /// <param name="page">
+        /// This is the page number to retrieve
+        /// </param>
+        /// <param name="currency">
+        /// This is the currency the payment plan amount is charged in
+        /// </param>
+        /// <param name="interval">
+        /// This is how often the payment plan is set to execute
+        /// </param>
+        /// <param name="status">
+        /// This is the status of the payment plan
+        /// </param>
         /// <returns>A list of payment plans</returns>
-        public GetPaymentPlansResponse GetPaymentPlans()
+        public GetPaymentPlansResponse GetPaymentPlans(decimal amount = 0, 
+                                                       string from = null, 
+                                                       string to = null, 
+                                                       int page = 1, 
+                                                       Currency currency = Currency.NigerianNaira, 
+                                                       string interval = null, 
+                                                       string status = null)
         {
-            return _flutterwaveApi.Get<GetPaymentPlansResponse>(Endpoints.PAYMENT_PLANS);
-        }
 
-    /// <summary> Fetch all payment plans on your account </summary>
-    /// <param name="amount">This is the exact amount set when creating the payment plan</param>
-    /// <param name="from">This is the specified date to start the list from. YYYY-MM-DD</param>
-    /// <param name="to">The is the specified end period for the search . YYYY-MM-DD </param>
-    /// <param name="page">This is the page number to retrieve</param>
-    /// <param name="currency">This is the currency the transaction list should come in</param>
-    /// <param name="interval">This is how often the payment plan is set to execute</param>
-    /// <param name="status">This is the status of the payment plan</param>
-    /// <returns>A list of payment plans</returns>
-    public GetPaymentPlansResponse GetPaymentPlans(int amount, string from = null, string to = null, int page = 1, Currency currency = Currency.NigerianNaira, string interval = null, string status = null)
-    {
+            if (page <= 0) 
+                page = 1;
 
-      if (page <= 0) page = 1;
-
-      var queryParameters = new Dictionary<string, string>
+            var queryParameters = new Dictionary<string, string>
             {
                 { "page", page.ToString() },
-                { "amount", amount.ToString() },
-                { "currency", currency.GetValue() },
+                { "currency", currency.GetValue() }
             };
 
-      if (!string.IsNullOrEmpty(from))
-      {
-        queryParameters.Add("from", from);
-      }
+            if (amount > 0)
+                queryParameters.Add("amount", amount.ToString());
 
-      if (!string.IsNullOrEmpty(to))
-      {
-        queryParameters.Add("to", to);
-      }
+            if (!string.IsNullOrEmpty(from))
+                queryParameters.Add("from", from);
 
-      if (!string.IsNullOrEmpty(interval))
-      {
-        queryParameters.Add("interval", interval);
-      }
+            if (!string.IsNullOrEmpty(to))
+                queryParameters.Add("to", to);
 
-      if (!string.IsNullOrEmpty(status))
-      {
-        queryParameters.Add("status", status);
-      }
+            if (!string.IsNullOrEmpty(interval))
+                queryParameters.Add("interval", interval);
 
-      return _flutterwaveApi.Get<GetPaymentPlansResponse>(Endpoints.PAYMENT_PLANS, queryParameters);
-    }
+            if (!string.IsNullOrEmpty(status))
+                queryParameters.Add("status", status);
+
+            return _flutterwaveApi.Get<GetPaymentPlansResponse>(Endpoints.PAYMENT_PLANS, queryParameters);
+        }
 
 
-    /// <summary>
-    /// Initiate Payment
-    /// </summary>
-    /// <param name="referenceNumber">A unique reference number for this payment</param>
-    /// <param name="amount">Amount to be paid</param>
-    /// <param name="redirectUrl">A url to redirect to after payment is made</param>
-    /// <param name="customerName"></param>
-    /// <param name="customerEmail"></param>
-    /// <param name="customerPhoneNumber"></param>
-    /// <param name="paymentTitle">A title for this payment</param>
-    /// <param name="paymentDescription">A description for this payment</param>
-    /// <param name="brandLogoUrl">A link to your brand's logo</param>
-    /// <param name="currency">Currency of payment, default value is Naira - "NGN"</param>
-    /// <param name="splitPaymentRequests">
-    /// List of parameters to split payment. It is called subaccounts on the offical 
-    /// documentation
-    /// </param>
-    /// <returns>A hosted link with the payment details</returns>
-    public InitiatePaymentResponse InitiatePayment(string referenceNumber,
+        /// <summary>
+        /// Initiate Payment
+        /// </summary>
+        /// <param name="referenceNumber">A unique reference number for this payment</param>
+        /// <param name="amount">Amount to be paid</param>
+        /// <param name="redirectUrl">A url to redirect to after payment is made</param>
+        /// <param name="customerName"></param>
+        /// <param name="customerEmail"></param>
+        /// <param name="customerPhoneNumber"></param>
+        /// <param name="paymentTitle">A title for this payment</param>
+        /// <param name="paymentDescription">A description for this payment</param>
+        /// <param name="brandLogoUrl">A link to your brand's logo</param>
+        /// <param name="currency">Currency of payment, default value is Naira - "NGN"</param>
+        /// <param name="splitPaymentRequests">
+        /// List of parameters to split payment. It is called subaccounts on the offical 
+        /// documentation
+        /// </param>
+        /// <returns>A hosted link with the payment details</returns>
+        public InitiatePaymentResponse InitiatePayment(string referenceNumber,
                                                        decimal amount,
                                                        string redirectUrl,
                                                        string customerName,

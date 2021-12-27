@@ -223,31 +223,36 @@ namespace flutterwave_dotnet_test.Apis
             Assert.IsType<List<PaymentPlan>>(result.Data);
         }
 
-    [Fact]
-    public void GetPaymentPlans_ValidSecretKey_QueryParameter_ReturnsPaymentPlans()
-    {
-      // Arrange
-      int amount = 5000;
-      string from = AppConstants.START_DATE;
-      string to = AppConstants.END_DATE;
-      int page = 1;
-      string interval = "weekly";
-      string status = "active";
+        [Fact]
+        public void GetPaymentPlans_ValidSecretKey_QueryParameter_ReturnsPaymentPlans()
+        {
+            // Arrange
+            decimal amount = 5000;
+            string from = AppConstants.START_DATE;
+            string to = AppConstants.END_DATE;
+            int page = 1;
+            string interval = AppConstants.WEEKLY;
+            string status = AppConstants.ACTIVE;
 
-      // Act
-      var result = _api.Payments.GetPaymentPlans(amount, from, to, page, Currency.NigerianNaira, interval, status);
+            // Act
+            var result = _api.Payments.GetPaymentPlans(amount, 
+                                                        from, 
+                                                        to, 
+                                                        page, 
+                                                        Currency.NigerianNaira, 
+                                                        interval, 
+                                                        status);
 
-      // Assert
-      Assert.NotNull(result);
-      Assert.IsType<GetPaymentPlansResponse>(result);
-      Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-      Assert.Equal(expected: AppConstants.GET_PAYMENT_PLANS_SUCCESS_MESSAGE,
-          actual: result.Message);
-      Assert.IsType<List<PaymentPlan>>(result.Data);
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<GetPaymentPlansResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.GET_PAYMENT_PLANS_SUCCESS_MESSAGE,
+                actual: result.Message);
+            Assert.IsType<List<PaymentPlan>>(result.Data);
+        }
 
-    }
-
-    [Fact]
+        [Fact]
         public void InitiatePayment_InvalidSecretKey_ReturnsError()
         {
             // Arrange
