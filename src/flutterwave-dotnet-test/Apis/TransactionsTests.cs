@@ -34,7 +34,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetTransactionFeeResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -50,7 +51,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetTransactionFeeResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_TRANSACTION_FEES_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTION_FEES_SUCCESS_MESSAGE, 
+                actual: result.Message);
             Assert.IsType<TransactionFee>(result.Data);
         }
 
@@ -68,7 +70,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetTransactionsResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -82,7 +85,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<GetTransactionsResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_SUCCESS_MESSAGE, 
+                actual: result.Message);
             Assert.IsType<List<Transaction>>(result.Data);
         }
 
@@ -111,7 +115,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result); 
             Assert.IsType<GetTransactionsResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.GET_TRANSACTIONS_SUCCESS_MESSAGE, 
+                actual: result.Message);
             Assert.IsType<List<Transaction>>(result.Data);
         }
 
@@ -131,7 +136,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<ResendTransactionWebhookResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -148,7 +154,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<ResendTransactionWebhookResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.RESEND_TRANSACTION_WEBHOOK_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.RESEND_TRANSACTION_WEBHOOK_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -168,7 +175,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<VerifyTransactionResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_UNAUTHORIZED_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -185,7 +193,8 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<VerifyTransactionResponse>(result);
             Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_ERROR_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_ERROR_MESSAGE, 
+                actual: result.Message);
             Assert.Null(result.Data);
         }
 
@@ -202,11 +211,69 @@ namespace flutterwave_dotnet_test.Apis
             Assert.NotNull(result);
             Assert.IsType<VerifyTransactionResponse>(result);
             Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
-            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_SUCCESS_MESSAGE, actual: result.Message);
+            Assert.Equal(expected: AppConstants.VERIFY_TRANSACTION_SUCCESS_MESSAGE, 
+                actual: result.Message);
             Assert.IsType<Transaction>(result.Data);
             Assert.Equal(expected: AppConstants.SAMPLE_TX_REF, actual: result.Data.TxRef);
             Assert.Equal(expected: AppConstants.SUCCESSFUL_STATUS, actual: result.Data.Status);
             Assert.Equal(expected: AppConstants.NIGERIAN_NAIRA_CODE, actual: result.Data.Currency);
+        }
+
+        [Fact]
+        public void ViewTransactionTimeline_InvalidSecretKey_ReturnsError()
+        {
+            // Arrange
+            int id = AppConstants.VALID_TRANSACTION_ID;
+
+            var flutterwaveSecretKey = "";
+            _api = new FlutterwaveApi(flutterwaveSecretKey);
+
+            // Act
+            var result = _api.Transactions.ViewTransactionTimeline(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<ViewTransactionTimelineResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.INVALID_AUTHORIZATION_KEY_ERROR_MESSAGE, 
+                actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void ViewTransactionTimeline_ValidSecretKey_InvalidTransactionId_ReturnsError()
+        {
+            // Arrange
+            int id = AppConstants.INVALID_TRANSACTION_ID;
+
+            // Act
+            var result = _api.Transactions.ViewTransactionTimeline(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<ViewTransactionTimelineResponse>(result);
+            Assert.Equal(expected: AppConstants.ERROR_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.VIEW_TRANSACTION_TIMELINE_ERROR_MESSAGE, 
+                actual: result.Message);
+            Assert.Null(result.Data);
+        }
+
+        [Fact]
+        public void ViewTransactionTimeline_ValidSecretKey_ValidTransactionId_ReturnsTransactionEvents()
+        {
+            // Arrange
+            int id = AppConstants.VALID_TRANSACTION_ID;
+
+            // Act
+            var result = _api.Transactions.ViewTransactionTimeline(id);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<ViewTransactionTimelineResponse>(result);
+            Assert.Equal(expected: AppConstants.SUCCESS_STATUS, actual: result.Status);
+            Assert.Equal(expected: AppConstants.VIEW_TRANSACTION_TIMELINE_SUCCESS_MESSAGE, 
+                actual: result.Message);
+            Assert.IsType<List<TransactionEvent>>(result.Data);
         }
     }
 }
