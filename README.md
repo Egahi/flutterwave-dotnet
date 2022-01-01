@@ -59,15 +59,12 @@ This library implements the following services:
     ```
 
 ## Usage
-1. Banks
-
-2. Miscellaneous
-
-3. Payments
-
-4. Sub Accounts
-   
-5. Transactions
+View code snippets on how to call each api endpoint in the docs linked below. 
+1. [Banks](/docs/Banks.md)
+2. [Miscellaneous](/docs/Miscellaneous.md)
+3. [Payments](/docs/Payments.md)
+4. [Sub Accounts](/docs/SubAccounts.md)
+5. [Transactions](/docs/Transactions.md)
 
 ## Support
 Create a new issue or add a comment to an open issue to request for new features and/or report bugs
