@@ -8,14 +8,16 @@
     <PackageId>Flutterwave.Net</PackageId>
     <Product>Flutterwave.Net</Product>
     <Description>.NET Library for Flutterwave v3 APIs</Description>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <Copyright>© 2020 Egahi S. O.</Copyright>
+    <PackageReleaseNotes>Added payment plans (create, update, cancel, get a payment plan, get all payment plans, resend transaction webhook and view transactions timeline. Updated get transactions, get payment plans</PackageReleaseNotes>
+    <Copyright>© 2022 Egahi S. O.</Copyright>
     <PackageTags>.Net, API, Fluttwerwave, Gateway, Payment, Rave</PackageTags>
-    <RepositoryUrl>https://github.com/Egahi/flutterwave-dotnet/tree/release-v1.0.0</RepositoryUrl>
-    <PackageIcon>Flutterwave.Net.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Egahi/flutterwave-dotnet/tree/release-v2.0.0</RepositoryUrl>
+    <PackageIcon>1200px-Flutterwave_Logo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Egahi/flutterwave-dotnet/tree/release-v1.0.0</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Egahi/flutterwave-dotnet/tree/release-v2.0.0</PackageProjectUrl>
+    <Version>2.0.0</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,9 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\..\Downloads\Flutterwave.Net.png">
+    <None Include="..\..\assets\1200px-Flutterwave_Logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
