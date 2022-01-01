@@ -32,7 +32,7 @@ namespace Flutterwave.Net
         }
 
         /// <summary>
-        /// Get all transactions
+        /// Get transactions
         /// </summary>
         /// <param name="from">
         /// This is the specified date to start the list from. YYYY-MM-DD
@@ -58,7 +58,7 @@ namespace Flutterwave.Net
         /// <param name="currency">
         /// This is the currency the transaction list should come in
         /// </param>
-        /// <returns>A list of transactions</returns>
+        /// <returns>A list of all transactions</returns>
         public GetTransactionsResponse GetTransactions(string from = null,
                                                        string to = null,
                                                        int page = 1,
@@ -141,6 +141,20 @@ namespace Flutterwave.Net
         {
             return _flutterwaveApi.Get<VerifyTransactionResponse>(
                 $"{Endpoints.TRANSACTIONS}/{transactionId}/verify");
+        }
+
+        /// <summary>
+        /// View transaction timeline
+        /// </summary>
+        /// <param name="transactionId">
+        /// This is the transaction unique identifier. It is returned in the Get transactions 
+        /// call as data.Id
+        /// </param>
+        /// <returns>The events for the transaction with the specified id</returns>
+        public ViewTransactionTimelineResponse ViewTransactionTimeline(int transactionId)
+        {
+            return _flutterwaveApi.Get<ViewTransactionTimelineResponse>(
+                $"{Endpoints.TRANSACTIONS}/{transactionId}/events");
         }
     }
 }
