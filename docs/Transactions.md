@@ -81,3 +81,23 @@
         string errorMessage = response.Message;
     }
     ```
+5. View transaction timeline
+    ```c#
+    int transactionId = 1234567;
+    
+    ViewTransactionTimelineResponse response = api.Transactions.ViewTransactionTimeline(id);
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get all transaction events
+        List<TransactionEvent> transactionEvents = response.Data;
+        
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```

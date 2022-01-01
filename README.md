@@ -30,6 +30,7 @@ This library implements the following services:
     * Get transactions
     * Resend transaction webhook
     * Verify a transaction
+    * View transaction timeline
     
 ## Installation
 * From Nuget <br/>
