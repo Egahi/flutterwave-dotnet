@@ -1,22 +1,5 @@
 ### Transactions
-1. Get all transactions
-    ```c#
-    GetTransactionsResponse response = api.Transactions.GetTransactions();
-
-    // success
-    if (response.Status == "success")
-    {
-        // Get all transactions
-        List<Transaction> transactions = response.Data;
-    }
-    // error
-    else
-    {
-        // Get error message
-        string errorMessage = response.Message;
-    }
-    ```
-2. Get transaction fees
+1. Get transaction fees
     ```c#
     decimal amount = 5000;
     
@@ -27,6 +10,23 @@
     {
         // Get transaction fees
         TransactionFee transactionFees = response.Data;
+    }
+    // error
+    else
+    {
+        // Get error message
+        string errorMessage = response.Message;
+    }
+    ```
+2. Get transactions
+    ```c#
+    GetTransactionsResponse response = api.Transactions.GetTransactions();
+
+    // success
+    if (response.Status == "success")
+    {
+        // Get all transactions
+        List<Transaction> transactions = response.Data;
     }
     // error
     else
