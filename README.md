@@ -26,8 +26,8 @@ This library implements the following services:
     * Fetch all sub accounts
     * Update a sub account
 5. Transactions
-    * Get all transactions
     * Get transaction fees
+    * Get transactions
     * Resend transaction webhook
     * Verify a transaction
     
